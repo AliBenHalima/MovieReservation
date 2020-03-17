@@ -8,6 +8,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { HttpClientModule} from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,14 @@ import { AboutComponent } from './about/about.component';
     SignInComponent,
     SignUpComponent,
     NotFoundComponent,
-    AboutComponent
+    AboutComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
