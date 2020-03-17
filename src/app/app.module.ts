@@ -6,18 +6,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Main/header/header.component';
+import { MainComponent } from './Main/main/main.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
+import { Catalog1Component } from './catalog1/catalog1.component';
+import { TestHeaderComponent } from './test-header/test-header.component';
+import { HeaderComponent } from './Main/header/header.component';
+import { FooterComponent } from './Main/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    MainComponent,
     SignInComponent,
     SignUpComponent,
     NotFoundComponent,
@@ -25,7 +29,11 @@ import { MessagesComponent } from './admin-dashboard/messages/messages.component
     AdminDashboardComponent,
     MessagesComponent,
     UsersComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    Catalog1Component,
+    TestHeaderComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
