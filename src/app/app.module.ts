@@ -1,3 +1,4 @@
+import { TestHeaderComponent } from './test-header/test-header.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
 import { FooterComponent } from './Main/footer/footer.component';
 import { HeaderComponent } from './Main/header/header.component';
@@ -35,6 +36,7 @@ import { CurrentUserComponent } from './admin-dashboard/users/current-user/curre
     HeaderComponent,
     FooterComponent,
     Catalog1Component,
+    TestHeaderComponent
   ],
   imports: [
     BrowserModule,
