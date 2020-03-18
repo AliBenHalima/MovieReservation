@@ -13,6 +13,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { MessagesComponent } from './admin-dashboard/messages/messages.component
     AdminDashboardComponent,
     MessagesComponent,
     UsersComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    CurrentUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -113,15 +113,23 @@
 			<div class="main">
 				<div class="widget">
 					<div class="title">List of users</div>
-					<div class="chart"></div>
+					<div class="chart">
+						<div *ngFor="let user of users" class="user">
+							<a [routerLink]="['/AdminDashboard/users/',user._id]">{{user.email}}</a>
+						</div>
+					</div>
 				</div>
 				<div class="widget">
 					<div class="title">Details of user</div>
-					<div class="chart"></div>
+					<div class="chart">
+						
+					</div>
 				</div>
 				<div class="widget">
 					<div class="title">Privileges</div>
-					<div class="chart"></div>
+					<div class="chart">
+
+					</div>
 				</div>
 			</div>
 		</div>
