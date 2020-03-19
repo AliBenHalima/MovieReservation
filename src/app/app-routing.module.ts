@@ -17,12 +17,12 @@ import { HeaderComponent } from './Main/header/header.component';
 
  const routes: Routes = [
   {path: "", component: MainComponent , pathMatch: "full"},
-  {path: "SignIn", component: SignInComponent},
-  {path: "SignUp", component: SignUpComponent},
-  {path: "NotFound", component: NotFoundComponent},
-  {path: "About", component: AboutComponent},
-  {path: "Catalog1", component: Catalog1Component},
-  {path: "AdminDashboard", component: AdminDashboardComponent},
+  {path: "SignIn", component: SignInComponent,pathMatch:"prefix"},
+  {path: "SignUp", component: SignUpComponent,pathMatch:"prefix"},
+  {path: "NotFound", component: NotFoundComponent,pathMatch:"prefix"},
+  {path: "About", component: AboutComponent,pathMatch:"prefix"},
+  {path: "Catalog1", component: Catalog1Component,pathMatch:"prefix" },
+  {path: "AdminDashboard", component: AdminDashboardComponent,},
   {path: "AdminDashboard/messages", component: MessagesComponent},
   {path: "AdminDashboard/users", component: UsersComponent},
   {path: "AdminDashboard/users/:id", component: CurrentUserComponent},
