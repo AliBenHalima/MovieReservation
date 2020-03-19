@@ -1,3 +1,4 @@
+import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 import { TestHeaderComponent } from './test-header/test-header.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
 import { FooterComponent } from './Main/footer/footer.component';
@@ -19,17 +20,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
-<<<<<<< HEAD
-import { HttpClientModule } from '@angular/common/http';
-import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
-=======
-import { Catalog1Component } from './catalog1/catalog1.component';
-import { TestHeaderComponent } from './test-header/test-header.component';
-import { HeaderComponent } from './Main/header/header.component';
-import { FooterComponent } from './Main/footer/footer.component';
 import { AuthInterceptor } from './sign-up/auth.interceptor';
 
->>>>>>> master
 
 @NgModule({
   declarations: [
@@ -53,14 +45,9 @@ import { AuthInterceptor } from './sign-up/auth.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    BrowserAnimationsModule,
-    HttpClientModule
-=======
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule
->>>>>>> master
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]

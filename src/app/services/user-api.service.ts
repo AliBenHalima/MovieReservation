@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 export class UserApiService {
     constructor(private http: HttpClient) { }
     getUsers() {
-        return this.http.get<User[]>('http://localhost:3000/users/list');
+        return this.http.get<User[]>('http://localhost:3001/users/list');
       }
     getUserById(id){
-      return this.http.get<User[]>('http://localhost:3000/users/' + id);
+      return this.http.get<User[]>('http://localhost:3001/users/' + id);
     }
 }
