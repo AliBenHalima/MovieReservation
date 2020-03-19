@@ -6,25 +6,25 @@
 				<div class="col-12">
 					<div class="sign__content">
 						<!-- authorization form -->
-						<form action="#" class="sign__form">
+						<form action="#" (submit)="SignIn(formi)" #formi="ngForm" class="sign__form">
 							<a href="index.html" class="sign__logo">
 								<img src="../assets/img/logo.svg" alt="">
 							</a>
 
 							<div class="sign__group">
-								<input type="text" class="sign__input" placeholder="Email">
+								<input ngModel name="email" type="text" class="sign__input" placeholder="Email">
 							</div>
 
 							<div class="sign__group">
-								<input type="password" class="sign__input" placeholder="Password">
+								<input ngModel type="password" name="pwd" class="sign__input" placeholder="Password">
 							</div>
 
 							<div class="sign__group sign__group--checkbox">
 								<input id="remember" name="remember" type="checkbox" checked="checked">
 								<label for="remember">Remember Me</label>
 							</div>
-							
-							<button class="sign__btn" type="button">Sign in</button>
+
+							<button class="sign__btn" type="submit">Sign in</button>
 
 							<span class="sign__text">Don't have an account? <a href="signup.html">Sign up!</a></span>
 
@@ -50,4 +50,3 @@
 	<script src="../assets/js/photoswipe.min.js"></script>
 	<script src="../assets/js/photoswipe-ui-default.min.js"></script>
 	<script src="../assets/js/main.js"></script>
-	

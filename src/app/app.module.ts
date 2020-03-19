@@ -15,10 +15,21 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
+<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
+=======
+import { Catalog1Component } from './catalog1/catalog1.component';
+import { TestHeaderComponent } from './test-header/test-header.component';
+import { HeaderComponent } from './Main/header/header.component';
+import { FooterComponent } from './Main/footer/footer.component';
+import { AuthInterceptor } from './sign-up/auth.interceptor';
+
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -28,6 +39,7 @@ import { CurrentUserComponent } from './admin-dashboard/users/current-user/curre
     SignUpComponent,
     NotFoundComponent,
     AboutComponent,
+
     AdminDashboardComponent,
     MessagesComponent,
     UsersComponent,
@@ -41,10 +53,16 @@ import { CurrentUserComponent } from './admin-dashboard/users/current-user/curre
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
     BrowserAnimationsModule,
     HttpClientModule
+=======
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule
+>>>>>>> master
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
