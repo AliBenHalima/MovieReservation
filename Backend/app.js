@@ -7,11 +7,41 @@ const app = express();
 const session = require('express-session');
 const cors = require('cors');
 
-
-
-
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+
+
+//----------------AMASUO : show users in dashboard---------------
+require('./Model/user');
+const expressHandlebars=require("express-handlebars");
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+const UserController = require("./Controller/users");
+
+app.set('views',path.join(__dirname,"/views/"))
+
+app.engine("hbs",expressHandlebars({
+    extname:"hbs",
+    defaultLayout:"mainlayout",
+    layoutsDir: __dirname + "/views/layouts" 
+}));
+
+app.set("view engine","hbs"); 
+
+app.get("/",(req,res)=>{
+    res.render("index",{})
+});
+
+app.use("/users",UserController);
+
+
+//----------------AMASUOend---------------
+
+
 
 //----------------File Picker using Multer---------------
 
