@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularApp</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+
+
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s3">
+            <form #UserForm="ngForm" (ngSubmit)="onSubmit(UserForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="UserService.selectedUser._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="email" #name="ngModel" [(ngModel)]="UserService.selectedUser.email" placeholder="Enter Email" required>
+                  <label>email :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
+                  <label>PWD :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="username" #name="ngModel" [(ngModel)]="UserService.selectedUser.username" placeholder="Enter Username">
+                  <label>username :</label>
+                </div>
+              </div>
+              <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+             
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(UserForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!UserForm.valid">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s9">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>PWD</th>
+                      <th>email</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let emp of UserService.Users">
+                    <td>{{emp.username }}</td>
+                    <td>{{emp.pwd}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(emp)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(emp._id,UserForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+</html>

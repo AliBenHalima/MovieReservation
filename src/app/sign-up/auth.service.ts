@@ -34,4 +34,14 @@ export class AuthService {
       this.token =  resFromBE.token;
      });
   }
+
+  AdminAddUser(email:string,pwd:string,username:string)
+  {
+
+    const user:User = {email:email,pwd:pwd,username:username};
+    this.HttpClient.post('http://localhost:3000/employee',user)
+    .subscribe((resFromBE)=>{
+      console.log(resFromBE);
+     });
+  }
 }

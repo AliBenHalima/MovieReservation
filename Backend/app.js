@@ -1,3 +1,4 @@
+var userController = require('./Controller/userController.js');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -46,7 +47,7 @@ const auth = require('./routes/auth');
 app.use(cors(),auth);
 
 //-----------------------------------------
-
+app.use('/Users', userController);
 
 
 mongoose.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser: true,useUnifiedTopology:true})

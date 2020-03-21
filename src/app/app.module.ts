@@ -21,6 +21,9 @@ import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
 import { AuthInterceptor } from './sign-up/auth.interceptor';
+// import { CrudUsersComponent } from './admin-dashboard/crud-users/crud-users.component';
+import { UserlistComponent } from './admin-dashboard/userlist/userlist.component';
+import { UserComponent } from './crudUser/crudUser.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { AuthInterceptor } from './sign-up/auth.interceptor';
     HeaderComponent,
     FooterComponent,
     Catalog1Component,
-    TestHeaderComponent
+    TestHeaderComponent,
+    UserComponent,
+    UserlistComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+import { UserComponent } from './crudUser/crudUser.component';
+
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 import { PaymentsComponent } from './admin-dashboard/payments/payments.component';
 import { UsersComponent } from './admin-dashboard/users/users.component';
@@ -22,6 +24,7 @@ import { HeaderComponent } from './Main/header/header.component';
   {path: "NotFound", component: NotFoundComponent,pathMatch:"prefix"},
   {path: "About", component: AboutComponent,pathMatch:"prefix"},
   {path: "Catalog1", component: Catalog1Component,pathMatch:"prefix" },
+  {path: "AdminDashboard/CrudUsers", component: UserComponent},
   {path: "AdminDashboard", component: AdminDashboardComponent,},
   {path: "AdminDashboard/messages", component: MessagesComponent},
   {path: "AdminDashboard/users", component: UsersComponent},

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const loginController = require('../Controller/login');
+// const UserCrudController = require('../Controller/UserCruds');
 const isAuth = require('../Controller/router_protector');
 
 router.post('/api/signUp',loginController.signUp);

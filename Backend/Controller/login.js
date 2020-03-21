@@ -17,6 +17,7 @@ module.exports.signUp = (req,res,next)=>{
                     bcrypt.hash(req.body.pwd,12)
                     .then(hashedPwd=>{
                         console.log(req.body.pwd);
+                        console.log(hashedPwd);
                         const user = new User({
                             email:req.body.email,
                             pwd:hashedPwd,
