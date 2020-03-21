@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   SignUp(form:NgForm)
   {
     console.log("zssds");
-    //onsole.log(form.value);
+    //console.log(form.value);
     this.AuthService.addUser(form.value.email,form.value.pwd,form.value.username);
 
   }
