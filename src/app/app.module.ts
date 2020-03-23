@@ -1,5 +1,5 @@
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
-import { TestHeaderComponent } from './test-header/test-header.component';
+// import { TestHeaderComponent } from './test-header/test-header.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
 import { FooterComponent } from './Main/footer/footer.component';
 import { HeaderComponent } from './Main/header/header.component';
@@ -43,7 +43,6 @@ import { UserComponent } from './crudUser/crudUser.component';
     HeaderComponent,
     FooterComponent,
     Catalog1Component,
-    TestHeaderComponent,
     UserComponent,
     UserlistComponent,
     
