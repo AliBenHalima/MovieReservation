@@ -14,16 +14,22 @@ import { AboutComponent } from './about/about.component';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
 import { HeaderComponent } from './Main/header/header.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { HelpComponent } from './help/help.component';
 
 
 
  const routes: Routes = [
   {path: "", component: MainComponent , pathMatch: "full"},
-  {path: "SignIn", component: SignInComponent,pathMatch:"prefix"},
-  {path: "SignUp", component: SignUpComponent,pathMatch:"prefix"},
-  {path: "NotFound", component: NotFoundComponent,pathMatch:"prefix"},
-  {path: "About", component: AboutComponent,pathMatch:"prefix"},
-  {path: "Catalog1", component: Catalog1Component,pathMatch:"prefix" },
+  {path: "SignIn", component: SignInComponent},
+  {path: "SignUp", component: SignUpComponent},
+  {path: "NotFound", component: NotFoundComponent},
+  {path: "About", component: AboutComponent},
+  {path: "Catalog1", component: Catalog1Component },
+  {path: "MovieDetails", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
+  {path: "Pricing", component: PricingComponent},
+  {path: "Help", component: HelpComponent},
   {path: "AdminDashboard/CrudUsers", component: UserComponent},
   {path: "AdminDashboard", component: AdminDashboardComponent,},
   {path: "AdminDashboard/messages", component: MessagesComponent},
@@ -33,7 +39,7 @@ import { HeaderComponent } from './Main/header/header.component';
   {path: "**", component: NotFoundComponent}
   
  
- ];
+ ];  
 
 
 @NgModule({

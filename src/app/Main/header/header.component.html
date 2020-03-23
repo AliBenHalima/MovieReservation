@@ -7,7 +7,7 @@
 					<div class="col-12">
 						<div class="header__content">
 							<!-- header logo -->
-							<a href="index.html" class="header__logo">
+							<a [routerLink]="['/']"  class="header__logo">
 								<img src="assets/img/logo.svg" alt="">
 							</a>
 							<!-- end header logo -->
@@ -16,12 +16,13 @@
 							<ul class="header__nav">
 								<!-- dropdown -->
 								<li class="header__nav-item">
-									<a class="dropdown-toggle header__nav-link"   role="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Home</a>
+									<a [routerLink]="['/']" class="dropdown-toggle header__nav-link"   role="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Home</a>
 
-									<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
+									<!-- <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
 										<li><a [routerLink]="['/']" >Home slideshow bg</a></li>
 										<li><a [routerLink]="['/']" >Home static bg</a></li>
-									</ul>
+									</ul> -->
+
 								</li>
 								<!-- end dropdown -->
 
@@ -39,7 +40,7 @@
 								<!-- end dropdown -->
 
 								<li class="header__nav-item">
-									<a [routerLink]="['/CrudUsers']"  class="header__nav-link">Pricing Plan</a>
+									<a [routerLink]="['/Pricing']"  class="header__nav-link">Pricing Plan</a>
 								</li>
 
 								<li class="header__nav-item">
@@ -58,6 +59,7 @@
 										<li><a  [routerLink]="['/SignIn']">Sign In</a></li>
 
 										<li><a [routerLink]="['/SignUp']">Sign Up</a></li>
+										<li><a [routerLink]="['/Help']">Help</a></li>
 										<li><a [routerLink]="['/NotFound']">404 Page</a></li>
 									</ul>
 								</li>

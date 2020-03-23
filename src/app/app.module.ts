@@ -24,6 +24,9 @@ import { AuthInterceptor } from './sign-up/auth.interceptor';
 // import { CrudUsersComponent } from './admin-dashboard/crud-users/crud-users.component';
 import { UserlistComponent } from './admin-dashboard/userlist/userlist.component';
 import { UserComponent } from './crudUser/crudUser.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { HelpComponent } from './help/help.component';
 
 
 @NgModule({
@@ -45,6 +48,9 @@ import { UserComponent } from './crudUser/crudUser.component';
     Catalog1Component,
     UserComponent,
     UserlistComponent,
+    MovieDetailsComponent,
+    PricingComponent,
+    HelpComponent,
     
   ],
   imports: [
