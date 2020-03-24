@@ -27,6 +27,8 @@ import { UserComponent } from './crudUser/crudUser.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
@@ -51,16 +53,18 @@ import { HelpComponent } from './help/help.component';
     MovieDetailsComponent,
     PricingComponent,
     HelpComponent,
-    
+    ReservationComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

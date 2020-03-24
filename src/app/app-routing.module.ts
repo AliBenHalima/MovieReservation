@@ -17,6 +17,7 @@ import { HeaderComponent } from './Main/header/header.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 
@@ -36,10 +37,12 @@ import { HelpComponent } from './help/help.component';
   {path: "AdminDashboard/users", component: UsersComponent},
   {path: "AdminDashboard/users/:id", component: CurrentUserComponent},
   {path: "AdminDashboard/payments", component: PaymentsComponent},
+  {path: "reservation", component: ReservationComponent},
   {path: "**", component: NotFoundComponent}
-  
- 
- ];  
+
+
+
+ ];
 
 
 @NgModule({
