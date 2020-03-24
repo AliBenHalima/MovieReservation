@@ -17,6 +17,7 @@ import { HeaderComponent } from './Main/header/header.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
+import { MailComponent } from './mail/mail.component';
 
 
 
@@ -30,6 +31,7 @@ import { HelpComponent } from './help/help.component';
   {path: "MovieDetails", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
   {path: "Pricing", component: PricingComponent},
   {path: "Help", component: HelpComponent},
+  {path: "Contact", component: MailComponent},
   {path: "AdminDashboard/CrudUsers", component: UserComponent},
   {path: "AdminDashboard", component: AdminDashboardComponent,},
   {path: "AdminDashboard/messages", component: MessagesComponent},

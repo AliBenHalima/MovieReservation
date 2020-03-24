@@ -1,4 +1,5 @@
 var userController = require('./Controller/userController.js');
+var mailController = require('./Controller/mailController.js');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -38,6 +39,7 @@ app.get("/",(req,res)=>{
 });
 
 app.use("/users",UserController);
+app.use("/mail",mailController);
 
 
 //----------------AMASUOend---------------

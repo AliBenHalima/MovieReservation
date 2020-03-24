@@ -1,3 +1,4 @@
+import { UserService } from './admin-dashboard/shared/crudUser.service';
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 // import { TestHeaderComponent } from './test-header/test-header.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
@@ -27,6 +28,7 @@ import { UserComponent } from './crudUser/crudUser.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
+import { MailComponent } from './mail/mail.component';
 
 
 @NgModule({
@@ -51,6 +53,7 @@ import { HelpComponent } from './help/help.component';
     MovieDetailsComponent,
     PricingComponent,
     HelpComponent,
+    MailComponent,
     
   ],
   imports: [
@@ -60,7 +63,7 @@ import { HelpComponent } from './help/help.component';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
