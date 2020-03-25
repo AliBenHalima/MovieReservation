@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -9,18 +9,17 @@ import { AuthService } from './auth.service';
 })
 export class SignUpComponent implements OnInit {
 
-  email='dsd';
+  email = 'dsd';
 
-  constructor(public AuthService : AuthService) {  }
+  constructor(public AuthService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  SignUp(form:NgForm)
-  {
+  SignUp(form: NgForm) {
     console.log("zssds");
-    //onsole.log(form.value);
-    this.AuthService.addUser(form.value.email,form.value.pwd,form.value.username);
+    //console.log(form.value);
+    this.AuthService.addUser(form.value.email, form.value.pwd, form.value.username);
 
   }
 
