@@ -26,24 +26,41 @@
     "cors": "^2.8.5",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "express-fileupload": "^1.1.6",
+=======
+    "express-handlebars": "^3.1.0",
+>>>>>>> 26b787f92f3a95c444608a9f7a35816c7f1ab277
     "express-session": "^1.17.0",
     "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.6",
     "multer": "^1.4.2",
+<<<<<<< HEAD
     "multer-gridfs-storage": "^4.0.2",
+=======
+    "nodemailer": "^6.4.6",
+>>>>>>> 26b787f92f3a95c444608a9f7a35816c7f1ab277
     "nodemon": "^2.0.2",
-    "rxjs": "~6.5.4",
+    "rxjs": "^6.5.4",
+    "rxjs-compat": "^6.5.4",
+    "rxjs-observable": "0.0.7",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.900.7",
+<<<<<<< HEAD
     "@angular/cli": "^9.0.7",
     "@angular/compiler-cli": "^9.0.7",
     "@angular/language-service": "^9.0.7",
     "@types/jasmine": "^3.5.10",
+=======
+    "@angular/cli": "~9.0.4",
+    "@angular/compiler-cli": "~9.0.3",
+    "@angular/language-service": "~9.0.3",
+    "@types/jasmine": "~3.5.0",
+>>>>>>> 26b787f92f3a95c444608a9f7a35816c7f1ab277
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.3.33",
     "@types/node": "^12.11.1",
