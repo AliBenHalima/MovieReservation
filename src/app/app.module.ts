@@ -1,3 +1,4 @@
+import { UserService } from './admin-dashboard/shared/crudUser.service';
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 // import { TestHeaderComponent } from './test-header/test-header.component';
 import { Catalog1Component } from './catalog1/catalog1.component';
@@ -16,8 +17,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesComponent } from './admin-dashboard/messages/messages.component';
 import { AuthInterceptor } from './sign-up/auth.interceptor';
@@ -31,6 +32,9 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import {DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
 import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
+import { MailComponent } from './mail/mail.component';
+import { MoviesComponent } from './movies/movies.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,7 @@ import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
     SignUpComponent,
     NotFoundComponent,
     AboutComponent,
-
+    MoviesComponent,
     AdminDashboardComponent,
     MessagesComponent,
     UsersComponent,
@@ -54,7 +58,8 @@ import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
     MovieDetailsComponent,
     PricingComponent,
     HelpComponent,
-    ReservationComponent,
+    MailComponent,
+    ReservationComponent 
 
   ],
   imports: [

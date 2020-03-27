@@ -11,6 +11,7 @@ export class UserService {
   selectedUser: User;
   Users: User[];
   readonly baseURL = 'http://localhost:3000/Users';
+  readonly baseURL_mail = 'http://localhost:3000/mail/sendmail';
 
   constructor(private http: HttpClient) { }
 
@@ -28,6 +29,9 @@ export class UserService {
 
   deleteUser(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
+  }
+  PostMail(emp: User) {
+    return this.http.post(this.baseURL_mail, emp);
   }
 
 }

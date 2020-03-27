@@ -1,4 +1,3 @@
-/* User Crud Operations Add by Ali */
 
 const express = require('express');
 var router = express.Router();

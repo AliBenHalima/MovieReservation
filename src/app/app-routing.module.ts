@@ -4,8 +4,8 @@ import { CurrentUserComponent } from './admin-dashboard/users/current-user/curre
 import { PaymentsComponent } from './admin-dashboard/payments/payments.component';
 import { UsersComponent } from './admin-dashboard/users/users.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import {  MainComponent } from './Main/main/main.component';
-import { NgModule,Component } from '@angular/core';
+import { MainComponent } from './Main/main/main.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -18,6 +18,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { MoviesComponent } from "./movies/movies.component";
 
 
 
@@ -38,6 +39,7 @@ import { ReservationComponent } from './reservation/reservation.component';
   {path: "AdminDashboard/users/:id", component: CurrentUserComponent},
   {path: "AdminDashboard/payments", component: PaymentsComponent},
   {path: "reservation", component: ReservationComponent},
+  { path: "Movies", component: MoviesComponent, pathMatch: "prefix" },
   {path: "**", component: NotFoundComponent}
 
 
