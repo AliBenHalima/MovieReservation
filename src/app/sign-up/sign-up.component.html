@@ -1,0 +1,39 @@
+<app-header></app-header>
+	<div class="sign section--bg" data-bg="../../assets/img/section/section.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="sign__content">
+						<!-- registration form -->
+						<form (submit)="SignUp(formi)" #formi="ngForm" action="/" class="sign__form">
+							<a href="index.html" class="sign__logo">
+								<img src="../../assets/img/logo.svg" alt="">
+							</a>
+
+							<div class="sign__group">
+								<input ngModel type="text" name="username" class="sign__input" placeholder="Name">
+							</div>
+
+							<div class="sign__group">
+								<input ngModel type="text" name="email" class="sign__input" placeholder="Email">
+							</div>
+
+							<div class="sign__group">
+								<input ngModel type="password" name="pwd" class="sign__input" placeholder="Password">
+							</div>
+
+							<div class="sign__group sign__group--checkbox">
+								<input id="remember" name="remember" type="checkbox" checked="checked">
+								<label for="remember">I agree to the <a href="#">Privacy Policy</a></label>
+							</div>
+
+							<button class="sign__btn" type="submit">Sign up</button>
+
+							<span class="sign__text">Already have an account? <a [routerLink]="['/SignIn']">Sign in!</a></span>
+						</form>
+						<!-- registration form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

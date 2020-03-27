@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(43, 43, 49);
+}
+form, input, label, p {
+    color: #DF515C !important;
+}
+form button{
+    background-color: #DF515C !important; 
+}
+.form-check-input{
+    color: #DF515C !important  ;
+}

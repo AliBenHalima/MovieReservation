@@ -1,0 +1,92 @@
+<app-header></app-header>
+
+<section class="content" style="position: relative; top: 150px;">
+	<div class="content__head">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-12">
+					<!-- content title -->
+					<div class="nav_upload">
+						<h2 class="content__title">Your Movies</h2>
+
+						<button class="upload" (click)="show()">
+							<span class="upload">Upload</span>
+						</button>
+
+					</div>
+
+
+					<!-- end content tabs nav -->
+
+					<!-- content mobile tabs nav -->
+					<div class="content__mobile-tabs" id="content__mobile-tabs">
+						<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+
+						<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
+							<ul class="nav nav-tabs" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<!-- end content mobile tabs nav -->
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+</section>
+<div class="upload">
+	<div class="close" (click)="hide()">
+		<span class="c c1"></span>
+		<span class="c c2"></span>
+	</div>
+	<form (submit)="upload(form)" #form="ngForm" action="/" enctype="multipart/form-data">
+		<div class="top">
+			<div class="left">
+				<label for="">Name</label>
+				<input ngModel name="name" class="inp" type="text" placeholder="Name" required>
+				<label for="">Category</label>
+				<input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
+				<label for="">Description</label>
+				<input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
+				<input ngModel name="file" class="inp" type="file">
+			</div>
+			<div class="right">
+				<label for="">Duration</label>
+				<input ngModel name="duration" class="inp" type="time" placeholder="Duration" required>
+				<label for="">Producer Name</label>
+				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name" required>
+				<label for="">Type</label>
+				<select ngModel class="inp" name="type" id="" required>
+					<option value="" disabled selected>Type</option>
+					<option value="action">action</option>
+					<option value="comedy">comedy</option>
+					<option value="romantic">romantic</option>
+					<option value="rom-coms">rom-coms</option>
+					<option value="adventure">adventure</option>
+					<option value="musicals">musicals</option>
+					<option value="dramas">dramas</option>
+					<option value="historical">historical</option>
+					<option value="real life">real life</option>
+					<option value="war">war</option>
+					<option value="horror">horror</option>
+					<option value="science fiction">science fiction</option>
+				</select>
+				<button class="upload1" type="submit">
+					<span class="upload">Upload</span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
