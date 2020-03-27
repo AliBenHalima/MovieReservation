@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
+    "@syncfusion/ej2-angular-calendars": "^17.4.51",
+    "@syncfusion/ej2-angular-dropdowns": "^17.4.51",
     "@syncfusion/ej2-angular-schedule": "^17.4.55",
     "@syncfusion/ej2-material-theme": "~17.4.51",
     "bcrypt": "^3.0.8",

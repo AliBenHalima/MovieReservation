@@ -29,7 +29,8 @@ import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
-
+import {DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
+import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWee
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule, RecurrenceEditorModule,
+    DropDownListModule,DateTimePickerModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService],
   bootstrap: [AppComponent]

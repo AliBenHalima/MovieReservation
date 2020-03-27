@@ -1,0 +1,21 @@
+.aff
+{
+  margin-left: 200px;
+
+}
+
+.bk
+{
+  background-image: url('../../assets/img/section/section.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.bttn
+{
+  margin-top: 10px;
+  margin-left: 570px;
+  margin-bottom: 20px;
+
+}

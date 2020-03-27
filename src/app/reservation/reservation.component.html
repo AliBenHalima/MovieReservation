@@ -1,2 +1,50 @@
-<p>reservation works!</p>
-<ejs-schedule> </ejs-schedule>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<body>
+  <div class="bk">
+    <ejs-schedule class="aff" width='70%' height='550px'[eventSettings]='eventSettings'>
+      <ng-template #editorTemplate let-data>
+        <table class="custom-event-editor" width="100%" cellpadding="5">
+            <tbody>
+                <tr>
+                    <td class="e-textlabel">note</td>
+                    <td colspan="4">
+                        <input id="Subject" class="e-field e-input" type="text" value="{{data.Subject}}" name="Subject" placeholder="qdqds" style="width: 100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="e-textlabel">Status</td>
+                    <td colspan="4">
+                      <tr>
+
+                           <ejs-dropdownlist id="Status" class="e-field" data-name="Status" [dataSource]="StatusData" [fields]="StatusFields" value="{{data.Status}}"></ejs-dropdownlist>
+
+                    </tr>
+                    </td>
+                </tr>
+                <tr>
+                  <td class="e-textlabel">From</td>
+                  <td colspan="4">
+                    <ejs-datetimepicker id="StartTime" class="e-field" data-name="StartTime" [value]='dateParser(data.startTime || data.StartTime)' ></ejs-datetimepicker>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="e-textlabel">To</td>
+                  <td colspan="4">
+                    <ejs-datetimepicker id="EndTime" class="e-field" data-name="EndTime" [value]='dateParser(data.endTime || data.EndTime)' ></ejs-datetimepicker>
+                  </td>
+              </tr>
+
+            </tbody>
+        </table>
+    </ng-template>
+
+    </ejs-schedule>
+
+
+
+      <button class="btn btn-danger btn btn-primary btn-lg bttn" (click)="cliquer()">Save changes</button>
+
+
+    </div>
+
+</body>
