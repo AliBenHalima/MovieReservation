@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import {User} from './user.model'
+import {Subject} from 'rxjs'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  public auth = false;
   private token = null;
-  constructor(private HttpClient:HttpClient){}
+  private Tokentimer:any;
+  private authStatusListener = new Subject<boolean>();
 
+  constructor(private HttpClient:HttpClient,private router:Router){}
+
+
+  get_authStatusListener()
+  {
+    return this.authStatusListener.asObservable();
+  }
   getToken()
   {
     return this.token;
@@ -22,18 +32,48 @@ export class AuthService {
     this.HttpClient.post('http://localhost:3000/api/signUp',user)
     .subscribe((resFromBE)=>{
       console.log(resFromBE);
+      this.router.navigate(['/SignIn']);
      });
   }
 
   login(email:string,pwd:string)
   {
     const user:User = {email:email,pwd:pwd,username:null};
-    this.HttpClient.post<{token:string}>('http://localhost:3000/api/signIn',user)
+    this.HttpClient.post<{token:string,expiresIn:number}>('http://localhost:3000/api/signIn',user)
     .subscribe((resFromBE)=>{
       console.log(resFromBE);
-      this.token =  resFromBE.token;
+      if(resFromBE.token)
+      {
+        // this.Tokentimer = setTimeout(() => {this.logout();}, resFromBE.expiresIn * 1000);
+        this.Tokentimer = this.Timer(resFromBE.expiresIn);
+        this.auth=true;
+        this.token =  resFromBE.token;
+        this.authStatusListener.next(true);
+
+        const now = new Date();
+        const expirationDate = new Date(now.getTime() + resFromBE.expiresIn * 1000);
+        console.log("exo",expirationDate);
+        this.saveAuthData(this.token,expirationDate);
+        this.router.navigate(['/']);
+      }
+
+
      });
   }
+
+  Timer(duration:number)
+  {
+    setTimeout(() => {this.logout();}, duration * 1000);
+  }
+
+  logout()
+  { this.auth = false;
+    this.token = null;
+    this.authStatusListener.next(false);
+    clearTimeout(this.Tokentimer);
+    this.clearAuthData();
+    this.router.navigate(["/"]);
+   }
 
   AdminAddUser(email:string,pwd:string,username:string)
   {
@@ -44,4 +84,54 @@ export class AuthService {
       console.log(resFromBE);
      });
   }
+
+  private saveAuthData(token: string,expirationDate:Date)
+{
+ localStorage.setItem('token',token);4
+ localStorage.setItem('expirationDate',expirationDate.toISOString());
 }
+
+private clearAuthData()
+{
+  localStorage.removeItem("token");
+  localStorage.removeItem("expirationDate");
+}
+
+getAthData()
+{
+  const token = localStorage.getItem('token')
+  if(!token)
+
+    return;
+  else
+  {
+    const expirationDate = localStorage.getItem('expirationDate');
+    if (!expirationDate)
+      return;
+    else
+      return {token:token,expirationDate: new Date(expirationDate)};
+  }
+}
+
+
+checkAuth()
+{
+  const info = this.getAthData();
+
+  if(info)
+  {
+  const now = new Date();
+  const expiresIn = info.expirationDate.getTime() - now.getTime();
+  if(expiresIn > 0)
+      {
+        this.token = this.getAthData().token;
+        this.auth = true;
+        this.Timer(expiresIn/1000);
+        this.authStatusListener.next(true);
+      }
+
+}   }
+
+}
+
+

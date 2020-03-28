@@ -46,13 +46,13 @@
 								<a [routerLink]="['/Pricing']" class="header__nav-link">Pricing</a>
 							</li>
 
-							<li class="header__nav-item">
+							<li class="header__nav-item" *ngIf="isAuthenticated">
 								<a href="#" [routerLink]="['/Movies']" class="header__nav-link">AddFilm</a>
 							</li>
-							<li class="header__nav-item">
+							<li class="header__nav-item" *ngIf="isAuthenticated">
 								<a [routerLink]="['/AdminDashboard']" class="header__nav-link">AdminD</a>
 							</li>
-							<li class="header__nav-item">
+							<li class="header__nav-item" *ngIf="!isAuthenticated">
 								<a [routerLink]="['/Contact']" class="header__nav-link">Contact</a>
 							</li>
 
@@ -64,9 +64,9 @@
 
 								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
 									<li><a [routerLink]="['/About']">About</a></li>
-									<li><a [routerLink]="['/SignIn']">Sign In</a></li>
+									<li><a [routerLink]="['/SignIn']" *ngIf="!isAuthenticated">Sign In</a></li>
 
-									<li><a [routerLink]="['/SignUp']">Sign Up</a></li>
+									<li><a [routerLink]="['/SignUp']" *ngIf="!isAuthenticated">Sign Up</a></li>
 									<li><a [routerLink]="['/Help']">Help</a></li>
 									<li><a [routerLink]="['/NotFound']">404 Page</a></li>
 								</ul>
@@ -81,9 +81,16 @@
 								<i class="icon ion-ios-search"></i>
 							</button>
 
-							<button [routerLink]="['/SignIn']" class="header__sign-in">
+							<button [routerLink]="['/SignIn']" class="header__sign-in" *ngIf="!isAuthenticated">
 								<i class="icon ion-ios-log-in"></i>
 								<span>sign in</span>
+							</button>
+           
+
+
+							<button [routerLink]="['/SignIn']" class="header__sign-in" *ngIf="isAuthenticated" (click)="onLogout()">
+								<i class="icon ion-ios-log-in"></i>
+								<span>Logout</span>
 							</button>
 						</div>
 						<!-- end header auth -->

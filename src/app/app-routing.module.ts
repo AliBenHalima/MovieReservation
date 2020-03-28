@@ -19,6 +19,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MoviesComponent } from "./movies/movies.component";
+import {AuthGuard} from './sign-up/auth.guard';
 
 
 
@@ -32,14 +33,14 @@ import { MoviesComponent } from "./movies/movies.component";
   {path: "MovieDetails", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
   {path: "Pricing", component: PricingComponent},
   {path: "Help", component: HelpComponent},
-  {path: "AdminDashboard/CrudUsers", component: UserComponent},
-  {path: "AdminDashboard", component: AdminDashboardComponent,},
-  {path: "AdminDashboard/messages", component: MessagesComponent},
-  {path: "AdminDashboard/users", component: UsersComponent},
-  {path: "AdminDashboard/users/:id", component: CurrentUserComponent},
-  {path: "AdminDashboard/payments", component: PaymentsComponent},
+  {path: "AdminDashboard/CrudUsers", component: UserComponent,canActivate:[AuthGuard]},
+  {path: "AdminDashboard", component: AdminDashboardComponent,canActivate:[AuthGuard]},
+  {path: "AdminDashboard/messages", component: MessagesComponent,canActivate:[AuthGuard]},
+  {path: "AdminDashboard/users", component: UsersComponent,canActivate:[AuthGuard]},
+  {path: "AdminDashboard/users/:id", component: CurrentUserComponent,canActivate:[AuthGuard]},
+  {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
   {path: "reservation", component: ReservationComponent},
-  { path: "Movies", component: MoviesComponent, pathMatch: "prefix" },
+  { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
   {path: "**", component: NotFoundComponent}
 
 
@@ -49,6 +50,7 @@ import { MoviesComponent } from "./movies/movies.component";
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

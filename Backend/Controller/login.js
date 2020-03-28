@@ -45,7 +45,7 @@ module.exports.signIn = (req,res,next)=>
 
                     const token = jwt.sign({email:req.body.email,userId:user._id},"my-secret-token-to-change-in-production",{expiresIn:"1h"});
                     console.log(token);
-                    res.json({token:token});
+                    res.json({token:token,expiresIn:3600});
                 }
                 else
                 {
