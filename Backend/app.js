@@ -50,20 +50,6 @@ app.use("/mail", mailController);
 
 const bcrypt = require('bcrypt');
 
-const multer = require('multer');
-const fileStorage = multer.diskStorage({
-    destination : (req,file,cb)=>{ cb(null,'images'); },
-    filename : (req,file,cb)=>{ cb(null,file.filename+'_'+file.originalname); }
-});
-
-const filefilter = (req,file,cb)=>{
-    const ext = path.extname(file.originalname);
-    if (ext == '.png' || ext == '.jpg' ||  ext == '.jpeg')
-    cb(null,true);
-    else
-    cb(null,false);
-};
-//app.use(multer({storage : fileStorage,fileFilter : filefilter}).single('filepicker')); //single ---> one file to pick
 
 
 //----------------------------------------------------------
