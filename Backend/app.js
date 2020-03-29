@@ -61,12 +61,17 @@ const bcrypt = require('bcrypt');
 
 
 //-----------Routes------------------------
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination : (req,file,cb)=>{ cb(null,'images'); },
+    filename : (req,file,cb)=>{ cb(null,new Date().getTime().toString()+'_'+file.originalname); }
+});
+
 const auth = require('./routes/auth');
 app.use(cors(),auth);
-app.use(cors(), upload);
-
-//-----------------------------------------
+app.use(cors(),multer({storage:storage}).single("file"), upload);
 app.use('/Users',userController);
+//-----------------------------------------
 
 
 mongoose.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })

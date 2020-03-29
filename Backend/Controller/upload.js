@@ -3,6 +3,7 @@ const Movie = require('../Model/Movie');
 
 
 
+
 module.exports.upload = (req, res, next) => {
     console.log(req.body);
     if (true) {
@@ -15,12 +16,12 @@ module.exports.upload = (req, res, next) => {
                     console.log('movie_exist');
                 }
                 else {
-                    console.log("enter" + req.body);
+                    // console.log("enter" + req.body);
                     const movie = new Movie({
                         name: req.body.name,
                         type: req.body.type,
                         desc: req.body.desc,
-                        file: req.body.file,
+                        file: req.file.filename,
                         duration: req.body.duration,
                         rating: 0,
                         prodName: req.body.prodName,

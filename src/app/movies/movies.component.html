@@ -60,7 +60,7 @@
 				<input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
 				<label for="">Description</label>
 				<input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
-				<input ngModel name="file" class="inp" type="file">
+				<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
 			</div>
 			<div class="right">
 				<label for="">Duration</label>

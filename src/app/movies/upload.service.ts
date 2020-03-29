@@ -9,7 +9,7 @@ export class UploadService {
   constructor(private HttpClient: HttpClient) { }
 
 
-
+/*
   upload(name: string,
     cat: string,
     desc: string,
@@ -19,6 +19,15 @@ export class UploadService {
     type: string) {
 
     const movie: Movie = { name: name, cat: cat, desc: desc, file: file, duration: duration, prodName: prodName, type: type };
+    this.HttpClient.post('http://localhost:3000/api/Movies', movie)
+      .subscribe((resFromBE) => {
+        console.log(resFromBE);
+      });
+  }
+*/
+
+  upload(movie:FormData) {
+
     this.HttpClient.post('http://localhost:3000/api/Movies', movie)
       .subscribe((resFromBE) => {
         console.log(resFromBE);
