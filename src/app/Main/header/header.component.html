@@ -49,7 +49,7 @@
 							<li class="header__nav-item" *ngIf="isAuthenticated">
 								<a href="#" [routerLink]="['/Movies']" class="header__nav-link">AddFilm</a>
 							</li>
-							<li class="header__nav-item" *ngIf="isAuthenticated">
+							<li *ngIf="isAuthenticated" class="header__nav-item" >
 								<a [routerLink]="['/AdminDashboard']" class="header__nav-link">AdminD</a>
 							</li>
 							<li class="header__nav-item" *ngIf="!isAuthenticated">
@@ -85,7 +85,7 @@
 								<i class="icon ion-ios-log-in"></i>
 								<span>sign in</span>
 							</button>
-           
+
 
 
 							<button [routerLink]="['/SignIn']" class="header__sign-in" *ngIf="isAuthenticated" (click)="onLogout()">

@@ -63,7 +63,7 @@ const filefilter = (req,file,cb)=>{
     else
     cb(null,false);
 };
-app.use(multer({storage : fileStorage,fileFilter : filefilter}).single('filepicker')); //single ---> one file to pick
+//app.use(multer({storage : fileStorage,fileFilter : filefilter}).single('filepicker')); //single ---> one file to pick
 
 
 //----------------------------------------------------------
@@ -80,7 +80,7 @@ app.use(cors(),auth);
 app.use(cors(), upload);
 
 //-----------------------------------------
-app.use('/Users', userController);
+app.use('/Users',userController);
 
 
 mongoose.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })

@@ -15,6 +15,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  upload(post:FormData) {
+    return this.http.post(this.baseURL,post);
+  }
+
   postUser(emp: User) {
     return this.http.post(this.baseURL, emp);
   }

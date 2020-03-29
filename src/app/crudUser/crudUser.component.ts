@@ -14,6 +14,8 @@ declare var M: any;
 })
 export class UserComponent implements OnInit {
 
+  image = null;
+
   constructor(public UserService: UserService) { }
 
   ngOnInit() {
@@ -29,17 +31,54 @@ export class UserComponent implements OnInit {
       email: "",
       pwd: "",
       username: "",
-     
+
     }
   }
 
+  onImgSelected(event:Event)
+  {
+    console.log("event trigged");
+    this.image = (event.target as HTMLInputElement).files[0];
+  }
+
+
   onSubmit(form: NgForm) {
+    // console.log("enter upload");
+    // const data = new FormData();
+    // if(this.image)
+    // data.append("image",this.image,this.image.name);
+    // data.append("email",form.value.email);
+    // data.append("pwd",form.value.pwd);
+    // data.append("username",form.value.username);
+    // console.log(form.value);
+
+    // console.log(this.image);
+    // this.UserService.upload(data).subscribe((res)=>{
+    //   console.log("sds");
+    // });
+
+
+    //------------------
     if (form.value._id == "") {
-      this.UserService.postUser(form.value).subscribe((res) => {
+
+      console.log("enter upload");
+      const data = new FormData();
+      if(this.image)
+      data.append("image",this.image,this.image.name);
+      data.append("email",form.value.email);
+      data.append("pwd",form.value.pwd);
+      data.append("username",form.value.username);
+      console.log(form.value);
+
+      console.log(this.image);
+      this.UserService.upload(data).subscribe((res)=>{
+        console.log("sds");
         this.resetForm(form);
         this.refreshUserList();
-        M.toast({ html: 'Saved successfully', classes: 'rounded' });
+        //M.toast({ html: 'Saved successfully', classes: 'rounded' });
       });
+
+
     }
     else {
       this.UserService.putUser(form.value).subscribe((res) => {
