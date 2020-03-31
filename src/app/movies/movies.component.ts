@@ -33,6 +33,7 @@ export class MoviesComponent implements OnInit {
   onImgSelected(event:Event)
   {
     console.log("event trigged");
+    console.log(event);
     this.image = (event.target as HTMLInputElement).files[0];
   }
 

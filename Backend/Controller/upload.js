@@ -1,4 +1,4 @@
-const Movie = require('../Model/Movie');
+const Movie = require('../Model/movie');
 
 
 

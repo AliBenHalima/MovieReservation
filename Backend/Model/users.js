@@ -7,4 +7,4 @@ const userSchema=new mongoose.Schema({
     img : String
     });
 
-    module.exports = mongoose.model('Users',userSchema);
+    module.exports = mongoose.model('users',userSchema);

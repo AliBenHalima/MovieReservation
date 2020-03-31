@@ -1,3 +1,4 @@
+import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalog1.component.css']
 })
 export class Catalog1Component implements OnInit {
-
-  constructor() { }
+  items=[1,2,3,4,5,6,7,8] ;
+  public movies ;
+  
+  constructor(private apiService: UserApiService) { }
 
   ngOnInit(): void {
+    
+    this.apiService.getMovies().subscribe((res: any) => {
+      console.log(res);
+      this.movies = res.data;
+      console.log(this.movies);
+    });
   }
-
 }

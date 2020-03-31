@@ -34,6 +34,10 @@ import {DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
 import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
 import { MailComponent } from './mail/mail.component';
 import { MoviesComponent } from './movies/movies.component';
+import { AfficheMovieHeadComponent } from './AfficheMovies/affiche-movie-head/affiche-movie-head.component';
+import { AfficheMovieFootComponent } from './AfficheMovies/affiche-movie-foot/affiche-movie-foot.component';
+import { AffichMoviecarouselComponent } from './AfficheMovies/affich-moviecarousel/affich-moviecarousel.component';
+import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-home-main/affiche-movie-home-main.component';
 
 
 @NgModule({
@@ -59,7 +63,11 @@ import { MoviesComponent } from './movies/movies.component';
     PricingComponent,
     HelpComponent,
     MailComponent,
-    ReservationComponent 
+    ReservationComponent,
+    AfficheMovieHeadComponent,
+    AfficheMovieFootComponent,
+    AffichMoviecarouselComponent,
+    AfficheMovieHomeMainComponent 
 
   ],
   imports: [
@@ -71,7 +79,7 @@ import { MoviesComponent } from './movies/movies.component';
     ScheduleModule, RecurrenceEditorModule,
     DropDownListModule,DateTimePickerModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

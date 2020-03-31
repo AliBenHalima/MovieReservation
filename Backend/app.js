@@ -1,5 +1,6 @@
 var userController = require('./Controller/userController.js');
 var mailController = require('./Controller/mailController.js');
+var filmController = require('./Controller/films.js');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 
 
 //----------------AMASUO : show users in dashboard---------------
-require('./Model/user');
+require('./Model/users');
 const expressHandlebars = require("express-handlebars");
 
 app.use(function (req, res, next) {
@@ -40,6 +41,8 @@ app.get("/", (req, res) => {
 
 app.use("/users", UserController);
 app.use("/mail", mailController);
+app.use("/films", filmController);
+
 
 
 //----------------AMASUOend---------------
@@ -71,6 +74,7 @@ const auth = require('./routes/auth');
 app.use(cors(),auth);
 app.use(cors(),multer({storage:storage}).single("file"), upload);
 app.use('/Users',userController);
+app.use(express.static(__dirname+'/images'));
 //-----------------------------------------
 
 

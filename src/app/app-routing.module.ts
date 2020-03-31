@@ -1,3 +1,4 @@
+import { MailComponent } from './mail/mail.component';
 import { UserComponent } from './crudUser/crudUser.component';
 
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
@@ -30,9 +31,10 @@ import {AuthGuard} from './sign-up/auth.guard';
   {path: "NotFound", component: NotFoundComponent},
   {path: "About", component: AboutComponent},
   {path: "Catalog1", component: Catalog1Component },
-  {path: "MovieDetails", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
+  {path: "MovieDetails/:name", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
   {path: "Pricing", component: PricingComponent},
   {path: "Help", component: HelpComponent},
+  {path: "Contact", component: MailComponent},
   {path: "AdminDashboard/CrudUsers", component: UserComponent,canActivate:[AuthGuard]},
   {path: "AdminDashboard", component: AdminDashboardComponent,canActivate:[AuthGuard]},
   {path: "AdminDashboard/messages", component: MessagesComponent,canActivate:[AuthGuard]},
