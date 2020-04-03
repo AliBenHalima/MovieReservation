@@ -9,7 +9,6 @@ const filmSchema=new mongoose.Schema({
     nomProducteur :{type: String , required:true},
     category :{type: String , required:true}
     });
-    
+
 module.exports = mongoose.model('film',filmSchema);
-    
-    
+

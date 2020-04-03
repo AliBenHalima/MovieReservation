@@ -71,10 +71,15 @@ const storage = multer.diskStorage({
 });
 
 const auth = require('./routes/auth');
+const checkAuth = require('./Controller/router_protector');
+const bookings = require ('./routes/bookings');
+
+
 app.use(cors(),auth);
-app.use(cors(),multer({storage:storage}).single("file"), upload);
+app.use(cors(),checkAuth,multer({storage:storage}).single("file"), upload);
 app.use('/Users',userController);
 app.use(express.static(__dirname+'/images'));
+app.use(cors(),bookings);
 //-----------------------------------------
 
 

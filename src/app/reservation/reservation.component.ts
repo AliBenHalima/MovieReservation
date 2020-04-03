@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
+import { EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
+import {BookingService} from './booking.service';
+import {reservationEvent} from './event.model';
+
+
+
 
 @Component({
   selector: 'app-reservation',
@@ -9,11 +14,29 @@ import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor() { this.eventSettings.dataSource}
+  constructor(private bookingService: BookingService) { }
 
+  public events:Array<reservationEvent> ;
+
+  actionn=false;
+
+  refresh:boolean = true;
+
+public eventSettings: EventSettingsModel ={
+  dataSource:this.events
+};
 
   ngOnInit(): void {
-    this.eventSettings.dataSource
+
+      this.bookingService.getEvents().subscribe((resFromBE:{reservations:Array<reservationEvent>}) => {
+        this.actionn=true;
+
+        this.eventSettings.dataSource = resFromBE.reservations;
+
+        console.log(this.eventSettings.dataSource);
+      });
+
+
   }
 
   public dateParser(data:string)
@@ -29,34 +52,58 @@ export class ReservationComponent implements OnInit {
     {StatusText : 'new'}
   ];
 
-  public datz: object[] = [{
-    Id: 1,
-    Subject: 'Paris',
-    StartTime: new Date(2020, 2, 24, 4, 30),
-    EndTime: new Date(2020, 2, 24, 6, 0),
+
+  public datz: object[] = [
+  {
+  Subject: 'Paris',
+  StartTime: new Date(2020, 3, 2, 14, 30),
+  EndTime: new Date(2020, 3, 2, 16, 0),
+  IsReadonly: true
+  },
+  {
+    Subject: 'Paris2',
+    StartTime: new Date(2020, 3, 2, 9, 30),
+    EndTime: new Date(2020, 3, 2, 10, 0),
     IsReadonly: true
-},
-{
-Id: 2,
-Subject: 'yyy',
-StartTime: new Date(2020, 2, 24, 7, 30),
-EndTime: new Date(2020, 2, 24, 8, 0),
-IsReadonly: true
-},
+  }
 
 
 ];
 
 
-public selectedDate: Date = new Date(2018, 1, 15);
-public eventSettings: EventSettingsModel = {
-    dataSource: this.datz,
-
-};
 
 cliquer()
 {
-  console.log(this.eventSettings.dataSource);
+  // console.log(this.eventSettings.dataSource);
+  // this.bookingService.Add_changes(this.eventSettings.dataSource);
+
+  // console.log(this.eventSettings.dataSource[0].EndTime);
+
+  // console.log(this.eventSettings.dataSource[1].EndTime);
+
+  // location.reload();
+
+
+
+ if(this.refresh)
+{
+
+ this.eventSettings.dataSource = [  {
+  Subject: 'Paris2222',
+  StartTime: new Date(2020, 3, 3, 9, 30),
+  EndTime: new Date(2020, 3, 3, 10, 0),
+  IsReadonly: true
+}
+];
+
+ this.refresh = false;
+
+}
+
+ else
+ this.refresh = true;
+
+
 }
 
 }

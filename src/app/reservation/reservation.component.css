@@ -1,7 +1,20 @@
 .aff
 {
-  margin-left: 200px;
+  margin-left: 197px;
+  margin-top:auto;
 
+
+}
+
+body
+{
+  /* content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
 }
 
 .bk
@@ -10,12 +23,62 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  margin-top: 90px;
+}
+
+.bk2
+{
+width: 900px;
 }
 
 .bttn
 {
-  margin-top: 10px;
+  /* margin-top: 10px;
   margin-left: 570px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+
+  /* margin-left: 1000px; */
+
+margin-top: 10px;
+margin-left: 105px;
+
+width: 300px;
 
 }
+
+
+.navi
+{
+  width: 60;
+  margin-top: 10px;
+  margin-left: 197px;
+  float: left;
+  height: 48px;;
+
+}
+
+
+.example-margin {
+
+  width: 800px;
+
+
+  margin-left: 300px;
+  margin-top:10px;
+
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+
+
+
+}
+

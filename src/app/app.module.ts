@@ -38,7 +38,8 @@ import { AfficheMovieHeadComponent } from './AfficheMovies/affiche-movie-head/af
 import { AfficheMovieFootComponent } from './AfficheMovies/affiche-movie-foot/affiche-movie-foot.component';
 import { AffichMoviecarouselComponent } from './AfficheMovies/affich-moviecarousel/affich-moviecarousel.component';
 import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-home-main/affiche-movie-home-main.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-hom
     AfficheMovieHeadComponent,
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
-    AfficheMovieHomeMainComponent 
+    AfficheMovieHomeMainComponent
 
   ],
   imports: [
@@ -77,7 +78,9 @@ import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-hom
     FormsModule,
     BrowserAnimationsModule,
     ScheduleModule, RecurrenceEditorModule,
-    DropDownListModule,DateTimePickerModule
+    DropDownListModule,DateTimePickerModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
   bootstrap: [AppComponent]

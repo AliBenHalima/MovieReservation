@@ -11,7 +11,7 @@ movies
   constructor(private apiService: UserApiService) { }
 
   ngOnInit(): void {
-    
+
     this.apiService.getMovies().subscribe((res: any) => {
       console.log(res);
       this.movies = res.data;
