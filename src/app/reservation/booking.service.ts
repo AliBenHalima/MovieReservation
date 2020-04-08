@@ -28,11 +28,8 @@ export class BookingService {
 
   Add_changes(data:object)
   {
-    this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
-    .subscribe((resFromBE)=>{
-      console.log(resFromBE);
+    return this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
 
-     });
   }
 
   get_bookings()

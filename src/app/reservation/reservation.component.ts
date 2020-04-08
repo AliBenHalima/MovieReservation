@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
 import {BookingService} from './booking.service';
 import {reservationEvent} from './event.model';
+import {UploadService} from '../movies/upload.service';
 
 
 
@@ -14,13 +15,17 @@ import {reservationEvent} from './event.model';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor(private bookingService: BookingService) { }
+  constructor(private bookingService: BookingService, private moviesService:UploadService) { }
 
   public events:Array<reservationEvent> ;
 
   actionn=false;
 
-  refresh:boolean = true;
+  refresh:boolean = false;
+
+  btn:number = 1;
+
+  reload:boolean = false;
 
 public eventSettings: EventSettingsModel ={
   dataSource:this.events
@@ -37,6 +42,17 @@ public eventSettings: EventSettingsModel ={
       });
 
 
+      this.moviesService.getMovies().subscribe((movies:Array<any>)=>{
+        console.log(movies);
+        movies.forEach(item=>{
+          this.StatusData.push({StatusText:item.name});
+        });
+
+        // this.StatusData=[{StatusText:'nono'}];
+
+      });
+
+
   }
 
   public dateParser(data:string)
@@ -46,11 +62,7 @@ public eventSettings: EventSettingsModel ={
 
   public StatusFields:object = {value:'StatusText'}
 
-  public StatusData:object[] =[
-    {StatusText : 'old'},
-    {StatusText : 'medium'},
-    {StatusText : 'new'}
-  ];
+  public StatusData:object[]=[];
 
 
   public datz: object[] = [
@@ -74,36 +86,37 @@ public eventSettings: EventSettingsModel ={
 
 cliquer()
 {
-  // console.log(this.eventSettings.dataSource);
-  // this.bookingService.Add_changes(this.eventSettings.dataSource);
 
-  // console.log(this.eventSettings.dataSource[0].EndTime);
-
-  // console.log(this.eventSettings.dataSource[1].EndTime);
-
-  // location.reload();
+  let  arr:object[];
+  arr = this.eventSettings.dataSource as object[];
+  console.log("zzz",arr);
 
 
+  if (this.btn)
+  {
+    this.refresh = true
+    console.log('err');
+     this.btn = 0;
 
- if(this.refresh)
+
+
+    this.bookingService.Add_changes(this.eventSettings.dataSource).subscribe((resFromBE)=>{
+        this.btn = 1;
+        setTimeout (() => {
+          this.refresh =false;
+       }, 1280);
+
+     });
+  }
+
+  //console.log(this.eventSettings.dataSource);
+
+  }
+
+  select_salle(event:any)
 {
-
- this.eventSettings.dataSource = [  {
-  Subject: 'Paris2222',
-  StartTime: new Date(2020, 3, 3, 9, 30),
-  EndTime: new Date(2020, 3, 3, 10, 0),
-  IsReadonly: true
-}
-];
-
- this.refresh = false;
-
+  console.log(event.target.value);
 }
 
- else
- this.refresh = true;
-
-
-}
 
 }

@@ -5,9 +5,9 @@
 
   <app-header></app-header>
 
-  <mat-progress-bar mode="indeterminate" *ngIf='!refresh' ></mat-progress-bar >
+  <mat-progress-bar mode="indeterminate" *ngIf='refresh' ></mat-progress-bar >
 
-    <ejs-schedule class="aff" width='70%' height='500px'[eventSettings]='eventSettings' *ngIf='refresh'>
+    <ejs-schedule class="aff" width='70%' height='500px'[eventSettings]='eventSettings'>
       <ng-template #editorTemplate let-data >
         <table class="custom-event-editor" width="100%" cellpadding="5">
             <tbody>
@@ -18,7 +18,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="e-textlabel">Status</td>
+                    <td class="e-textlabel">Film</td>
                     <td colspan="4">
                       <tr>
 
@@ -50,46 +50,46 @@
 
 <div class="global">
 <div class="bk2">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navi" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navi" style="background-color:  #ffe6e6;">
       <a class="navbar-brand" href="#">Select :</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" >
 
           <li>
             <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" class="custom-control-input" id="defaultInline1">
+              <input type="radio" class="custom-control-input" id="defaultInline1" name="salle" (change)="select_salle($event)" value="1">
               <label class="custom-control-label" for="defaultInline1">Salle 1</label>
             </div>
         </li>
 
         <li >
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline2">
+            <input type="radio" class="custom-control-input" id="defaultInline2" name="salle" (change)="select_salle($event)" value="2">
             <label class="custom-control-label" for="defaultInline2">Salle 2</label>
           </div>
         </li>
 
         <li >
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline3">
+            <input type="radio" class="custom-control-input" id="defaultInline3" name="salle" (change)="select_salle($event)" value="3">
             <label class="custom-control-label" for="defaultInline3">Salle 3</label>
           </div>
         </li>
 
         <li >
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline4">
-            <label class="custom-control-label" for="defaultInline3">Salle 4</label>
+            <input type="radio" class="custom-control-input" id="defaultInline4" name="salle" (change)="select_salle($event)" value="4">
+            <label class="custom-control-label" for="defaultInline4">Salle 4</label>
           </div>
         </li>
 
         <li >
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" class="custom-control-input" id="defaultInline5">
+            <input type="radio" class="custom-control-input" id="defaultInline5" name="salle" (change)="select_salle($event)" value="5">
             <label class="custom-control-label" for="defaultInline5">Salle 5</label>
           </div>
         </li>
@@ -109,14 +109,14 @@
           <button class="btn btn-outline-danger btn-lg my-2 my-sm-0" type="submit">Search</button>
         </form> -->
 
-    <mat-progress-spinner
+    <!-- <mat-progress-spinner *ngIf='refresh'
     class="example-margin"
     color="warn"
     mode="indeterminate"
     value=50
     diameter= 300
     strokeWidth= 5>
-</mat-progress-spinner>
+</mat-progress-spinner> -->
 
 
 

@@ -1,7 +1,13 @@
 const Movie = require('../Model/movie');
 
 
-
+module.exports.getMovies = (req,res,next)=>
+{
+  Movie.find()
+  .then( movies=>{
+    res.json(movies);
+  });
+}
 
 
 module.exports.upload = (req, res, next) => {

@@ -34,6 +34,11 @@ export class UploadService {
       });
   }
 
+  getMovies() {
+
+   return this.HttpClient.get('http://localhost:3000/api/getMovies')
+
+  }
 
 
 }
