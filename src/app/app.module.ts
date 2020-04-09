@@ -40,6 +40,8 @@ import { AffichMoviecarouselComponent } from './AfficheMovies/affich-moviecarous
 import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-home-main/affiche-movie-home-main.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ScheduleModule, RecurrenceEditorModule,
     DropDownListModule,DateTimePickerModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AutocompleteLibModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
   bootstrap: [AppComponent]

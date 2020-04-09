@@ -77,7 +77,7 @@
 
 						<!-- header auth -->
 						<div class="header__auth">
-							<button class="header__search-btn" type="button">
+							<button (click)="search()"  class="header__search-btn" type="button">
 								<i class="icon ion-ios-search"></i>
 							</button>
 
@@ -108,15 +108,46 @@
 		</div>
 	</div>
 
-	<!-- header search -->
-	<form action="#" class="header__search">
+  <!-- header search -->
+  <!-- class="header__search" -->
+	<form action="#" class="" *ngIf="btn" @fade>
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<div class="header__search-content">
-						<input type="text" placeholder="Search for a movie, TV Series that you are looking for">
+					<div class="header__search-content" >
 
-						<button type="button">search</button>
+						<!-- <input type="text" placeholder="Search for a movie, TV Series that you are looking for"> -->
+
+
+
+
+
+<div class="ng-autocomplete">
+  <ng-autocomplete
+    [data]="data"
+    [searchKeyword]="keyword"
+    (selected)='selectEvent($event)'
+    (inputChanged)='onChangeSearch($event)'
+    (inputFocused)='onFocused($event)'
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    >
+  </ng-autocomplete>
+
+  <ng-template  #itemTemplate let-item >
+  <a [innerHTML]="item.name"></a>
+  </ng-template>
+
+  <ng-template #notFoundTemplate let-notFound>
+  <div [innerHTML]="notFound"></div>
+  </ng-template>
+  </div>
+
+
+
+            <!-- s -->
+            <button type="button">search</button>
+
 					</div>
 				</div>
 			</div>
