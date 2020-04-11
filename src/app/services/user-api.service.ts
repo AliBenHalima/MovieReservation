@@ -15,9 +15,7 @@ export class UserApiService {
     getUserById(id){
       return this.http.get<User[]>('http://localhost:3000/users/' + id);
     }
-    getUserByName(name){
-      return this.http.get<User[]>('http://localhost:3000/users/name/' + name);
-    }
+  
 
     getMovies() {
       return this.http.get<Movie[]>('http://localhost:3000/films/list');
@@ -42,7 +40,7 @@ export class UserApiService {
       });
     }
     loadToken() {
-      this.authToken = localStorage.getItem('token');; // Get token and asssign to variable to be used elsewhere
+      this.authToken = localStorage.getItem('token'); // Get token and asssign to variable to be used elsewhere
     }
   }
 

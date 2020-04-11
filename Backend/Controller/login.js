@@ -32,7 +32,8 @@ module.exports.signUp = (req,res,next)=>{
   }
 
 module.exports.signIn = (req,res,next)=>
-{
+{console.log(req.body);
+    console.log("helolo");
      if(req.body.email&&req.body.pwd){
         User.findOne({email:req.body.email})
         .then(user=>{
