@@ -261,16 +261,31 @@
                                                     <button type="button">13<i class="icon ion-md-thumbs-down"></i></button>
                                                 </div>
                                                 
-                                                <button type="button"><i class="icon ion-ios-share-alt"></i>Reply</button>
+                                                <button (click)="draftComment()" type="button"><i class="icon ion-ios-share-alt"></i>Reply</button>
                                                 <button type="button"><i class="icon ion-ios-quote"></i>Quote</button>
                                             </div>
                                         </li>
                                     </ul>
 
-                                    <form action="#" class="form">
-                                        <textarea id="text" name="text" class="form__textarea" placeholder="Add comment"></textarea>
-                                        <button type="button" class="form__btn">Send</button>
+                                    <form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)"  class="form" *ngIf="NewPost">
+                                        <input type="text" name ="title" class="form-control" ngModel> 
+                                        <textarea id="text" name="body" class="form__textarea" placeholder="Add comment" ngModel> </textarea>
+                                        <button type="submit" class="form__btn">Send</button>
+                                        <button (click)="CancelForm()" type="button" class="form__btn">Cancel</button>
                                     </form>
+                                   <!-- Draft Comment -->
+                                   <!--  
+                                    <form action="#" class="form">
+                                        <textarea id="text" name="text" class="form__textarea" placeholder="Comment to that"></textarea>
+                                        <button type="button"  class="form__btn">Send</button>
+                                        <button type="button" class="form__btn">Cancel</button>
+                                     
+                                    </form>
+                                       -->
+                                    <!-- END Draft Comment -->
+                                    <button  type="button" class="form__btn" (click)="AddComment()">Add Comment</button>
+
+                                    <button [disabled]="loadingBlogs" type="button" class="form__btn" (click)="reloadBlogs()">Reload</button>
                                 </div>
                             </div>
                             <!-- end comments -->
@@ -326,6 +341,7 @@
                                         </div>
                                         <button type="button" class="form__btn">Send</button>
                                     </form>
+                                    <button [disabled]="loadingBlogs" type="button" class="form__btn" (click)="reloadBlogs()">Reload</button>
                                 </div>
                             </div>
                             <!-- end reviews -->

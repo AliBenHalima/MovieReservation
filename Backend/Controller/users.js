@@ -26,6 +26,17 @@ router.get("/:id",async (req,res)=>{
             res.send("Error")
         }
     }));
+});
+
+router.get("/:name",async (req,res)=>{
+    UserModel.findOne({ "name": req.params.name },((err,docs)=>{
+        if(!err){
+            res.send({ data: docs })
+        }
+        else{
+            res.send("Error")
+        }
+    }));
 }
 );
 

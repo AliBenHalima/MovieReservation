@@ -1,10 +1,13 @@
 import { User } from './../classes/User';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Movie } from '../movies/movie.model';
 
 @Injectable({providedIn: 'root'})
 export class UserApiService {
+  authToken;
+  options;
     constructor(private http: HttpClient) { }
     getUsers() {
         return this.http.get<User[]>('http://localhost:3000/users/list');
@@ -12,6 +15,10 @@ export class UserApiService {
     getUserById(id){
       return this.http.get<User[]>('http://localhost:3000/users/' + id);
     }
+    getUserByName(name){
+      return this.http.get<User[]>('http://localhost:3000/users/name/' + name);
+    }
+
     getMovies() {
       return this.http.get<Movie[]>('http://localhost:3000/films/list');
     }
@@ -24,6 +31,19 @@ export class UserApiService {
     getLatestMovies(){
       return this.http.get<Movie[]>('http://localhost:3000/films/Latest');
     }  
+    createAuthenticationHeaders() {
+      this.loadToken(); // Get token so it can be attached to headers
+      // Headers configuration options
+      this.options = new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json', // Format set to JSON
+          'authorization': this.authToken // Attach token
+        })
+      });
+    }
+    loadToken() {
+      this.authToken = localStorage.getItem('token');; // Get token and asssign to variable to be used elsewhere
+    }
   }
 
     

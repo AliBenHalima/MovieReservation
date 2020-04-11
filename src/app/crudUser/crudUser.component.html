@@ -31,8 +31,8 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input type="text" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
-                  <label>PWD :</label>
+                  <input type="hidden" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
+                <!--  <label>PWD :</label>--> 
                 </div>
               </div>
               <div class="row">
@@ -65,14 +65,14 @@
                   <thead>
                     <tr>
                       <th>Username</th>
-                      <th>PWD</th>
+                      <!--<th>PWD</th> --> 
                       <th>email</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tr *ngFor="let emp of UserService.Users">
                     <td>{{emp.username }}</td>
-                    <td>{{emp.pwd}}</td>
+                     <!-- <td>{{emp.pwd}}</td> --> 
                     <td>{{emp.email}}</td>
                     <td>
                         <a class="action-btn" (click)="onEdit(emp)">
