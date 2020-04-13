@@ -52,21 +52,41 @@
 		<span class="c c2"></span>
 	</div>
 	<form (submit)="upload(form)" #form="ngForm" action="/" enctype="multipart/form-data">
-		<div class="top">
-			<div class="left">
+		
+		<div class="d">
+			<div class="input_d">
 				<label for="">Name</label>
 				<input ngModel name="name" class="inp" type="text" placeholder="Name" required>
-				<label for="">Category</label>
-				<input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
-				<label for="">Description</label>
-				<input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
-				<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
 			</div>
-			<div class="right">
+
+			<div class="input_d">
 				<label for="">Duration</label>
 				<input ngModel name="duration" class="inp" type="text" placeholder="Duration" required>
+			</div>
+		</div>
+
+		<div class="d">
+			<div class="input_d">
+				<label for="">Category</label>
+				<input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
+			</div>
+			<div class="input_d">
 				<label for="">Producer Name</label>
 				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name" required>
+
+			</div>
+		</div>
+
+
+
+		<div class="d">
+			<div class="input_d">
+				<label for="">Description</label>
+				<input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
+			</div>
+
+
+			<div class="input_d">
 				<label for="">Type</label>
 				<select ngModel class="inp" name="type" id="" required>
 					<option value="" disabled selected>Type</option>
@@ -83,10 +103,41 @@
 					<option value="horror">horror</option>
 					<option value="science fiction">science fiction</option>
 				</select>
-				<button class="upload1" type="submit">
-					<span class="upload">Upload</span>
-				</button>
 			</div>
+		</div>
+
+		<div class="d">
+
+				<div class="input_d">
+					<label for="">Image</label>
+					<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
+				</div>
+
+				<div class="sub">
+					<button class="upload1" type="submit">
+						<span class="upload">Upload</span>
+					</button>
+				</div>	
+	
 		</div>
 	</form>
 </div>
+
+
+<div class="your_movies">
+	<div class="col-6 col-sm-12 col-lg-6"  *ngFor="let movie of movies">
+		<app-affiche-movie-home-main [movie]=movie> </app-affiche-movie-home-main>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
