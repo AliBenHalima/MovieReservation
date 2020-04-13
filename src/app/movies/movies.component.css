@@ -155,16 +155,34 @@ input[type="file"] {
 .your_movies {
 	position: relative;
 	top: 150px;
+	padding-left: 30px;
 	display: flex;
 	flex-wrap: wrap;
 }
 
 .col-6 {
 	margin: 5px;
-	box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.3);
+	padding: 10px 10px;
+	box-shadow: 0 5px 25px 0 #00000070;
 	max-width: 48%;
 }
 
-.card__title {
-	margin: 50px;
+/deep/.card__title {
+	margin: 5px 0 !important;
+}
+
+/deep/.card,
+.card--list {
+	height: 100%;
+	margin-bottom: 0;
+}
+
+/deep/ .card__content {
+	height: fit-content !important;
+}
+
+/deep/ .card__cover,
+/deep/.card__cover img,
+/deep/.row {
+	height: 100% !important;
 }

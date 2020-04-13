@@ -49,7 +49,6 @@ export class MoviesComponent implements OnInit {
 		data.append('prodName', form.value.prodName);
 		data.append('type', form.value.type);
 		this.UploadService.upload(data);
-
 		console.log('ok');
 	}
 }
