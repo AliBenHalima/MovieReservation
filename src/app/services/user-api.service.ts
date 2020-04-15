@@ -40,7 +40,17 @@ export class UserApiService {
       });
     }
     loadToken() {
-      this.authToken = localStorage.getItem('token'); // Get token and asssign to variable to be used elsewhere
+      this.authToken = localStorage.getItem('token');
+      console.log(this.authToken) ; // Get token and asssign to variable to be used elsewhere
+    }
+    getUsersBlog() {
+      this.createAuthenticationHeaders(); // Create headers before sending to API
+      return this.http.get<User[]>('http://localhost:3000/blogs/profile'+ this.options);
+      
+    }
+
+    PostBlog(blog:any){
+      return this.http.post<any>('http://localhost:3000/blogs/newblog', blog).map(res => res);
     }
   }
 

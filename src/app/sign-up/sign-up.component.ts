@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
     console.log("zssds");
     //console.log(form.value);
     this.AuthService.addUser(form.value.email,form.value.pwd,form.value.username);
-
+    console.log(form.value);
   }
 
 }

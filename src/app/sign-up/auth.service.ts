@@ -12,6 +12,7 @@ export class AuthService {
   private token = null;
   private Tokentimer:any;
   private authStatusListener = new Subject<boolean>();
+  private username : string;
 
   constructor(private HttpClient:HttpClient,private router:Router){}
 
@@ -39,7 +40,7 @@ export class AuthService {
   login(email:string,pwd:string)
   {
     const user:User = {email:email,pwd:pwd,username:null};
-    this.HttpClient.post<{token:string,expiresIn:number}>('http://localhost:3000/api/signIn',user)
+    this.HttpClient.post<{token:string,expiresIn:number ,user: any}>('http://localhost:3000/api/signIn',user)
     .subscribe((resFromBE)=>{
       console.log(resFromBE);
       if(resFromBE.token)
@@ -48,12 +49,14 @@ export class AuthService {
         this.Tokentimer = this.Timer(resFromBE.expiresIn);
         this.auth=true;
         this.token =  resFromBE.token;
+        this.username = resFromBE.user.username
         this.authStatusListener.next(true);
 
         const now = new Date();
         const expirationDate = new Date(now.getTime() + resFromBE.expiresIn * 1000);
         console.log("exo",expirationDate);
         this.saveAuthData(this.token,expirationDate);
+        this.saveUsername(this.username);
         this.router.navigate(['/']);
       }
 
@@ -90,11 +93,15 @@ export class AuthService {
  localStorage.setItem('token',token);4
  localStorage.setItem('expirationDate',expirationDate.toISOString());
 }
+ private saveUsername(username : string ){
+  localStorage.setItem('username',username);
+ }
 
 private clearAuthData()
 {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
+  localStorage.removeItem("username");
 }
 
 getAthData()

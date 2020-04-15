@@ -13,7 +13,8 @@ const blogSchema = new mongoose.Schema({
     comments: [{
       comment: { type: String },
       commentator: { type: String },
-    }]
+    }],
+    PostedFor :{type: mongoose.Schema.Types.ObjectId,ref:'movies', required: true } // poster for which movie
   });
   
   // Export Module/Schema
