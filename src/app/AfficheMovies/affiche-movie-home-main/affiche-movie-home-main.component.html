@@ -1,10 +1,10 @@
-
+ 
     <div class="card card--list">
         <div class="row">
             <div class="col-12 col-sm-4">
                 <div class="card__cover">
                     <img src="assets/img/covers/{{movie.file}}" alt="">
-                    <a href="#" class="card__play">
+                    <a href="#"   [routerLink]="['/MovieDetails/',movie.name]" class="card__play">
                         <i class="icon ion-ios-play"></i>
                     </a>
                 </div>
@@ -29,9 +29,16 @@
 
                     <div class="card__description">
                         
-                        <p>{{movie.desc}}  </p>
+                        <p>{{movie.desc}}</p>
                     </div>
+                    
+
+
                 </div>
             </div>
+        </div>
+
+        <div class="del" *ngIf=del>
+            <img src="assets/img/delete.png" alt="" (click)="fun_del(movie._id)">
         </div>
     </div>

@@ -20,4 +20,8 @@ export class UploadService {
 	getMoviesByUser() {
 		return this.HttpClient.get('http://localhost:3000/api/getMoviesByUser');
 	}
+
+	deleteMovie(id: any) {
+		return this.HttpClient.delete('http://localhost:3000/api/deleteMovie/' + id);
+	}
 }

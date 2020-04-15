@@ -17,6 +17,7 @@ export class MoviesComponent implements OnInit {
 	ngOnInit(): void {
 		this.UploadService.getMoviesByUser().subscribe((movies) => {
 			this.movies = movies;
+			console.log(movies);
 		});
 	}
 
@@ -50,5 +51,6 @@ export class MoviesComponent implements OnInit {
 		data.append('type', form.value.type);
 		this.UploadService.upload(data);
 		console.log('ok');
+		location.reload();
 	}
 }
