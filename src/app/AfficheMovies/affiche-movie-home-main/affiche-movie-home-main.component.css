@@ -4,6 +4,8 @@
 
 .del {
 	position: absolute;
+	display: flex;
+	flex-direction: column;
 	top: 10px;
 	right: 5px;
 }

@@ -39,6 +39,7 @@ export class MoviesComponent implements OnInit {
 
 	upload(form: NgForm) {
 		this.hide();
+		this.movies.push(form.value);
 		console.log(form);
 		console.log(form.value);
 		const data = new FormData();
@@ -51,6 +52,5 @@ export class MoviesComponent implements OnInit {
 		data.append('type', form.value.type);
 		this.UploadService.upload(data);
 		console.log('ok');
-		location.reload();
 	}
 }
