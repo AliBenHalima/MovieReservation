@@ -187,8 +187,8 @@
                                                     <button (click)="dislikeComment(Comment._id)" type="button">{{Comment.dislikes}}<i class="icon ion-md-thumbs-down"></i></button>
                                                 </div>
 
-                                                <button [routerLink]="['/Comment/edit/',Comment._id]" type="button"><i class="icon ion-ios-share-alt"></i>Edit</button>
-                                                <button  data-toggle="modal" data-target="#exampleModal" type="button"><i class="icon ion-ios-quote"></i>Delete</button>
+                                                <button *ngIf="username ==Comment.createdBy" [routerLink]="['/Comment/edit/',Comment._id]" type="button"><i class="icon ion-ios-share-alt"></i>Edit</button>
+                                                <button   *ngIf="username ==Comment.createdBy" data-toggle="modal" data-target="#exampleModal" type="button"><i class="icon ion-ios-quote"></i>Delete</button>
                                     
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
