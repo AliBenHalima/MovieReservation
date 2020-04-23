@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body><div class="container">
+<h1 class="page-header">Edit Comment</h1>
+
+<!-- Custom Success/Erro Message -->
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<!-- Edit Blog Form -->
+<form (submit)="updateBlogSubmit()" >
+  <!-- Title Field -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <!-- Title Input -->
+    <input  type="text" name="title" placeholder="*Comment Title" class="form-control" [(ngModel)]="Comment.title" />
+  </div>
+
+  <!-- Body Field -->
+  <div class="form-group">
+    <label for="body">Body</label>
+    <!-- Body Input -->
+    <textarea name="body" rows="8" cols="80" [(ngModel)]="Comment.body" class="form-control" placeholder="*Comment Body"></textarea>
+  </div>
+
+  <!-- Delete Button -->
+  <div class="d-flex flex-row">
+  <a [routerLink]="['/Comment/delete-review/', Comment._id]"><button    type="button" name="button" class="form__btn  mr-3 " >Delete</button></a>
+  <!-- Go Back Button -->
+  <button  type="button" name="button" class="form__btn  mr-3" (click)="goBack()">Go Back</button>
+  <!-- Save Changes Button -->
+  <button  type="submit" name="save" class="form__btn">Save Changes</button>
+</div>
+
+</form>
+</div>
+</body>
+</html>

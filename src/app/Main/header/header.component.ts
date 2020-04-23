@@ -2,7 +2,9 @@ import { Component, OnInit  ,HostBinding} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService }from '../../sign-up/auth.service'
 import { Subscription } from 'rxjs';
+import {Subject} from 'rxjs'
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
   selector: 'app-header',
@@ -18,20 +20,39 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class HeaderComponent implements OnInit {
   isAuthenticated = this.authService.auth;
   private authListenerSub : Subscription;
-  constructor(private router : Router,private authService : AuthService) {
+  
+  private UsernameListener = new Subject<String>();
+
+  constructor(private router : Router,private authService : AuthService,private blogservice:BlogService) {
 
   }
 
   ngOnInit(): void {
     this.authListenerSub = this.authService.get_authStatusListener().subscribe(isAuthenticated=>{
       this.isAuthenticated=isAuthenticated;
+      
 
     });
+
+    // this.get_UsernameListener().subscribe(resp=>{
+    //   if(resp){
+    //   this.blogservice.username=resp ;
+    // }
+    // });
+
   }
+
+  // get_UsernameListener()
+  // {
+  //   return this.UsernameListener.asObservable();
+  // }
 
   onLogout()
   {
     this.authService.logout();
+    window.location.reload();
+    // this.UsernameListener.next('');
+   
   }
 
   ngOnDestroy()

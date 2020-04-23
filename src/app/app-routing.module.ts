@@ -21,6 +21,8 @@ import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MoviesComponent } from "./movies/movies.component";
 import {AuthGuard} from './sign-up/auth.guard';
+import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
+import { DeleteReviewComponent } from './delete-review/delete-review.component';
 
 
 
@@ -43,6 +45,8 @@ import {AuthGuard} from './sign-up/auth.guard';
   {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
   {path: "reservation", component: ReservationComponent},
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
+  {path: "Comment/edit/:id", component: EditReviewsComponent},
+  {path: "Comment/delete-review/:id", component: DeleteReviewComponent},
   {path: "**", component: NotFoundComponent}
 
 

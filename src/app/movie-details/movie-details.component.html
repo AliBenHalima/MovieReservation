@@ -1,4 +1,5 @@
 <app-header></app-header>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 <section class="section details">
     <!-- details background -->
     <div class="details__bg" data-bg="assets/img/home/home__bg.jpg"></div>
@@ -29,7 +30,7 @@
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
                             <div class="card__content">
                                 <div class="card__wrap">
-                                    <span class="card__rate"><i class="icon ion-ios-star"></i></span>
+                                    <span class="card__rate"><i class="icon ion-ios-star">{{movie.rating  | number:'1.0-1'}}</i></span>
 
                                     <ul class="card__list">
                                         <li>HD</li>
@@ -173,22 +174,50 @@
                                     <ul class="comments__list">
                                         <li class="comments__item" *ngFor="let Comment of CommentsList">
                                             <div class="comments__autor">
-                                                <img class="comments__avatar" src="assets/img/user.png" alt="">
+                                                <img class="comments__avatar" src="assets/img/user1.png" alt="">
                                                 <span class="comments__name"> {{Comment.createdBy}}</span>
                                                 <span class="comments__time">{{Comment.createdAt | date:'yyyy-MM-dd /hh:mm'}}</span>
+
                                             </div>
                                             <p class="comments__text">{{Comment.body}}</p>
                                             <div class="comments__actions">
                                                 <div class="comments__rate" > <!-- *ngIf="!username === Comment.createdBy" -->
-                                                    <button (click)="likeBlog(Comment._id)" type="button"><i class="icon ion-md-thumbs-up"></i>{{Comment.likes}}</button>
+                                                    <button (click)="likeComment(Comment._id)" type="button"><i class="icon ion-md-thumbs-up"></i>{{Comment.likes}}</button>
 
-                                                    <button (click)="dislikeBlog(Comment._id)" type="button">{{Comment.dislikes}}<i class="icon ion-md-thumbs-down"></i></button>
+                                                    <button (click)="dislikeComment(Comment._id)" type="button">{{Comment.dislikes}}<i class="icon ion-md-thumbs-down"></i></button>
                                                 </div>
 
-                                                <button type="button"><i class="icon ion-ios-share-alt"></i>Reply</button>
-                                                <button type="button"><i class="icon ion-ios-quote"></i>Quote</button>
+                                                <button [routerLink]="['/Comment/edit/',Comment._id]" type="button"><i class="icon ion-ios-share-alt"></i>Edit</button>
+                                                <button  data-toggle="modal" data-target="#exampleModal" type="button"><i class="icon ion-ios-quote"></i>Delete</button>
+                                    
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Would you Like to Delete this  comment ? </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ Comment.title }}</h1>
+                                            <strong>Posted by: </strong> {{ Comment.createdBy }}
+                                            <br />
+                                            <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
+                                            <p class="card-text">Are you sure you would like to delete this Comment?</p>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                        <button (click)="deleteComment(Comment._id)" type="button" class="btn btn-primary" data-dismiss="modal"> Yes</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div> 
                                             </div>
                                         </li>
+   
                                             <!--
                                         <li class="comments__item comments__item--answer">
                                             <div class="comments__autor">
@@ -233,10 +262,13 @@
                                     </ul>
 
                                     <form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)"  class="form" *ngIf="NewPost">
-                                        <input type="text" name ="title" class="form-control" ngModel> 
+                                        <input type="text" name ="title" class="form-input" placeholder="Add title" ngModel>
+                                        
                                         <textarea id="text" name="body" class="form__textarea" placeholder="Add comment" ngModel> </textarea>
+                                        <div class="buttons">
                                         <button type="submit" class="form__btn">Send</button>
                                         <button (click)="CancelForm()" type="button" class="form__btn">Cancel</button>
+                                    </div>
                                     </form>
                                    <!-- Draft Comment -->
                                    <!--  
@@ -250,7 +282,7 @@
                                     <!-- END Draft Comment -->
                                     <button  type="button" class="form__btn" (click)="AddComment()">Add Comment</button>
 
-                                    <button [disabled]="loadingBlogs" type="button" class="form__btn" (click)="reloadBlogs()">Reload Comments</button>
+                                    <button [disabled]="loadingComment" type="button" class="form__btn" (click)="reloadComments()">Reload Comments</button>
                                 </div>
                             </div>
                             <!-- end comments -->
@@ -263,56 +295,42 @@
                             <div class="col-12">
                                 <div class="reviews">
                                     <ul class="reviews__list">
-                                        <li class="reviews__item">
+                                        <li class="reviews__item"  *ngFor="let Review of ReviewsList">
                                             <div class="reviews__autor">
                                                 <img class="reviews__avatar" src="assets/img/user.png" alt="">
-                                                <span class="reviews__name">Best Marvel movie in my opinion</span>
-                                                <span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
+                                                <span class="reviews__name">{{Review.createdBy}}</span>
+                                                <span class="reviews__time">{{Review.createdAt}}</span>
 
-                                                <span class="reviews__rating"><i class="icon ion-ios-star"></i>8.4</span>
+                                                <span class="reviews__rating"><i class="icon ion-ios-star"></i>{{Review.ReviewRating}}</span>
                                             </div>
-                                            <p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                                            <p class="reviews__text">{{Review.body}}</p>
+                                            
+                                           
                                         </li>
-
-                                        <li class="reviews__item">
-                                            <div class="reviews__autor">
-                                                <img class="reviews__avatar" src="assets/img/user.png" alt="">
-                                                <span class="reviews__name">Best Marvel movie in my opinion</span>
-                                                <span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
-
-                                                <span class="reviews__rating"><i class="icon ion-ios-star"></i>9.0</span>
-                                            </div>
-                                            <p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                                        </li>
-
-                                        <li class="reviews__item">
-                                            <div class="reviews__autor">
-                                                <img class="reviews__avatar" src="assets/img/user.png" alt="">
-                                                <span class="reviews__name">Best Marvel movie in my opinion</span>
-                                                <span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
-
-                                                <span class="reviews__rating"><i class="icon ion-ios-star"></i>7.5</span>
-                                            </div>
-                                            <p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                                        </li>
+<!-- herrrree -->
                                     </ul>
 
-                                    <form action="#" class="form">
-                                        <input type="text" class="form__input" placeholder="Title">
-                                        <textarea class="form__textarea" placeholder="Review"></textarea>
-                                        <div class="form__slider">
+                                    <form #ReviewForm="ngForm" (ngSubmit)="onSubmitReview(ReviewForm)"  class="form" *ngIf="NewReview">
+                                        <input type="text" class="form__input" placeholder="Title" name="title" ngModel>
+                                        <textarea class="form__textarea" placeholder="Review" name="body" ngModel></textarea>
+                                        <input type="Number" class="form__input_rating" placeholder="Rating" name="ReviewRating" ngModel>
+                                        <!-- <div class="form__slider">
                                             <div class="form__slider-rating" id="slider__rating"></div>
                                             <div class="form__slider-value" id="form__slider-value"></div>
-                                        </div>
-                                        <button type="button" class="form__btn">Send</button>
+                                        </div> -->
+                                        <div class="buttons" >
+                                        <button type="submit" class="form__btn">Send</button>
+                                        <button (click)="CancelFormReview()" type="button" class="form__btn ">Cancel</button>
+                                    </div>
                                     </form>
-                                    <button [disabled]="loadingBlogs" type="button" class="form__btn" (click)="reloadBlogs()">Reload</button>
+                                    <button  type="button" class="form__btn" (click)="AddReview()">Add Review</button>
+                                    <button [disabled]="loadingReviews" type="button" class="form__btn" (click)="reloadReviews()">Reload</button>
                                 </div>
                             </div>
                             <!-- end reviews -->
                         </div>
                     </div>
-
+                            <!-- <button class="btn btn-success" (click)="func()" >TEST</button> -->
                     <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="3-tab">
                         <!-- project gallery -->
                         <div class="gallery" itemscope>

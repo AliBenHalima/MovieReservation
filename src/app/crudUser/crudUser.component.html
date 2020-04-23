@@ -1,97 +1,241 @@
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>AngularApp</title>
-  <base href="/">
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Responsive vertical menu navigation</title>
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
 
-</head>
-<body>
+		<style>
+			.ad {
+				position: absolute;  
+				width: 300px;
+				height: 250px;
+				border: 1px solid #ddd;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 250px;
+				z-index: 10;
+			}
+			.ad .close {
+				position: absolute;
+				font-family: 'ionicons';
+				width: 20px;
+				height: 20px;
+				color: #fff;
+				background-color: #999;
+				font-size: 20px;
+				left: -20px;
+				top: -1px;
+				display: table-cell;
+				vertical-align: middle;
+				cursor: pointer;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				$('.close').click(function() {
+					$('.ad').css('display', 'none');
+				})
+			})
+		</script>
 
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span>ADMIN</span>
+			</div>
+			<a href="#" class="nav-trigger"><span></span></a>
+		</div>
+		<div class="side-nav">
+			<div class="logo">
+				<i class="fa fa-tachometer"></i>
+				<span >Admin</span>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a [routerLink]="['/AdminDashboard/users']">
+							<span><i class="fa fa-user"></i></span>
+							<span>Users</span>
+						</a>
+					</li>
+					<li class="active">
+						<a [routerLink]="['/AdminDashboard/messages']">
+							<span><i class="fa fa-envelope"></i></span>
+							<span>Messages</span>
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/AdminDashboard']">
+							<span><i class="fa fa-bar-chart"></i></span>
+							<span>Analytics</span>
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/AdminDashboard/payments']">
+							<span><i class="fa fa-credit-card-alt"></i></span>
+							<span>Payments</span>
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/AdminDashboard/CrudUsers']">
+							<span><i class="fa fa-user"></i></span>
+							<span>Crud-Users</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="main-content">
+			<div class="title">
+				Manage Users
+			</div>
+			<!--<div class='ad'>
+				<div class="close">
+					<i class="ion-ios-close-empty"></i>
+				</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:300px;height:250px"
+				     data-ad-client="ca-pub-8408356133845039"
+				     data-ad-slot="8154430505"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>-->
+			<div class="main">
+				<div class="widget">
+					<div class="title">Manage User</div>
+					<div class="chart">
+						<form #UserForm="ngForm" (ngSubmit)="onSubmit(UserForm)">
+							<input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="UserService.selectedUser._id">
+							<div class="row">
+							  <div class="input-field col s12">
+								<!-- <label for="email"> Email</label> -->
+								<input class="form-control w-50" id="email" type="text" name="email" #name="ngModel" [(ngModel)]="UserService.selectedUser.email" placeholder="Enter Email" required>
+							   
+								  <label class="red-text">*</label>
+							   
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="input-field col s12">
+								<input type="hidden" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
+							  <!--  <label>PWD :</label>--> 
+							  </div>
+							</div>
+							<div class="row">
+							  <div class="input-field col s12">
+								  <div class="form-group">
+								<!-- <label for="name"> name</label> -->
+								<input  class="form-control w-50" id="name" type="text" name="username" #name="ngModel" [(ngModel)]="UserService.selectedUser.username" placeholder="Enter Username">
+							  </div>
+							</div>
+							</div>
+							<div class="input-group">
+							<div class="input-group-prepend">
+							  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+							</div>
+							<div class="custom-file">
+							  <input type="file" name="image" class="form-control" id="inputGroupFile01" (change)="onImgSelected($event);"
+								aria-describedby="inputGroupFileAddon01" >
+							  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+							</div>
+						  </div>
+			  
+							<div class="row">
+							  <div class="input-field col s12">
+								<!-- <button class="btn btn-success" type="button" (click)="resetForm(UserForm)">Reset</button> -->
+								<button class="btn btn-info" type="submit" [disabled]="!UserForm.valid" >Submit</button>
+							  </div>
+							</div>
+						  </form>
+					</div>
+				</div>
+				<div class="widget">
+					<div class="title">List of Users</div>
+					<div class="chart">
+						
+							
+							
+									<!-- <table class="responsive-table highlight">
+										<thead>
+										  <tr>
+											<th>Username</th>
+											<th>email</th>
+											<th></th>
+										  </tr>
+										</thead>
+										<tr *ngFor="let emp of UserService.Users">
+										  <td>{{emp.username }}</td>
+										  
+										  <td>{{emp.email}}</td>
+										  <td>
+											  <a class="action-btn" (click)="onEdit(emp)">
+												<i class="material-icons">edit</i>
+											  </a>
+											  <a class="action-btn" (click)="onDelete(emp._id,UserForm)">
+												<i class="material-icons">delete</i>
+											  </a>
+											</td>
+										</tr>
+									  </table> -->
+									  <table class="table table-striped">
+										<thead>
+										  <tr>
+											<th scope="col">Index</th>
+											<th scope="col">Username</th>
+											<th scope="col">email</th>
+											
+										  </tr>
+										</thead>
+										<tbody>
+											
+										  <tr *ngFor="let emp of UserService.Users">
+											<th scope="row">{{UserService.Users.indexOf(emp) +1}}</th>
+											<td>{{emp.username }}</td>
+										  
+										  <td>{{emp.email}}</td>
+										  <td>
+											<a class="action-btn" (click)="onEdit(emp)">
+											  <i class="material-icons">edit</i>
+											</a>
+											<a class="action-btn" (click)="onDelete(emp._id,UserForm)">
+											  <i class="material-icons">delete</i>
+											</a>
+										  </td>
+										  </tr>
+										 
+										</tbody>
+									  </table>
+								
+									
+				</div>	
+			</div>
+		</div>
+	
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
 
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-content white-text">
-        <div class="row">
-          <div class="col s3">
-            <form #UserForm="ngForm" (ngSubmit)="onSubmit(UserForm)">
-              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="UserService.selectedUser._id">
-              <div class="row">
-                <div class="input-field col s12">
-                  <input type="text" name="email" #name="ngModel" [(ngModel)]="UserService.selectedUser.email" placeholder="Enter Email" required>
-                  <label>email :
-                    <label class="red-text">*</label>
-                  </label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input type="hidden" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
-                <!--  <label>PWD :</label>--> 
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input type="text" name="username" #name="ngModel" [(ngModel)]="UserService.selectedUser.username" placeholder="Enter Username">
-                  <label>username :</label>
-                </div>
-              </div>
-              <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-              </div>
-              <div class="custom-file">
-                <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" (change)="onImgSelected($event);"
-                  aria-describedby="inputGroupFileAddon01" >
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-              </div>
-            </div>
-
-              <div class="row">
-                <div class="input-field col s12">
-                  <button class="btn btn-custom right" type="button" (click)="resetForm(UserForm)">Reset</button>
-                  <button class="btn btn-custom right" type="submit" [disabled]="!UserForm.valid" >Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col s9">
-              <table class="responsive-table highlight">
-                  <thead>
-                    <tr>
-                      <th>Username</th>
-                      <!--<th>PWD</th> --> 
-                      <th>email</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tr *ngFor="let emp of UserService.Users">
-                    <td>{{emp.username }}</td>
-                     <!-- <td>{{emp.pwd}}</td> --> 
-                    <td>{{emp.email}}</td>
-                    <td>
-                        <a class="action-btn" (click)="onEdit(emp)">
-                          <i class="material-icons">edit</i>
-                        </a>
-                        <a class="action-btn" (click)="onDelete(emp._id,UserForm)">
-                          <i class="material-icons">delete</i>
-                        </a>
-                      </td>
-                  </tr>
-                </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-</body>
-</html>
+		
+		<script type="text/javascript">
+			$(function() {
+				$('.close').click(function() {
+					$('.ad').css('display', 'none');
+				})
+			})
+		</script>

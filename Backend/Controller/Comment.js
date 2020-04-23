@@ -5,6 +5,7 @@ const User = require('../Model/users');
 const router = express.Router();
 // const FilmModel = mongoose.model("movies");
 const blog = require('../Model/blog');
+const review = require('../Model/review');
 
 
 router.get("/list",async (req,res)=>{
@@ -30,7 +31,30 @@ router.get("/:id",async (req,res)=>{
 });
 
 
-router.post('/newblog', (req, res) => {
+router.get("/Reviews/:id",async (req,res)=>{
+  review.find({ PostedFor: req.params.id },((err,docs)=>{
+    if(!err){
+        res.send({ data: docs })
+    }
+    else{
+        res.send("Movie doesnt exist!? ")
+    }
+}));
+});
+
+router.get("/Reviews/Rating/:id",async (req,res)=>{
+  review.find({ PostedFor: req.params.id },((err,docs)=>{
+    if(!err){
+        res.send({ data: docs })
+    }
+    else{
+        res.send("Movie doesnt exist!? ")
+    }
+}));
+});
+
+
+router.post('/newComment', (req, res) => {
     // Check if blog title was provided
     if (!req.body.title) {
       res.json({ success: false, message: 'blog title is required.' }); // Return error message
@@ -106,11 +130,15 @@ router.post('/newblog', (req, res) => {
   /* ===============================================================
      LIKE blog POST
   =============================================================== */
-  router.put('/likeBlog', (req, res) => {
+  router.put('/likeComment', (req, res) => {
     // Check if id was passed provided in request body
     if (!req.body.id) {
       res.json({ success: false, message: 'No id was provided.' }); // Return error message
-    } else {
+    }else {
+      if(!req.body.createdBy){
+        res.json({ success: false, message: 'User not Logged in' }); // Return error message
+      } 
+    else {
       // Search the database with id
       blog.findOne({ _id: req.body.id }, (err, blog) => {
         // Check if error was encountered
@@ -164,18 +192,23 @@ router.post('/newblog', (req, res) => {
                 }
               
             });
-          }});
+          }
+        }});
     
 
   /* ===============================================================
      DISLIKE blog POST
   =============================================================== */
-  router.put('/dislikeBlog', (req, res) => {
+  router.put('/dislikeComment', (req, res) => {
    // console.log(req.body.username);
     // Check if id was provided inside the request body
     if (!req.body.id) {
       res.json({ success: false, message: 'No id was provided.' }); // Return error message
-    } else {
+    }else {
+      if(!req.body.createdBy){
+        res.json({ success: false, message: 'User not Logged in !' }); // Return error message
+      }  
+    else {
       // Search database for blog post using the id
       blog.findOne({ _id: req.body.id }, (err, blog) => {
         // Check if error was found
@@ -226,7 +259,7 @@ router.post('/newblog', (req, res) => {
                 }
               });
           }
-        
+    }
       });
  
 
@@ -254,4 +287,125 @@ router.post('/newblog', (req, res) => {
     //   }
     // });
   });
+
+  router.get('/singleComment/:id', (req, res) => {
+    // Check if id is present in parameters
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No blog ID was provided.' }); // Return error message
+    } else {
+      // Check if the blog id is found in database
+      blog.findOne({ _id: req.params.id }, (err, blog) => {
+        // Check if the id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
+        } else {
+          // Check if blog was found by id
+          if (!blog) {
+            res.json({ success: false, message: 'Blog not found.' }); // Return error message
+           }
+          //  else {
+          //   // Find the current user that is logged in
+          //   User.findOne({ _id: req.decoded.userId }, (err, user) => {
+          //     // Check if error was found
+          //     if (err) {
+          //       res.json({ success: false, message: err }); // Return error
+          //     } else {
+          //       // Check if username was found in database
+          //       if (!user) {
+          //         res.json({ success: false, message: 'Unable to authenticate user' }); // Return error message
+          //       } else {
+          //         // Check if the user who requested single blog is the one who created it
+          //         if (user.username !== blog.createdBy) {
+          //           res.json({ success: false, message: 'You are not authorized to eidt this blog.' }); // Return authentication reror
+          //         } 
+          else {
+                    res.json({ success: true, blog: blog }); // Return success
+                  }
+          //       }
+          //     }
+          //   });
+          // }
+        }
+      });
+    }
+  });
+
+
+
+  router.delete('/deleteComment/:id', (req, res) => {
+    // Check if ID was provided in parameters
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No id provided' }); // Return error message
+    } else {
+      // Check if id is found in database
+      blog.findOne({ _id: req.params.id }, (err, blog) => {
+        // Check if error was found
+        if (err) {
+          res.json({ success: false, message: 'Invalid id' }); // Return error message
+        } else {
+          // Check if blog was found in database
+          if (!blog) {
+            res.json({ success: false, messasge: 'Blog was not found' }); // Return error message
+          } else {
+            // Get info on user who is attempting to delete post
+            
+              // Check if error was found
+                
+                    // Remove the blog from database
+                    blog.remove((err) => {
+                      if (err) {
+                        res.json({ success: false, message: err }); // Return error message
+                      } else {
+                        res.json({ success: true, message: 'Comment deleted!' }); // Return success message
+                      }
+                    });
+                  }
+               
+  
+  
+           
+          }
+        
+      });
+    }
+  });
+
+
+
+  router.put('/updateComment', (req, res) => {
+    // Check if id was provided
+    if (!req.body._id) {
+      res.json({ success: false, message: 'No blog id provided' }); // Return error message
+    } else {
+      // Check if id exists in database
+      blog.findOne({ _id: req.body._id }, (err, blog) => {
+        // Check if id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
+        } else {
+          // Check if id was found in the database
+          if (!blog) {
+            res.json({ success: false, message: 'Blog id was not found.' }); // Return error message
+          }
+          else {
+            blog.title = req.body.title; // Save latest blog title
+            blog.body = req.body.body; // Save latest body
+            blog.save((err) => {
+              if (err) {
+                if (err.errors) {
+                  res.json({ success: false, message: 'Please ensure form is filled out properly' });
+                } else {
+                  res.json({ success: false, message: err }); // Return error message
+                }
+              } else {
+                res.json({ success: true, message: 'Comment Updated!' }); // Return success message
+              }
+            });
+          }
+    }
+  });
+} });
+
+
+
 module.exports=router;

@@ -1,7 +1,8 @@
 var userController = require('./Controller/userController.js');
 var mailController = require('./Controller/mailController.js');
 var filmController = require('./Controller/films.js');
-var blogController = require('./Controller/blog.js');
+var CommentController = require('./Controller/Comment.js');
+var reviewController = require('./Controller/review.js');
 const cors = require('cors');
 const path = require('path');
 const express = require('express');
@@ -47,7 +48,8 @@ app.use(cors(),auth);
 app.use("/users", UserController);
 app.use("/mail", mailController);
 app.use("/films", filmController);
-app.use("/blogs", blogController);
+app.use("/Comments", CommentController);
+app.use("/reviews", reviewController);
 
 
 //----------------AMASUOend---------------

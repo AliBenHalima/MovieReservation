@@ -41,6 +41,9 @@ import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-hom
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
+import { DeleteReviewComponent } from './delete-review/delete-review.component';
 
 
 @NgModule({
@@ -70,7 +73,10 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     AfficheMovieHeadComponent,
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
-    AfficheMovieHomeMainComponent
+    AfficheMovieHomeMainComponent,
+    MovieReviewComponent,
+    EditReviewsComponent,
+    DeleteReviewComponent
 
   ],
   imports: [

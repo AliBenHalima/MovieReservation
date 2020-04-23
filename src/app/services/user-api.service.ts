@@ -29,6 +29,11 @@ export class UserApiService {
     getLatestMovies(){
       return this.http.get<Movie[]>('http://localhost:3000/films/Latest');
     }  
+
+    UpdateMovieRating(movie_id,rating ){
+      return this.http.put<any>("http://localhost:3000/films/UpdateMovieRating/" + movie_id, rating);
+    }
+
     createAuthenticationHeaders() {
       this.loadToken(); // Get token so it can be attached to headers
       // Headers configuration options
@@ -45,12 +50,15 @@ export class UserApiService {
     }
     getUsersBlog() {
       this.createAuthenticationHeaders(); // Create headers before sending to API
-      return this.http.get<User[]>('http://localhost:3000/blogs/profile'+ this.options);
+      return this.http.get<User[]>('http://localhost:3000/Comments/profile'+ this.options);
       
     }
 
-    PostBlog(blog:any){
-      return this.http.post<any>('http://localhost:3000/blogs/newblog', blog).map(res => res);
+    PostComment(blog:any){
+      return this.http.post<any>('http://localhost:3000/Comments/newComment', blog).map(res => res);
+    }
+    PostReview(review:any){
+      return this.http.post<any>('http://localhost:3000/reviews/newreview', review).map(res => res);
     }
   }
 

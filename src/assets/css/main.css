@@ -2778,6 +2778,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   background-color: #2b2b31;
   font-family: 'Open Sans', sans-serif;
 }
+
 .form__btn {
   display: flex;
   justify-content: center;
@@ -2826,7 +2827,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .form__slider-rating {
   width: 160px;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 .form__slider-rating .noUi-connects {
   background-color: rgba(255,255,255,0.05);

@@ -16,7 +16,6 @@ export class AuthService {
 
   constructor(private HttpClient:HttpClient,private router:Router){}
 
-
   get_authStatusListener()
   {
     return this.authStatusListener.asObservable();
