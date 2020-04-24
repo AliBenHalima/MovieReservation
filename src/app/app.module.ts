@@ -41,6 +41,9 @@ import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-hom
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -83,7 +86,11 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     DropDownListModule,DateTimePickerModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    MatDividerModule,
+    MatListModule,
+    MatSlideToggleModule,
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const upload = require('./routes/upload');
 const app = express();
-const session = require('express-session');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -72,14 +72,38 @@ const storage = multer.diskStorage({
 	}
 });
 
-const checkAuth = require('./Controller/router_protector');
+const Security = require('./Controller/router_protector');
 const bookings = require('./routes/bookings');
 
-app.use(cors(), checkAuth, multer({ storage: storage }).single('file'), upload);
+app.get('/ac',Security.isAuth4Booking ,(req,res,next)=>{
+  const permission = ac.can('Admin').execute('create').execute('update').sync().on('video');
+  res.send(permission.granted);
+  });
+
+app.use(cors(), Security.checkAuth, multer({ storage: storage }).single('file'), upload);
 app.use('/Users', userController);
 app.use(express.static(__dirname + '/images'));
-app.use(cors(), bookings);
+app.use(cors(),Security.isAuth4Booking,bookings);
 //-----------------------------------------
+
+
+//-----------Privileges---------------
+
+// ac.grant('Create')
+//     .execute('Create').on('video')
+
+
+// ac.grant('Update')
+//     .execute('delete').on('video')
+
+// ac.grant('Delete')
+//     .execute('delete').on('video')
+
+
+// ac.grant('Delete')
+//     .execute('delete').on('video')
+
+////////////////////////////////////////////////////////////
 
 mongoose
 	.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?retryWrites=true&w=majority', {
@@ -93,4 +117,4 @@ mongoose
 		console.log(err);
 	});
 
-////////////////////////////////////////////
+/////////////////////////////////////////////////////////////

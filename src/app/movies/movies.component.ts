@@ -38,9 +38,10 @@ export class MoviesComponent implements OnInit {
 
 	upload(form: NgForm) {
 		this.hide();
-		console.log(form);
+    console.log(form);
 		console.log(form.value);
-		const data = new FormData();
+    this.movies.push(form.value);
+    const data = new FormData();
 		data.append('name', form.value.name);
 		data.append('cat', form.value.cat);
 		data.append('desc', form.value.desc);

@@ -22,6 +22,7 @@ module.exports.signUp = (req,res,next)=>{
                             email:req.body.email,
                             pwd:hashedPwd,
                             username:req.body.username,
+                            role:'Visitor'
                         });
                         user.save().then((user)=>res.json(user)).err((err)=>console.log(err));
                     });
@@ -43,7 +44,7 @@ module.exports.signIn = (req,res,next)=>
                 {
                     console.log('logged in',user._id);
 
-                    const token = jwt.sign({email:req.body.email,userId:user._id},"my-secret-token-to-change-in-production",{expiresIn:"1h"});
+                    const token = jwt.sign({email:req.body.email,userId:user._id,role:'Admin'},"my-secret-token-to-change-in-production",{expiresIn:"1h"});
                     console.log(token);
                     res.json({token:token,expiresIn:3600});
                 }
@@ -65,4 +66,21 @@ module.exports.signIn = (req,res,next)=>
 module.exports.NewUser = (req,res,next)=>{
    res.json({msg:"succeed",user:req.body});
    console.log(req.body.email);
+}
+
+module.exports.changeRole = (req,res,next)=>{
+  // console.log(req.body.id+""+req.body.role);
+  let Role;
+  nb = req.body.role;
+  if(nb == 1)
+  Role = 'Producer';
+  else if(nb == 2 )
+  Role = 'Moderator' ;
+  else
+  Role = 'Visitor';
+
+  User.updateOne({_id:req.body.id},{role:Role})
+  .then()
+  .catch(err=>{console.log(err);});
+
 }

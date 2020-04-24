@@ -21,7 +21,7 @@ import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MoviesComponent } from "./movies/movies.component";
 import {AuthGuard} from './sign-up/auth.guard';
-
+import {RoleGuard} from './sign-up/auth.guard';
 
 
  const routes: Routes = [
@@ -41,7 +41,7 @@ import {AuthGuard} from './sign-up/auth.guard';
   {path: "AdminDashboard/users", component: UsersComponent,canActivate:[AuthGuard]},
   {path: "AdminDashboard/users/:id", component: CurrentUserComponent,canActivate:[AuthGuard]},
   {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
-  {path: "reservation", component: ReservationComponent},
+  {path: "reservation", component: ReservationComponent,canActivate:[RoleGuard]},
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
   {path: "**", component: NotFoundComponent}
 
@@ -53,6 +53,6 @@ import {AuthGuard} from './sign-up/auth.guard';
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard,RoleGuard]
 })
 export class AppRoutingModule { }
