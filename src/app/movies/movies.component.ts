@@ -17,6 +17,7 @@ export class MoviesComponent implements OnInit {
 	ngOnInit(): void {
 		this.UploadService.getMoviesByUser().subscribe((movies) => {
 			this.movies = movies;
+			console.log(movies);
 		});
 	}
 
@@ -38,7 +39,6 @@ export class MoviesComponent implements OnInit {
 
 	upload(form: NgForm) {
 		this.hide();
-    console.log(form);
 		console.log(form.value);
     this.movies.push(form.value);
     const data = new FormData();
