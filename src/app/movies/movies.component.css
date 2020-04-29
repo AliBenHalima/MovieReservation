@@ -52,9 +52,9 @@ span.upload {
 }
 
 div.upload {
-	position: absolute;
+	position: fixed;
 	left: 50%;
-	top: 68%;
+	top: 60%;
 	transform: translate(-50%, -50%);
 	width: fit-content;
 	height: fit-content;
@@ -167,22 +167,22 @@ input[type="file"] {
 	max-width: 48%;
 }
 
-/deep/.card__title {
+.card__title {
 	margin: 5px 0 !important;
 }
 
-/deep/.card,
+.card,
 .card--list {
 	height: 100%;
 	margin-bottom: 0;
 }
 
-/deep/ .card__content {
+.card__content {
 	height: fit-content !important;
 }
 
-/deep/ .card__cover,
-/deep/.card__cover img,
-/deep/.row {
+.card__cover,
+.card__cover img,
+.row {
 	height: 100% !important;
 }

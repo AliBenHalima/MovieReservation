@@ -12,6 +12,16 @@ module.exports.getMoviesByUser = (req, res, next) => {
 	});
 };
 
+module.exports.deleteMovie = (req, res, next) => {
+	Movie.deleteOne({ _id: req.params.id }, function(err, movie) {
+		if (err) {
+			res.send(err);
+		} else {
+			res.send(movie);
+		}
+	});
+};
+
 module.exports.upload = (req, res, next) => {
 	//console.log(req.body);
 	if (true) {

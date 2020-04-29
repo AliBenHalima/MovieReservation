@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
 import {BookingService} from './booking.service';
-import {reservationEvent} from './event.model';
-import {UploadService} from '../movies/upload.service';
-
-
+import { reservationEvent } from './event.model';
+import { UploadService } from '../movies/upload.service';
 
 
 @Component({
@@ -14,6 +12,9 @@ import {UploadService} from '../movies/upload.service';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
+
+
+  tab= ['achref','moh'];
 
   constructor(private bookingService: BookingService, private moviesService:UploadService) { }
 

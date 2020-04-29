@@ -44,6 +44,9 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
 import { DeleteReviewComponent } from './delete-review/delete-review.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -89,7 +92,11 @@ import { DeleteReviewComponent } from './delete-review/delete-review.component';
     DropDownListModule,DateTimePickerModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    MatDividerModule,
+    MatListModule,
+    MatSlideToggleModule,
+
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
   bootstrap: [AppComponent]
