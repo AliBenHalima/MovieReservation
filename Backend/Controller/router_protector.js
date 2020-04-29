@@ -6,8 +6,11 @@ module.exports = (req,res,next)=>
 
     // console.log(token);
     const decodedToken = jwt.verify(token,"my-secret-token-to-change-in-production");
+    console.log( "this is the decoded token ");
     console.log(decodedToken);
     req.userData = {email:decodedToken.email,userId:decodedToken.userId};
+    console.log('please work');
+    console.log(req.userData);
     next();
   }
   catch(err)
