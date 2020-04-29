@@ -3,7 +3,8 @@ export interface Movie {
 	name: string;
 	cat: string;
 	desc: string;
-	file: string;
+  file: string;
+  rating: string;
 	duration: string;
 	prodName: string;
 	type: string;

@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
     // this.UsernameListener.next('');
    
   }
+ 
 
   ngOnDestroy()
   {

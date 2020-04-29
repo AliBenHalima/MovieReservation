@@ -57,6 +57,7 @@ export class AuthService {
         this.saveAuthData(this.token,expirationDate);
         this.saveUsername(this.username);
         this.router.navigate(['/']);
+        
       }
 
 

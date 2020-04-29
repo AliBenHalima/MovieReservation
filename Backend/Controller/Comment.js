@@ -9,6 +9,7 @@ const review = require('../Model/review');
 
 
 router.get("/list",async (req,res)=>{
+ 
   blog.find((err,docs)=>{
       if(!err){
           res.send({ data: docs })
@@ -20,6 +21,8 @@ router.get("/list",async (req,res)=>{
 });
 
 router.get("/:id",async (req,res)=>{
+  // console.log( req.userData.userId);
+  // console.log( req.userData.userId);
   blog.find({ PostedFor: req.params.id },((err,docs)=>{
     if(!err){
         res.send({ data: docs })
@@ -127,9 +130,7 @@ router.post('/newComment', (req, res) => {
   });
 
 
-  /* ===============================================================
-     LIKE blog POST
-  =============================================================== */
+
   router.put('/likeComment', (req, res) => {
     // Check if id was passed provided in request body
     if (!req.body.id) {
@@ -196,9 +197,7 @@ router.post('/newComment', (req, res) => {
         }});
     
 
-  /* ===============================================================
-     DISLIKE blog POST
-  =============================================================== */
+
   router.put('/dislikeComment', (req, res) => {
    // console.log(req.body.username);
     // Check if id was provided inside the request body

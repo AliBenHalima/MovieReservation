@@ -20,6 +20,7 @@ export class SignInComponent implements OnInit {
     console.log(form.value);
     this.AuthService.login(form.value.email,form.value.pwd);
 
+
   }
 
 

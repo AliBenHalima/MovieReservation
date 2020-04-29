@@ -9,22 +9,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-sm-8">
-            <div class="card__content">
-                <h3 class="card__title"><a  [routerLink]="['/MovieDetails/',movie.name]">{{movie.name}}</a></h3>
-                <span class="card__category">
-                    <a href="#">{{movie.type}}</a>
-                    <a href="#">Triler</a>
-                </span>
-
-                <div class="card__wrap">
-                    <span class="card__rate"><i class="icon ion-ios-star"></i>8.4</span>
-
-                    <ul class="card__list">
-                        <li>HD</li>
-                        <li>16+</li>
-                    </ul>
-                </div>
+           
 
             <div class="col-12 col-sm-8">
                 <div class="card__content">
@@ -47,7 +32,8 @@
                         
                         <p>{{movie.desc}}  </p>
                     </div>
-             
+                </div>
+
 
 
             </div>
@@ -57,4 +43,4 @@
     <div class="del" *ngIf=del>
         <img src="assets/img/delete.png" alt="" (click)="fun_del(movie._id)">
     </div>
-</div>
+
