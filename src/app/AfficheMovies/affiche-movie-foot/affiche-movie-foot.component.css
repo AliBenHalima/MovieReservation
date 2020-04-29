@@ -4,3 +4,6 @@
 
 }
   
+.card__title {
+	text-transform: capitalize;
+}

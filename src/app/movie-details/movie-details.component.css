@@ -50,3 +50,6 @@
   background-color: transparent !important;
  color: white !important;
 } 
+.details__title {
+	text-transform: capitalize;
+}
