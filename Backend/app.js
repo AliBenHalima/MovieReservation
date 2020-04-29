@@ -1,12 +1,8 @@
 var userController = require('./Controller/userController.js');
 var mailController = require('./Controller/mailController.js');
 var filmController = require('./Controller/films.js');
-<<<<<<< HEAD
 var CommentController = require('./Controller/Comment.js');
 var reviewController = require('./Controller/review.js');
-=======
-
->>>>>>> master
 const cors = require('cors');
 const path = require('path');
 const express = require('express');
@@ -15,10 +11,6 @@ const mongoose = require('mongoose');
 const upload = require('./routes/upload');
 const app = express();
 const session = require('express-session');
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -52,7 +44,6 @@ app.get('/', (req, res) => {
 });
 
 const auth = require('./routes/auth');
-<<<<<<< HEAD
 app.use(cors(),auth);
 
 app.use("/users", UserController);
@@ -60,13 +51,8 @@ app.use("/mail", mailController);
 app.use("/films", filmController);
 app.use("/Comments", CommentController);
 app.use("/reviews", reviewController);
-=======
-app.use(cors(), auth);
->>>>>>> master
 
-app.use('/users', UserController);
-app.use('/mail', mailController);
-app.use('/films', filmController);
+
 
 //----------------AMASUOend---------------
 
@@ -91,14 +77,9 @@ const storage = multer.diskStorage({
 	}
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 const checkAuth = require('./Controller/router_protector');
 const bookings = require('./routes/bookings');
 
-<<<<<<< HEAD
 
 
 app.use(cors(),checkAuth,multer({storage:storage}).single("file"), upload);
@@ -118,24 +99,11 @@ mongoose.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?r
     });
 
 
-=======
 app.use(cors(), checkAuth, multer({ storage: storage }).single('file'), upload);
 app.use('/Users', userController);
 app.use(express.static(__dirname + '/images'));
 app.use(cors(), bookings);
 //-----------------------------------------
 
-mongoose
-	.connect('mongodb+srv://Admin:aoaj@auth-cluster-t0gpd.mongodb.net/test?retryWrites=true&w=majority', {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	})
-	.then((result) => {
-		app.listen(3000);
-	})
-	.catch((err) => {
-		console.log(err);
-	});
->>>>>>> master
 
 ////////////////////////////////////////////
