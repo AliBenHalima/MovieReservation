@@ -8,7 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<link rel="stylesheet" href="messages.component.css">
+		<link rel="stylesheet" href="analytics.component.css">
 
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -71,13 +71,13 @@
 							<span>Users</span>
 						</a>
 					</li>
-					<li class="active">
+					<li >
 						<a [routerLink]="['/AdminDashboard/messages']">
 							<span><i class="fa fa-envelope"></i></span>
 							<span>Messages</span>
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a [routerLink]="['/AdminDashboard/analytics']">
 							<span><i class="fa fa-bar-chart"></i></span>
 							<span>Analytics</span>
@@ -100,7 +100,7 @@
 		</div>
 		<div class="main-content">
 			<div class="title">
-				MESSAGES
+				Analytics
 			</div>
 			<!--<div class='ad'>
 				<div class="close">
@@ -118,8 +118,26 @@
 			</div>-->
 			<div class="main">
 				<div class="widget">
-					<div class="title">List of messages</div>
-					<div class="chart"></div>
+					<div class="title">Payments</div>
+					<div class="chart">
+
+            <div>
+              <div>
+                <div style="display: block">
+                  <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
+                <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+              </div>
+            </div>
+
+          </div>
 				</div>
 				<div class="widget">
 					<div class="title">Details of message</div>

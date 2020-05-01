@@ -22,6 +22,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { MoviesComponent } from "./movies/movies.component";
 import {AuthGuard} from './sign-up/auth.guard';
 import {RoleGuard} from './sign-up/auth.guard';
+import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
 
 
  const routes: Routes = [
@@ -43,6 +44,7 @@ import {RoleGuard} from './sign-up/auth.guard';
   {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
   {path: "reservation", component: ReservationComponent,canActivate:[RoleGuard]},
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
+  {path:"AdminDashboard/analytics",component:AnalyticsComponent},
   {path: "**", component: NotFoundComponent}
 
 

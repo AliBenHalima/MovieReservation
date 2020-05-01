@@ -4,7 +4,6 @@ import {BookingService} from './booking.service';
 import { reservationEvent } from './event.model';
 import { UploadService } from '../movies/upload.service';
 
-
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',

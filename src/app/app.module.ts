@@ -44,6 +44,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ChartsModule } from 'ng2-charts';
+import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
 
 
 @NgModule({
@@ -73,7 +75,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     AfficheMovieHeadComponent,
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
-    AfficheMovieHomeMainComponent
+    AfficheMovieHomeMainComponent,
+    AnalyticsComponent
 
   ],
   imports: [
@@ -90,6 +93,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDividerModule,
     MatListModule,
     MatSlideToggleModule,
+    ChartsModule
+
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
