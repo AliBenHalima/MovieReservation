@@ -22,6 +22,7 @@ export class MovieDetailsComponent implements OnInit {
   loadingReviews=false;
   ReviewsList;
   rating ; 
+  CurrentComment;
   
   
   
@@ -58,6 +59,12 @@ this.getAllReviews();
 this.AddComment();
 this.AddReview();
   }
+  onClik(comment){
+
+    this.CurrentComment = comment;
+  }
+
+
 
 
   func(){

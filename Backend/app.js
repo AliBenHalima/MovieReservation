@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
 });
 const UserController = require('./Controller/users');
 
-app.set('views', path.join(__dirname, '/views/'));
+// app.set('views', path.join(__dirname, '/views/'));
 
 app.engine(
 	'hbs',

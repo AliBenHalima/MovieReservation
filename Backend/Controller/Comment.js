@@ -1,6 +1,7 @@
 const  express = require("express");
 const mongoose = require("mongoose");
 const User = require('../Model/users');
+const test =require('./test.json');
 
 const router = express.Router();
 // const FilmModel = mongoose.model("movies");
@@ -19,6 +20,26 @@ router.get("/list",async (req,res)=>{
       }
   });
 });
+
+
+router.get("/liste",async (req,res)=>{
+const data = test;
+          // console.log(resu);
+ 
+          res.send(data);
+   
+});
+const fetch = require("node-fetch");
+router.get("/listee",async (req,res)=>{
+  const data= await fetch('http://localhost:3000/comments/liste');
+  const resu = await data.text();
+
+          console.log(resu);
+ 
+          res.send(resu);
+   
+});
+
 
 router.get("/:id",async (req,res)=>{
   // console.log( req.userData.userId);
