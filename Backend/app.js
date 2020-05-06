@@ -9,6 +9,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const upload = require('./routes/upload');
+const similarity = require('./Controller/Similarity.js')
 const app = express();
 
 
@@ -44,6 +45,7 @@ app.get('/', (req, res) => {
 });
 
 const auth = require('./routes/auth');
+app.use("/similarity",similarity);
 app.use(cors(),auth);
 
 app.use("/users", UserController);
@@ -51,6 +53,7 @@ app.use("/mail", mailController);
 app.use("/films", filmController);
 app.use("/Comments", CommentController);
 app.use("/reviews", reviewController);
+
 
 
 
