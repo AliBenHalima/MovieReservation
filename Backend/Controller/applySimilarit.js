@@ -10,7 +10,7 @@ const review = require('../Model/review');
 const fetch = require('node-fetch');
 var ObjectId = require('mongodb').ObjectId; 
 const router = express.Router();
-
+var finalList;
 
 
 
@@ -31,14 +31,14 @@ const router = express.Router();
 
 async function last(){
     var listRatings=[];
-    var users;
+    
     var response = await fetch('http://localhost:3000/similarity/listComments');
     var listComments = await response.json();
-    console.log(listComments);
+    // console.log(listComments);
 
     var response2 = await fetch('http://localhost:3000/similarity/listRatings');
      listRatings = await response2.json();
-    console.log(listRatings);
+    // console.log(listRatings);
 
     async function please(){
        
@@ -72,30 +72,45 @@ async function last(){
             }
        }
     });
-    users=listComments;
+    finalList=listComments;
    
-   return {data:users};
+   return finalList;
     }
-    please();
-console.log("here is final list ");
-
-    console.log({data:users});
+    please().then((res)=>{
+       
+         
+        for (var i = 0; i < finalList.length; i++) {
+                
+            var name = finalList[i].name;
+        
+            users[name] = finalList[i];
+            
+        }
+        // console.log( users["SRO"]);
+        euclideanSimilarity();
+        // console.log("here is final list ");
+        
+            // console.log({data:users});
+    });
+   
 }
 last();
-
 var users = {};
 
-for (var i = 0; i < users.length; i++) {
-  var name = users[i].name;
- 
-  users[name] = users[i];
-}
 
 function euclideanSimilarity() {
     var name1 = "SRO";
-    var name2 = "jihed";
-
+    
+    finalList.forEach(element=>{
+        var name2=element.name;
+        
     var ratings1 = users[name1];
+    console.log("hi");
+    // console.log( users["SRO"]);
+
+    // console.log(users);
+
+
     var ratings2 = users[name2];
 
     var titles = Object.keys(ratings1);
@@ -113,13 +128,17 @@ function euclideanSimilarity() {
         sumSquares += diff * diff;
       }
     }
-    var d = sqrt(sumSquares);
+    var d = Math.sqrt(sumSquares);
 
     var similarity = 1 / (1 + d);
    console.log("Similarity is");
    console.log(similarity);
+
+    });
+    // var name2 = "jihed";
+
   }
-  euclideanSimilarity();
+
 
 
 
