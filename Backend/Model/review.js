@@ -7,7 +7,8 @@ const reviewSchema = new mongoose.Schema({
     ReviewRating: { type: Number, required: true},
     createdBy: { type: String },
     createdAt: { type: Date, default: Date.now() },
-    PostedFor :{type: mongoose.Schema.Types.ObjectId,ref:'movies', required: true } // poster for which movie
+    PostedFor :{type: mongoose.Schema.Types.ObjectId,ref:'movies', required: true }, // poster for which movie
+    movieName:{ type: String },
   });
   
   // Export Module/Schema
