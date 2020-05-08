@@ -1,0 +1,39 @@
+<app-header></app-header>
+<section class="home">
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="nav_upload">
+                <h2 class="content__title">Reserve Movie : {{movie.Status}}</h2>
+            </div>
+            <form (submit)="onSubmit(form)"  #form="ngForm" action="/" class="sign__form">
+                <div class="top">
+                    <div class="left">
+                        <div class="sign__group">
+                            <input ngModel name="name" class="sign__input" type="text" placeholder="Name" required>
+                            <input ngModel name="lastname" class="sign__input" type="text" placeholder="Lastname" required>
+                            <br><br>
+                            <input ngModel name="phone" class="sign__input" type="text" placeholder="Phone" required>
+                            <br><br>
+                            <input ngModel name="nbPlaces" class="sign__input" type="text" placeholder="Number of places" required>
+                            <br><br>
+                            <select ngModel class="sign__input" name="date" id="" required>
+                                <option value="" disabled selected>Date</option>
+                                <option *ngFor="let booking of bookings" value={{booking.StartTime}} >{{booking.StartTime}}</option>
+
+
+                            </select>
+                            <br/><br/>
+                            
+                            <button type="submit"  class="header__sign-in" >
+								<i class="icon ion-ios-log-in"></i>
+								<span>Reserve</span>
+							</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>

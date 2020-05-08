@@ -1,5 +1,6 @@
 import { MailComponent } from './mail/mail.component';
 import { UserComponent } from './crudUser/crudUser.component';
+import { ReserveComponent } from './reserve/reserve.component';
 
 import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
 import { PaymentsComponent } from './admin-dashboard/payments/payments.component';
@@ -44,6 +45,7 @@ import { DeleteReviewComponent } from './delete-review/delete-review.component';
   {path: "AdminDashboard/users/:id", component: CurrentUserComponent,canActivate:[AuthGuard]},
   {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
   {path: "reservation", component: ReservationComponent},
+  {path: "reserve/:name", component: ReserveComponent},
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
   {path: "Comment/edit/:id", component: EditReviewsComponent},
   {path: "Comment/delete-review/:id", component: DeleteReviewComponent},

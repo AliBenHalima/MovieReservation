@@ -44,6 +44,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
 import { DeleteReviewComponent } from './delete-review/delete-review.component';
+import { ReserveComponent } from './reserve/reserve.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { DeleteReviewComponent } from './delete-review/delete-review.component';
     AfficheMovieHomeMainComponent,
     MovieReviewComponent,
     EditReviewsComponent,
-    DeleteReviewComponent
+    DeleteReviewComponent,
+    ReserveComponent
 
   ],
   imports: [

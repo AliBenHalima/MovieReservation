@@ -44,7 +44,7 @@ export class MovieDetailsComponent implements OnInit {
     // });
 
     this._route.paramMap.subscribe((params: ParamMap) => {
-  this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
+    this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
     console.log(res);
     this.movie = res.data;
     this.movieId=res.data._id;
