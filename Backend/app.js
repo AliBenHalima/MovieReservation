@@ -9,7 +9,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const upload = require('./routes/upload');
-const similarity = require('./Controller/Similarity.js')
+const similarity = require('./Controller/Similarity.js');
+var reservationController = require('./Controller/reservationController.js')
 const app = express();
 
 
@@ -53,7 +54,7 @@ app.use("/mail", mailController);
 app.use("/films", filmController);
 app.use("/Comments", CommentController);
 app.use("/reviews", reviewController);
-
+app.use("/reservation", reservationController);
 
 
 

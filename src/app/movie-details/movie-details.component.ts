@@ -1,3 +1,4 @@
+import { ReservationService } from './../services/reservation.service';
 import { UserService } from './../admin-dashboard/shared/crudUser.service';
 import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,11 +24,13 @@ export class MovieDetailsComponent implements OnInit {
   ReviewsList;
   rating ; 
   CurrentComment;
+  RecommandedMovies=[];
   
   
   
   constructor(private apiService: UserApiService ,
-    private _route: ActivatedRoute,public UserApiService: UserApiService,public blogservice:BlogService) { }
+    private _route: ActivatedRoute,public UserApiService: UserApiService,public blogservice:BlogService,
+    public reservationService:ReservationService) { }
 
   ngOnInit(): void {
 
@@ -58,6 +61,33 @@ this.getAllComments();
 this.getAllReviews();
 this.AddComment();
 this.AddReview();
+
+//get movies reserved by that username
+this._route.paramMap.subscribe((params: ParamMap) => {
+  this.reservationService.getMoviesReservedByUser(this.username).subscribe((res: any) => {
+    console.log("Similarity");
+    console.log(res);
+    res.data.forEach(element => {
+      this.apiService.getMovieByName(element.film).subscribe((res: any) => {
+        this.RecommandedMovies.push(res.data);
+        console.log("SimilaRecommanded array ");
+        console.log(this.RecommandedMovies);
+        console.log(this.RecommandedMovies[0].name);
+    });
+    
+     });
+
+
+
+    // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
+    // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
+  
+});});
+
+
+
+
+
   }
   onClik(comment){
 

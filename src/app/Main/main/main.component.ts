@@ -20,33 +20,33 @@ export class MainComponent implements OnInit {
 		});
 	}
 
-// ML Code
-getListUsers(){
-	this.MLservicesService.getListUsers().subscribe(data=>{
-	  if(!data){
-		console.log("Error");
-	  }else{
+// // ML Code
+// getListUsers(){
+// 	this.MLservicesService.getListUsers().subscribe(data=>{
+// 	  if(!data){
+// 		console.log("Error");
+// 	  }else{
   
-	console.log("showing data ");
+// 	console.log("showing data ");
   
-	  console.log(data.data);
-	  this.CommentsList = data.data ;
-	}
-	});
-  }
-  getListMovies(){
-	this.MLservicesService.getListMovies().subscribe(data=>{
-	  if(!data){
-		console.log("Error");
-	  }else{
+// 	  console.log(data.data);
+// 	  this.CommentsList = data.data ;
+// 	}
+// 	});
+//   }
+//   getListMovies(){
+// 	this.MLservicesService.getListMovies().subscribe(data=>{
+// 	  if(!data){
+// 		console.log("Error");
+// 	  }else{
   
-	console.log("showing data ");
+// 	console.log("showing data ");
   
-	  console.log(data.data);
-	  this.CommentsList = data.data ;
-	}
-	});
-  }
+// 	  console.log(data.data);
+// 	  this.CommentsList = data.data ;
+// 	}
+// 	});
+//   }
 
 
 

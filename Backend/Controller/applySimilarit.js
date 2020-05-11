@@ -28,17 +28,21 @@ var finalList;
    
 // }
 // last();
+var similarity={}; 
+function fan(name1){
+    
 
-async function last(){
+   
+ async function last(){
     var listRatings=[];
     
     var response = await fetch('http://localhost:3000/similarity/listComments');
     var listComments = await response.json();
-    // console.log(listComments);
+    console.log(listComments);
 
     var response2 = await fetch('http://localhost:3000/similarity/listRatings');
      listRatings = await response2.json();
-    // console.log(listRatings);
+    console.log(listRatings);
 
     async function please(){
        
@@ -88,9 +92,22 @@ async function last(){
         }
         // console.log( users["SRO"]);
         euclideanSimilarity();
+        
+        // module.exports.similarity=similarity; 
+        // return  new  Promise(resolve => {
+        //     resolve(similarity);  
+    //   });
+    console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
+    console.log(similarity)
+    
+
+    //     return  new  Promise(resolve => {
+    //         resolve(similarity);  
+    //   });
+
         // console.log("here is final list ");
         
-            // console.log({data:users});
+        //     console.log({data:users});
     });
    
 }
@@ -99,13 +116,13 @@ var users = {};
 
 
 function euclideanSimilarity() {
-    var name1 = "SRO";
+    // var name1 = "SRO";
     
     finalList.forEach(element=>{
         var name2=element.name;
         
     var ratings1 = users[name1];
-    console.log("hi");
+    // console.log("hi");
     // console.log( users["SRO"]);
 
     // console.log(users);
@@ -129,19 +146,33 @@ function euclideanSimilarity() {
       }
     }
     var d = Math.sqrt(sumSquares);
-
-    var similarity = 1 / (1 + d);
+    
+     similarity[name2]=1 / (1 + d);
    console.log("Similarity is");
    console.log(similarity);
+//    return similarity ;
 
     });
     // var name2 = "jihed";
+  
+}
+return similarity;
+}
+    
+module.exports = {
+    fan  
+}
 
-  }
+// module.exports.no =  new Promise(function(resolve){
+  
+    
 
-
-
-
+//         resolve(similarity);
+    
+// });
+    //         resolve(similarity);  
+    //   }); ;
+// exports.Calculation=Calculation;
 // (async ()=>{
 //     last();
 //     var result= await please();
@@ -149,23 +180,5 @@ function euclideanSimilarity() {
 //     console.log(listRatings);
 // })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports=router;
+// }
+// module.exports=router;

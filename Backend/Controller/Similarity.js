@@ -81,7 +81,7 @@ router.get("/listMovies", (req,res)=>{
         console.log("2nd users");
         for(let i =0;i<users_names.length ;i++){
             for(let j =0;j<movies_names.length ;j++)
-            users_names[i][movies_names[j]]=null;
+            users_names[i][movies_names[j]]=0;
         }
 
         

@@ -13,6 +13,8 @@ export class AfficheMovieFootComponent implements OnInit {
 
 
   @Input() movie : Movie ;
+  @Input() recomMovie ;
+
   _movie;
   // @Output() MessageEmit = new EventEmitter<string>();
   
