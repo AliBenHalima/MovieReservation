@@ -236,49 +236,49 @@ var users = {};
 
  
 
-async function last(){
-    var x,y;
-    var response = await fetch('http://localhost:3000/similarity/listComments');
-    var listComments = await response.json();
-    console.log(listComments);
+// async function last(){
+//     var x,y;
+//     var response = await fetch('http://localhost:3000/similarity/listComments');
+//     var listComments = await response.json();
+//     console.log(listComments);
 
-    var response2 = await fetch('http://localhost:3000/similarity/listRatings');
-    var listRatings = await response2.json();
-    console.log(listRatings);
+//     var response2 = await fetch('http://localhost:3000/similarity/listRatings');
+//     var listRatings = await response2.json();
+//     console.log(listRatings);
 
-    async function please(){
-        var finallist;
+//     async function please(){
+//         var finallist;
 
     
-    listRatings.forEach( element=>{
+//     listRatings.forEach( element=>{
 
-        for(let i =0;i<listComments.length ;i++){
-                if(element["createdBy"]==listComments[i]["name"]){
-                    console.log("first condition works");
-                    for(let k =1;k<users_names[i].length ;k++){
-                        if(listComments[i][k]==element["movieName"]){
-                            console.log("2nd condition works");
-                            listComments[i][k]=element["ReviewRating"];
-                            console.log("hellooooo");
-                            console.log( listComments[i][k]);
-                        }else{
-                            console.log("2nd condition doesnt works");
-                        }
+//         for(let i =0;i<listComments.length ;i++){
+//                 if(element["createdBy"]==listComments[i]["name"]){
+//                     console.log("first condition works");
+//                     for(let k =1;k<users_names[i].length ;k++){
+//                         if(listComments[i][k]==element["movieName"]){
+//                             console.log("2nd condition works");
+//                             listComments[i][k]=element["ReviewRating"];
+//                             console.log("hellooooo");
+//                             console.log( listComments[i][k]);
+//                         }else{
+//                             console.log("2nd condition doesnt works");
+//                         }
                         
-                }
+//                 }
                 
-            }
-       }
-    });
-   return finallist=listComments;
-    }
+//             }
+//        }
+//     });
+//    return finallist=listComments;
+//     }
     
-}
-(async ()=>{
-    last();
-    var result= await please();
-    var listRatings = await result.json();
-})();
+// }
+// (async ()=>{
+//     last();
+//     var result= await please();
+//     var listRatings = await result.json();
+// })();
 
 
 
