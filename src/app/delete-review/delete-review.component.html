@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="d-flex justify-content-center pt-5 ">
+
+
+<!-- Custom Success/Error Message -->
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
+<!-- Modal Confirmation Window -->
+<div class="col-md-6" *ngIf="foundBlog">
+  <!-- Model Outer Layer -->
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Delete Comment</h2>
+      <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ Comment.title }}</h1>
+      <strong>Posted by: </strong> {{ Comment.createdBy }}
+      <br />
+      <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
+      <p class="card-text">Are you sure you would like to delete this Comment?</p>
+      <div class="d-flex justify-content-end">
+      <button type="button" name="button" class="btn btn-success" (click)="deleteComment()">Yes</button>
+      <!-- No Button -->
+      <a (click)="goBack()"><button  type="button" name="button" class="btn btn-danger">No</button></a>
+    </div>
+    </div>
+  </div>
+
+
+
+  <br />
+
+
+</div>
+</div>
+</body>
+</html>

@@ -21,6 +21,9 @@ import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MoviesComponent } from "./movies/movies.component";
 import {AuthGuard} from './sign-up/auth.guard';
+import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
+import { DeleteReviewComponent } from './delete-review/delete-review.component';
+
 import {RoleGuard} from './sign-up/auth.guard';
 import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
 
@@ -45,6 +48,8 @@ import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.compon
   {path: "reservation", component: ReservationComponent,canActivate:[RoleGuard]},
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
   {path:"AdminDashboard/analytics",component:AnalyticsComponent},
+  {path: "Comment/edit/:id", component: EditReviewsComponent},
+  {path: "Comment/delete-review/:id", component: DeleteReviewComponent},
   {path: "**", component: NotFoundComponent}
 
 

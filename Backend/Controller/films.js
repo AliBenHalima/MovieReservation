@@ -55,4 +55,41 @@ router.get("/image/:file",async (req,res)=>{
 });
 // res.send({ data: docs })
 
+router.put('/UpdateMovieRating/:id', (req, res) => {
+    // Check if id was provided
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No movie id provided' }); // Return error message
+    } else {
+      // Check if id exists in database
+      FilmModel.findOne({ _id: req.params.id }, (err, movie) => {
+        // Check if id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid movie id' }); // Return error message
+        } else {
+          // Check if id was found in the database
+          if (!movie) {
+            res.json({ success: false, message: 'movie id was not found.' }); // Return error message
+          }
+          else {
+             // Save latest blog title
+            movie.rating = req.body.rating; // Save latest body
+            movie.save((err) => {
+              if (err) {
+                if (err.errors) {
+                  res.json({ success: false, message: 'Please ensure form is filled out properly' });
+                } else {
+                  res.json({ success: false, message: err }); // Return error message
+                }
+              } else {
+                res.json({ success: true, message: 'movie Updated!' }); // Return success message
+              }
+            });
+          }
+    }
+  });
+} });
+
+
+
+
 module.exports=router;

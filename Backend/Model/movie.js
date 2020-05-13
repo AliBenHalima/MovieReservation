@@ -10,7 +10,8 @@ const movieSchema = new mongoose.Schema({
     prodName: { type: String, required: true },
     category: { type: String, required: true },
     file: { type: String, required: true },
-    creator :{type: mongoose.Schema.Types.ObjectId,ref:'users', required: true }
+    creator :{type: mongoose.Schema.Types.ObjectId,ref:'users', required: true },
+    ReviewID :{type: mongoose.Schema.Types.ObjectId,ref:'reviews' }
 });
 
 module.exports = mongoose.model('movies', movieSchema);

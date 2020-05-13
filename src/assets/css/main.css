@@ -2778,6 +2778,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 	background-color: #2b2b31;
 	font-family: 'Open Sans', sans-serif;
 }
+
 .form__btn {
 	display: flex;
 	justify-content: center;

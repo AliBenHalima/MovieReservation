@@ -26,9 +26,12 @@ export class BookingService {
     return this.HttpClient.get<{reservations:Array<reservationEvent>}>('http://localhost:3000/api/getBookings');
   }
 
-  Add_changes(data:object)
+  Add_changes(data:object,salle:any)
   {
-    return this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
+    // return this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
+    console.log('------------------');
+    console.log(salle);
+    return null
 
   }
 
@@ -38,20 +41,8 @@ export class BookingService {
 
     this.HttpClient.get('http://localhost:3000/api/getBookings')
     .subscribe((resFromBE:{reservations:Array<reservationEvent>})=>{
-      //console.log(resFromBE.reservations);
-
-     // console.log(resFromBE.reservations[0].IsReadonly);
-     //this.books = resFromBE.reservations;
 
      this.events = resFromBE.reservations;
-
-     this.eventsListener.next([  {
-      Subject: 'Paris2',
-      StartTime: new Date(2020, 3, 2, 9, 30),
-      EndTime: new Date(2020, 3, 2, 10, 0),
-      IsReadonly: true,
-      salle:"ssqd"
-    }]);
 
      });
 

@@ -14,6 +14,7 @@ declare var M: any;
 })
 export class UserComponent implements OnInit {
 
+  
   image = null;
 
   constructor(public UserService: UserService) { }
@@ -109,4 +110,6 @@ export class UserComponent implements OnInit {
     }
   }
 
+
+  
 }

@@ -10,3 +10,9 @@ form button{
 .form-check-input{
     color: #DF515C !important  ;
 }
+.breadcrumb a:hover {
+    color: #ff55a5 !important;
+  }
+  .nav-item a:hover {
+    color: #ff55a5 !important;
+  }

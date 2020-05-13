@@ -41,11 +41,18 @@ import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-hom
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
+import { DeleteReviewComponent } from './delete-review/delete-review.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ChartsModule } from 'ng2-charts';
 import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
+import { ToastModule } from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 
 @NgModule({
@@ -76,7 +83,10 @@ import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.compon
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
     AfficheMovieHomeMainComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    MovieReviewComponent,
+    EditReviewsComponent,
+    DeleteReviewComponent
 
   ],
   imports: [
@@ -93,7 +103,10 @@ import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.compon
     MatDividerModule,
     MatListModule,
     MatSlideToggleModule,
-    ChartsModule
+    ChartsModule,
+    ToastModule,
+    ButtonModule,
+    DropdownModule
 
 
   ],
