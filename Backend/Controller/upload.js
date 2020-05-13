@@ -1,4 +1,5 @@
 const Movie = require('../Model/movie');
+const fs = require('fs');
 
 module.exports.getMovies = (req, res, next) => {
 	Movie.find().then((movies) => {
@@ -13,6 +14,13 @@ module.exports.getMoviesByUser = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
+	Movie.findById(req.params.id).then((movie) => {
+		fs.unlink('../src/assets/img/covers/' + movie.file, (err) => {
+			if (err) {
+				console.error(err);
+			}
+		});
+	});
 	Movie.deleteOne({ _id: req.params.id }, function(err, movie) {
 		if (err) {
 			res.send(err);
@@ -23,7 +31,7 @@ module.exports.deleteMovie = (req, res, next) => {
 };
 
 module.exports.updateMovie = (req, res, next) => {
-	console.log(req.body.file);
+	console.log(req.file);
 	Movie.findOne({ _id: req.body.id }).then((movie) => {
 		if (movie) {
 			if (req.body.name) movie.name = req.body.name;
@@ -32,7 +40,14 @@ module.exports.updateMovie = (req, res, next) => {
 			if (req.body.duration) movie.duration = req.body.duration;
 			if (req.body.prodName) movie.prodName = req.body.prodName;
 			if (req.body.type) movie.type = req.body.type;
-			// if (req.body.file.filename) movie.file = req.body.file.filename;
+			if (req.file.filename) {
+				movie.file = req.file.filename;
+				fs.unlink('../src/assets/img/covers/' + movie.file, (err) => {
+					if (err) {
+						console.error(err);
+					}
+				});
+			}
 			movie.save();
 		}
 	});
