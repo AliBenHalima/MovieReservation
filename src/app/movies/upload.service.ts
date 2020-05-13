@@ -24,4 +24,8 @@ export class UploadService {
 	deleteMovie(id: any) {
 		return this.HttpClient.delete('http://localhost:3000/api/deleteMovie/' + id);
 	}
+
+	updateMovie(movie: FormData) {
+		return this.HttpClient.put('http://localhost:3000/api/updateMovie/', movie).subscribe();
+	}
 }

@@ -22,38 +22,49 @@ module.exports.deleteMovie = (req, res, next) => {
 	});
 };
 
+module.exports.updateMovie = (req, res, next) => {
+	console.log(req.body.file);
+	Movie.findOne({ _id: req.body.id }).then((movie) => {
+		if (movie) {
+			if (req.body.name) movie.name = req.body.name;
+			if (req.body.cat) movie.category = req.body.cat;
+			if (req.body.desc) movie.desc = req.body.desc;
+			if (req.body.duration) movie.duration = req.body.duration;
+			if (req.body.prodName) movie.prodName = req.body.prodName;
+			if (req.body.type) movie.type = req.body.type;
+			// if (req.body.file.filename) movie.file = req.body.file.filename;
+			movie.save();
+		}
+	});
+};
+
 module.exports.upload = (req, res, next) => {
-	//console.log(req.body);
-	if (true) {
-		//console.log("upload");
-		//console.log(req.file);
-		Movie.findOne({ name: req.body.name }).then((movie) => {
-			if (movie) {
-				console.log('movie_exist');
-			} else {
-				console.log(req.userData.userId);
+	Movie.findOne({ name: req.body.name }).then((movie) => {
+		if (movie) {
+			console.log('movie_exist');
+		} else {
+			console.log(req.userData.userId);
 
-				// console.log("enter" + req.body);
-				const movie = new Movie({
-					name: req.body.name,
-					type: req.body.type,
-					desc: req.body.desc,
-					file: req.file.filename,
-					duration: req.body.duration,
-					rating: 0,
-					prodName: req.body.prodName,
-					category: req.body.cat,
-					creator: req.userData.userId
-				});
+			// console.log("enter" + req.body);
+			const movie = new Movie({
+				name: req.body.name,
+				type: req.body.type,
+				desc: req.body.desc,
+				file: req.file.filename,
+				duration: req.body.duration,
+				rating: 0,
+				prodName: req.body.prodName,
+				category: req.body.cat,
+				creator: req.userData.userId
+			});
 
-				//  console.log("movie =" + movie);
+			//  console.log("movie =" + movie);
 
-				movie.save((err, movie) => {
-					if (movie) {
-						//  console.log("ok");
-					} else console.log(err);
-				});
-			}
-		});
-	}
+			movie.save((err, movie) => {
+				if (movie) {
+					//  console.log("ok");
+				} else console.log(err);
+			});
+		}
+	});
 };
