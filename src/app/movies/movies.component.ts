@@ -46,6 +46,7 @@ export class MoviesComponent implements OnInit {
 
 	upload(form: NgForm) {
 		this.hide();
+		this.movies.push(form.value);
 		const data = new FormData();
 		data.append('name', form.value.name);
 		data.append('cat', form.value.cat);
@@ -72,6 +73,8 @@ export class MoviesComponent implements OnInit {
 		if (this.image) {
 			data.append('file', this.image, this.image.name);
 		}
+		console.log(this.image.name);
+
 		this.UploadService.updateMovie(data);
 	}
 }
