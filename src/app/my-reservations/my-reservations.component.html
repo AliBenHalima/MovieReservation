@@ -1,0 +1,40 @@
+<app-header></app-header>
+<section class="content" style="position: relative; top: 150px;">
+	<div class="content__head">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-12">
+					<!-- content title -->
+					<div class="nav_upload">
+                        <h2 class="content__title">My reservations</h2>
+                        <button class="upload" (click)="show()">
+							<span class="upload">Show</span>
+						</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="upload">
+    <div class="close" (click)="hide()">
+		<span class="c c1"></span>
+		<span class="c c2"></span>
+	</div>
+	<div class="right">
+		<ul>
+			<li *ngFor="let rsv of rsvs">
+				<label class="l1" >{{ rsv.film }}</label>
+				<ul>
+					<li><label class="l2" >name : {{ rsv.name }}</label></li>
+					<li><label class="l2" ><li>lastname : {{ rsv.lastname }}</label></li>
+					<li><label class="l2" ><li>phone : {{ rsv.phone }}</label></li>
+					<li><label class="l2" ><li>number of places : {{ rsv.nbPlaces }}</label></li>
+					<li><label class="l2" ><li>date : {{ rsv.date }}</label></li>
+					<li><label class="l2" ><li>room : {{ rsv.salle }}</label></li>
+				</ul>
+			</li>
+		</ul>
+	</div>	
+</div>

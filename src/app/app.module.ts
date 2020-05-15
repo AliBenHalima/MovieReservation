@@ -53,6 +53,9 @@ import { ToastModule } from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {RatingModule} from 'primeng/rating';
+import { ReserveComponent } from './reserve/reserve.component';
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
+
 
 @NgModule({
   declarations: [
@@ -87,6 +90,8 @@ import {RatingModule} from 'primeng/rating';
     EditReviewsComponent,
     DeleteReviewComponent,
 
+    ReserveComponent,
+    MyReservationsComponent
 
   ],
   imports: [
