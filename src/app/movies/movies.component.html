@@ -56,39 +56,37 @@
 		<div class="d">
 			<div class="input_d">
 				<label for="">Name</label>
-				<input ngModel name="name" class="inp" type="text" placeholder="Name" required>
+				<input ngModel name="name" class="inp" type="text" placeholder="Name"  required>
 			</div>
 
 			<div class="input_d">
 				<label for="">Duration</label>
-				<input ngModel name="duration" class="inp" type="text" placeholder="Duration" required>
+				<input ngModel name="duration" class="inp" type="text" placeholder="Duration"  required>
 			</div>
 		</div>
 
 		<div class="d">
 			<div class="input_d">
 				<label for="">Category</label>
-				<input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
+				<input ngModel name="cat" class="inp" type="text" placeholder="Type"  required>
 			</div>
 			<div class="input_d">
 				<label for="">Producer Name</label>
-				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name" required>
+				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name"  required>
 
 			</div>
 		</div>
 
-
-
 		<div class="d">
 			<div class="input_d">
 				<label for="">Description</label>
-				<input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
+				<input ngModel name="desc" class="inp" type="text" placeholder="Description"  required>
 			</div>
 
 
 			<div class="input_d">
 				<label for="">Type</label>
-				<select ngModel class="inp" name="type" id="" required>
+				<select ngModel class="inp" name="type"  required>
 					<option value="" disabled selected>Type</option>
 					<option value="action">action</option>
 					<option value="comedy">comedy</option>
@@ -120,13 +118,93 @@
 				</div>	
 	
 		</div>
+
+	</form>
+</div>
+
+<!-- **************************update******************* -->
+<div class="update" >
+	<div class="close" (click)="hide_update()">
+		<span class="c c1"></span>
+		<span class="c c2"></span>
+	</div>
+	<form (submit)="update(f)" #f="ngForm" action="/" enctype="multipart/form-data">
+		
+		<div class="d">
+			<div class="input_d">
+				<label for="">Name</label>
+				<input ngModel name="name" class="inp" type="text" placeholder="Name" id="name" required>
+			</div>
+
+			<div class="input_d">
+				<label for="">Duration</label>
+				<input ngModel name="duration" class="inp" type="text" placeholder="Duration" id="duration"  required>
+			</div>
+		</div>
+
+		<div class="d">
+			<div class="input_d">
+				<label for="">Category</label>
+				<input ngModel name="cat" class="inp" type="text" placeholder="Type"  id="category" required>
+			</div>
+			<div class="input_d">
+				<label for="">Producer Name</label>
+				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name"  id="prodName"  required>
+
+			</div>
+		</div>
+
+		<div class="d">
+			<div class="input_d">
+				<label for="">Description</label>
+				<input ngModel name="desc" class="inp" type="text" placeholder="Description" id="desc" required>
+			</div>
+
+
+			<div class="input_d">
+				<label for="">Type</label>
+				<select ngModel class="inp" name="type" id="type" required>
+					<option value="" disabled selected>Type</option>
+					<option value="action">action</option>
+					<option value="comedy">comedy</option>
+					<option value="romantic">romantic</option>
+					<option value="rom-coms">rom-coms</option>
+					<option value="adventure">adventure</option>
+					<option value="musicals">musicals</option>
+					<option value="dramas">dramas</option>
+					<option value="historical">historical</option>
+					<option value="real life">real life</option>
+					<option value="war">war</option>
+					<option value="horror">horror</option>
+					<option value="science fiction">science fiction</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="d">
+
+				<div class="input_d">
+					<label for="">Image</label>
+					<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
+				</div>
+
+				<div class="sub">
+					<button class="upload1" type="submit">
+						<span class="upload">update</span>
+					</button>
+				</div>	
+	
+		</div>
 	</form>
 </div>
 
 
+
+
+
 <div class="your_movies">
 	<div class="col-6 col-sm-12 col-lg-6"  *ngFor="let movie of movies" id="{{movie._id}}">
-		<app-affiche-movie-home-main [movie]=movie [del]=true> </app-affiche-movie-home-main>
+		<app-affiche-movie-home-main (event)="id=$event" [movie]=movie [del]=true> </app-affiche-movie-home-main>
 	</div>
 	
 </div>

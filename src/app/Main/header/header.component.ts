@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import {Subject} from 'rxjs'
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { BlogService } from 'src/app/services/blog.service';
+import { UploadService } from '../../movies/upload.service';
 
 @Component({
   selector: 'app-header',
@@ -20,17 +21,41 @@ import { BlogService } from 'src/app/services/blog.service';
 export class HeaderComponent implements OnInit {
   isAuthenticated = this.authService.auth;
   private authListenerSub : Subscription;
-  
+
+  movies;
+
   private UsernameListener = new Subject<String>();
 
-  constructor(private router : Router,private authService : AuthService,private blogservice:BlogService) {
+  constructor(private router : Router,private authService : AuthService,private blogservice:BlogService,public UploadService:UploadService) {
 
   }
+
+  active:boolean= false;
 
   ngOnInit(): void {
     this.authListenerSub = this.authService.get_authStatusListener().subscribe(isAuthenticated=>{
       this.isAuthenticated=isAuthenticated;
-      
+
+      this.UploadService.getMoviesByUser().subscribe((res) => {
+        this.active = true;
+        console.log(this.active);
+        this.movies = res;
+        console.log(this.movies);
+
+        // this.movies.forEach(movie => {
+
+        // });
+        this.data.push(  {
+          id: 1,
+          name: this.movies[0].name
+        });
+
+
+
+
+      });
+
+
 
     });
 
@@ -52,9 +77,9 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     window.location.reload();
     // this.UsernameListener.next('');
-   
+
   }
- 
+
 
   ngOnDestroy()
   {
@@ -66,19 +91,18 @@ export class HeaderComponent implements OnInit {
 
 keyword = 'name';
 data = [
-   {
-     id: 1,
-     name: 'Usa'
-   },
-   {
-     id: 2,
-     name: 'England'
-   },
-   {
-    id: 3,
-    name: 'usaam'
-  }
-];
+  {
+    id: 1,
+    name: 'usa'
+  },
+  {
+    id: 2,
+    name: 'England'
+  },
+  {
+   id: 3,
+   name: 'usaam'
+ }];
 
 
 selectEvent(item) {

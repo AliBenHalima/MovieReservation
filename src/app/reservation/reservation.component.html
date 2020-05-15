@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+
 <body *ngIf="actionn" class="bk">
 
   <app-header></app-header>
@@ -9,9 +10,10 @@
 
 
 
-    <div class="schedule" *ngFor="let num of tab" >
-
-    <ejs-schedule class="aff" width='70%' height='500px'[eventSettings]='eventSettings' *ngIf="num">
+    <div class="schedule">
+      <ejs-schedule class="aff" width='70%' height='500px' [eventSettings]='eventSettings' *ngIf="tab[1]">
+      </ejs-schedule>
+    <ejs-schedule class="aff" width='70%' height='500px'[eventSettings]='eventSettings' *ngIf="tab[0]">
       <ng-template #editorTemplate let-data >
         <table class="custom-event-editor" width="100%" cellpadding="5">
             <tbody>
@@ -54,7 +56,7 @@
 
   </div>
 
-  <div class="navi">
+  <div class="navi" *ngIf="!change_hall">
     <p-dropdown (onChange)="select_salle()" [options]="halls" [(ngModel)]="selectedhall"></p-dropdown>
   </div>
 
@@ -64,7 +66,8 @@
 </div>
 
 
-<button class="btn btn-danger bttn" (click)="cliquer()">Save changes</button>
+<button *ngIf="!change_hall" class="btn btn-danger bttn" (click)="cliquer()">Save changes</button>
+
 
 
 </div>

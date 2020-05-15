@@ -52,8 +52,7 @@ import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.compon
 import { ToastModule } from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
-
-
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -86,7 +85,8 @@ import {DropdownModule} from 'primeng/dropdown';
     AnalyticsComponent,
     MovieReviewComponent,
     EditReviewsComponent,
-    DeleteReviewComponent
+    DeleteReviewComponent,
+
 
   ],
   imports: [
@@ -106,7 +106,8 @@ import {DropdownModule} from 'primeng/dropdown';
     ChartsModule,
     ToastModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    RatingModule
 
 
   ],

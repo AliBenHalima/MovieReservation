@@ -21,7 +21,7 @@ export class ReservationComponent implements OnInit {
 
   selectedhall: hall;
 
-  tab= [true,false];
+  tab:boolean[] = [true,false];
 
   change_hall:boolean=false;
 
@@ -43,35 +43,46 @@ public eventSettings: EventSettingsModel ={
   dataSource:null
 };
 
+  load()
+  {
+
+    let hall:any = '1';
+
+    if(this.selectedhall)
+    hall = this.selectedhall;
+
+
+    this.bookingService.getEvents(hall).subscribe((resFromBE:{reservations:Array<reservationEvent>}) => {
+      this.tab= [true,false];
+      this.actionn=true;
+
+      this.eventSettings.dataSource = resFromBE.reservations;
+
+      this.change_hall = false;
+      console.log(this.eventSettings.dataSource);
+    });
+
+
+    this.moviesService.getMovies().subscribe((movies:Array<any>)=>{
+      console.log(movies);
+      movies.forEach(item=>{
+        this.StatusData.push({StatusText:item.name});
+      });
+
+      // this.StatusData=[{StatusText:'nono'}];
+
+    });
+
+    this.halls = [
+      {label:'Hall 1', value: '1'},
+      {label:'Hall 2', value:'2'},
+      {label:'Hall 3', value:'3'},
+      {label:'Hall 4', value:'4'},
+      {label:'Hall 5', value:'5'}];
+  }
 
   ngOnInit(): void {
-
-      this.bookingService.getEvents().subscribe((resFromBE:{reservations:Array<reservationEvent>}) => {
-        this.actionn=true;
-
-        this.eventSettings.dataSource = resFromBE.reservations;
-
-        console.log(this.eventSettings.dataSource);
-      });
-
-
-      this.moviesService.getMovies().subscribe((movies:Array<any>)=>{
-        console.log(movies);
-        movies.forEach(item=>{
-          this.StatusData.push({StatusText:item.name});
-        });
-
-        // this.StatusData=[{StatusText:'nono'}];
-
-      });
-
-      this.halls = [
-        {label:'Hall 1', value: '1'},
-        {label:'Hall 2', value:'2'},
-        {label:'Hall 3', value:'3'},
-        {label:'Hall 4', value:'4'},
-        {label:'Hall 5', value:'5'}
-    ];
+    this.load();
   }
 
   public dateParser(data:string)
@@ -109,15 +120,15 @@ cliquer()
 
      });
   }
-
-  //console.log(this.eventSettings.dataSource);
-
   }
 
   select_salle()
 {
   this.change_hall = true;
   console.log(this.selectedhall);
+  this.eventSettings.dataSource = [];
+  this.tab = [false,true];
+  this.load();
 }
 
 

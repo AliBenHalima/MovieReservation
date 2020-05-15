@@ -51,7 +51,8 @@ span.upload {
 	user-select: none;
 }
 
-div.upload {
+div.upload,
+div.update {
 	position: fixed;
 	left: 50%;
 	top: 60%;
@@ -160,29 +161,10 @@ input[type="file"] {
 	flex-wrap: wrap;
 }
 
-.col-6 {
-	margin: 5px;
-	padding: 10px 10px;
-	box-shadow: 0 5px 25px 0 #00000070;
-	max-width: 48%;
-}
-
 .card__title {
 	margin: 5px 0 !important;
 }
 
-.card,
-.card--list {
-	height: 100%;
-	margin-bottom: 0;
-}
-
 .card__content {
 	height: fit-content !important;
-}
-
-.card__cover,
-.card__cover img,
-.row {
-	height: 100% !important;
 }

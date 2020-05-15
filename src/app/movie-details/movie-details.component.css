@@ -1,54 +1,53 @@
-.form-input{
-    border: none;
-    height: 20px;
-    position: relative;
-    color: #fff;
-    font-size: 15px;
-    width: 100%;
-    border-bottom: 3px;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    letter-spacing: 0.2px;
-    resize: none;
-    background-color: #2b2b31;
-    font-family: 'Open Sans', sans-serif;
-  }
-  .form__input_rating{
-    border: none;
-    height: 30px;
-    position: relative;
-    color: #fff;
-    font-size: 15px;
-    width: 100%;
-    border-bottom: 3px;
-    padding: 15px 20px;
-    margin-top: 10px;
-    letter-spacing: 0.2px;
-    resize: none;
-    background-color: #2b2b31;
-    font-family: 'Open Sans', sans-serif;
-  }
-  .buttons{
-      display : flex ;
-      justify-content: space-between;
-  }
+.form-input {
+	border: none;
+	height: 20px;
+	position: relative;
+	color: #fff;
+	font-size: 15px;
+	width: 100%;
+	border-bottom: 3px;
+	padding: 15px 20px;
+	margin-bottom: 10px;
+	letter-spacing: 0.2px;
+	resize: none;
+	background-color: #2b2b31;
+	font-family: 'Open Sans', sans-serif;
+}
+.form__input_rating {
+	border: none;
+	height: 30px;
+	position: relative;
+	color: #fff;
+	font-size: 15px;
+	width: 100%;
+	border-bottom: 3px;
+	padding: 15px 20px;
+	margin-top: 10px;
+	letter-spacing: 0.2px;
+	resize: none;
+	background-color: #2b2b31;
+	font-family: 'Open Sans', sans-serif;
+}
+.buttons {
+	display: flex;
+	justify-content: space-between;
+}
 
-  .star-fg .glyphicon-heart {
-    color: red !important;
- }
- .card{
-  background-color: transparent !important;
-  border: none !important;
+.star-fg .glyphicon-heart {
+	color: red !important;
+}
+.card {
+	background-color: transparent !important;
+	border: none !important;
 }
 /* .active {
   background-color: transparent !important;
  color: white !important;
 } */
 
-
- .nav-item .active {
-  background-color: transparent !important;
- color: white !important;
+.nav-item .active {
+	background-color: transparent !important;
+	color: white !important;
 }
 .details__title {
 	text-transform: capitalize;

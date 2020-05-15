@@ -21,17 +21,22 @@ export class BookingService {
     return this.eventsListener.asObservable();
   }
 
-  getEvents()
+  getEvents(hall:any)
   {
-    return this.HttpClient.get<{reservations:Array<reservationEvent>}>('http://localhost:3000/api/getBookings');
+    return this.HttpClient.get<{reservations:Array<reservationEvent>}>('http://localhost:3000/api/getBookings/'+hall);
   }
 
-  Add_changes(data:object,salle:any)
+  Add_changes(data:object,hall:any)
   {
-    // return this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
-    console.log('------------------');
-    console.log(salle);
-    return null
+    if(!hall)
+      hall = '1';
+
+    return this.HttpClient.post('http://localhost:3000/api/saveChanges',{reservations:data,salle:hall});
+  }
+
+
+  getEventsByHall()
+  {
 
   }
 

@@ -10,6 +10,7 @@ import { BlogService } from '../services/blog.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
+  val: number;
 
   movie;
   loadingComment=false;
