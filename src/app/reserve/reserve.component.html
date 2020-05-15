@@ -10,7 +10,8 @@
                 <div class="top">
                     <div class="left">
                         <div class="sign__group">
-                            <input ngModel name="name" class="sign__input" type="text" placeholder="Name" required>
+                            <input required minlength="6" maxlength="6" ngModel name="name" class="sign__input" type="text" placeholder="Name" required>
+                            <br><br>
                             <input ngModel name="lastname" class="sign__input" type="text" placeholder="Lastname" required>
                             <br><br>
                             <input ngModel name="phone" class="sign__input" type="text" placeholder="Phone" required>

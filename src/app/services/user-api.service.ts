@@ -68,11 +68,11 @@ export class UserApiService {
       return this.http.get<Booking[]>('http://localhost:3000/bookings/dates/' + name);
     } 
     
-    getObjectForRoom(film:string,date){
+    getObjectForRoom(film,date){
       console.log(film+' '+date);
       return this.http.post<any>('http://localhost:3000/bookings/getObjectForRoom',{film:film,date:date});
   }
-
+  
   }
 
     

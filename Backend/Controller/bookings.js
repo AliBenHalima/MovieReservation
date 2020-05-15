@@ -31,7 +31,7 @@ router.get("/dates/:name",async (req,res)=>{
 
 router.post("/getObjectForRoom",async (req,res)=>{
     console.log(req.body.film+req.body.date);
-    BookingModel.find({ Status: req.body.film, StartTime:req.body.date },((err,docs)=>{
+    BookingModel.find({ Status: req.body.film },((err,docs)=>{
         if(!err){
             res.send({ data: docs })
         }
@@ -40,5 +40,6 @@ router.post("/getObjectForRoom",async (req,res)=>{
         }
     }));
 });
+
 
 module.exports=router;

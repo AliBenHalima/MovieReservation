@@ -1,3 +1,4 @@
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 import { MailComponent } from './mail/mail.component';
 import { UserComponent } from './crudUser/crudUser.component';
 import { ReserveComponent } from './reserve/reserve.component';
@@ -49,6 +50,7 @@ import { DeleteReviewComponent } from './delete-review/delete-review.component';
   { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
   {path: "Comment/edit/:id", component: EditReviewsComponent},
   {path: "Comment/delete-review/:id", component: DeleteReviewComponent},
+  {path: "myreservations", component: MyReservationsComponent},
   {path: "**", component: NotFoundComponent}
 
 

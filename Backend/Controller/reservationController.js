@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const router = express.Router();
 
 const ReservationModel = require('../Model/reservation');
-const  Reservation = require('../Model/reservation');
+const Reservation = require('../Model/reservation');
+const SalleModel = require('../Model/salle');
 
 router.post('/newReservation',async (req,res)=>{
     var rsv = new Reservation({
@@ -50,6 +51,33 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
             res.send("Error")
         }
     }))
+}
+)
+
+router.get('/getSalle/:num',async (req,res)=>{
+  SalleModel.findOne({num: req.params.num},((err,docs)=>{
+    if(!err){
+      res.send({ data: docs })
+  }
+  else{
+      res.send("Error")
+  }
+  }))
+}  
+)
+
+router.post('/reduceNbPlaces',async (req,res)=>{
+  console.log(req.body.num,req.body.nb);
+  var myquery= { num: req.body.num };
+  var newvalues= {$inc: {placesdispo:-req.body.nb} }
+  SalleModel.updateOne(myquery,newvalues, function(err, res) {
+    if(!err){
+      console.log("salle updated");
+    }
+    else{
+      res.send("Error")
+    }
+  })
 }
 )
 

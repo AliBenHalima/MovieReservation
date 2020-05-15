@@ -45,6 +45,7 @@ import { MovieReviewComponent } from './movie-review/movie-review.component';
 import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
 import { DeleteReviewComponent } from './delete-review/delete-review.component';
 import { ReserveComponent } from './reserve/reserve.component';
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { ReserveComponent } from './reserve/reserve.component';
     MovieReviewComponent,
     EditReviewsComponent,
     DeleteReviewComponent,
-    ReserveComponent
+    ReserveComponent,
+    MyReservationsComponent
 
   ],
   imports: [

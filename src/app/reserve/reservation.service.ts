@@ -1,3 +1,4 @@
+import { Salle } from './salle.model';
 import { Booking } from './../movies/booking.model';
 import { Reservation } from './reservation.model';
 import { Observable } from 'rxjs/Observable';
@@ -19,7 +20,13 @@ export class ReservationService{
         });
     }
     getMoviesReservedByUser(username){
-        return this.HttpClient.get('http://localhost:3000/reservation/getMoviesReservedByUser/' + username)
+        return this.HttpClient.get<Reservation[]>('http://localhost:3000/reservation/getMoviesReservedByUser/' + username);
+    }
+    getSalle(num){
+        return this.HttpClient.get<Salle[]>('http://localhost:3000/reservation/getSalle/' + num);
+    }
+    reduceNbPlaces(num,nb){
+        return this.HttpClient.post('http://localhost:3000/reservation/reduceNbPlaces',{num:num,nb:nb})
         .subscribe((res)=>{
             console.log(res);
         });
