@@ -80,11 +80,12 @@ function fan(name1){
        }
     });
     finalList=listComments;
-   
+    
    return finalList;
     }
     please().then((res)=>{
-       
+        console.log("FINAL LIST");
+        console.log(finalList);
          
         for (var i = 0; i < finalList.length; i++) {
                 

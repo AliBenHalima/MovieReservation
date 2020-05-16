@@ -45,7 +45,10 @@ router.post('/newReservation',async (req,res)=>{
       });})
 
 router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
-  var x=  await similar.fan(req.params.username);
+  var x=   similar.fan(req.params.username);
+  // res.send({data : x})
+  // console.log("this xXXXX");
+  // console.log(x);
   var sortable = [];
   for (var user in x) {
       sortable.push([user, x[user]]);
@@ -55,24 +58,26 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
       return   b[1] - a[1];
   });
  
-  console.log("this sortable");
-  console.log(sortable);
-  sortable.splice(0,1);
-  console.log(sortable[0][0]);
+  // console.log("this sortable");
+  // console.log(sortable);
+  // sortable.splice(0,1);
+  // console.log(sortable[0][0]);
+
     // res.send({ data: sortable })
     if(sortable==undefined){
       res.send({"no":"no"})
     }
+    // res.send({data: sortable})
 
-    ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
-        if(!err){
-          // var x= await similar.Calculation();
+     ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
+         if(!err){
+           // var x= await similar.Calculation();
           res.send({data : docs})
-        }
-        else{
-            res.send("Error")
-        }
-    }))
+         }
+         else{
+             res.send("Error")
+         }
+     }))
 }
 );
 

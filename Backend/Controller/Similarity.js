@@ -21,23 +21,23 @@ const router = express.Router();
  async function getMovieNameby_id(id){
     var result1 ; 
    await FilmModel.find({"_id":ObjectId(id)},(err,docs)=>{
-    console.log("thissss");
+    console.log("thissssErr");
       console.log(docs);
-    //   result1=  docs[0].name;
+      result1=  docs[0].name;
  });
  return result1 ;
   
 }
 
 
-router.get("/:id",async (req,res)=>{
-    await FilmModel.find({"_id":ObjectId(req.params.id)},(err,docs)=>{
-        console.log("thissss");
-          console.log(docs);
-          res.send({ data: docs })
-        //   result1=  docs[0].name;
-     });
-});
+// router.get("/:id",async (req,res)=>{
+//     await FilmModel.find({"_id":ObjectId(req.params.id)},(err,docs)=>{
+//         console.log("thissss___");
+//           console.log(docs);
+//           res.send({ data: docs })
+//         //   result1=  docs[0].name;
+//      });
+// });
 
 
 
@@ -161,27 +161,16 @@ router.get("/listMovies", (req,res)=>{
 
 
 router.get("/listComments", (req,res)=>{
-    blog.find((err,docs)=>{
-        if(!err){
-            comments = docs;
+  
             res.send(users_names );
-        }
-        else{
-            res.send("Error")
-        }
-    });
+        
+   
 });
 
 router.get("/listRatings", (req,res)=>{
-    blog.find((err,docs)=>{
-        if(!err){
-            comments = docs;
+   
             res.send( reviews2 );
-        }
-        else{
-            res.send("Error")
-        }
-    });
+     
 });
 
 
