@@ -1,20 +1,22 @@
 const  express = require("express");
 const mongoose = require("mongoose");
 const User = require('../Model/users');
+var ObjectId = require('mongodb').ObjectId; 
 
 const router = express.Router();
 // const FilmModel = mongoose.model("movies");
 const review = require('../Model/review');
 
 router.post('/newreview',async (req, res) => {
-  var isposted = false ; 
-  await review.find({ "createdBy": req.body.createdBy,"PostedFor": ObjectId(req.body.PostedFor) },(err,docs)=>{
-    if(!err){
-      res.json({ success: false, message: 'already commented' });
-    }
-    else{
+  // var isposted = false ; 
 
-    // Check if blog title was provided
+   review.find({ "createdBy": req.body.createdBy,"PostedFor": ObjectId(req.body.PostedFor) },(err,docs)=>{
+    //  if(!err){
+    //   res.json({ docs});
+    //  }
+    // if(!(docs[0].createdBy==req.body.createdBy)||docs[0].createdBy==="undefined"){
+      if(Object.keys(docs).length === 0){ // check if object returns avalues or not (if a user has posted a review before or not)
+      // Check if blog title was provided
     if (!req.body.title) {
       res.json({ success: false, message: 'review title is required.' }); // Return error message
     } else {
@@ -64,6 +66,15 @@ router.post('/newreview',async (req, res) => {
         }
       }
     }}
+      
+    }
+
+
+
+
+    else{
+      res.json({ success: false, message: 'You Already posted a review ! ' });
+    
     
     }
   });

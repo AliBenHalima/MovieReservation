@@ -23,7 +23,7 @@ export class MovieDetailsComponent implements OnInit {
   ReviewsList;
   rating ; 
   CurrentComment;
-  
+  commentToDelete;
   
   
   
@@ -138,7 +138,7 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
     this.NewPost=false ;
     this.reloadComments();
   }else{
-    window.alert("Error in Posting Comment" );
+    window.alert(data.message);
   }
   console.log(data);
 
@@ -146,7 +146,9 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
 
 this.addComment = true;
 }
-
+setCurrentComment(comment){
+  this.commentToDelete =comment;
+}
  // Function to like a blog post
  likeComment(id) {
   // Service to like a blog post
@@ -237,7 +239,7 @@ this.UserApiService.PostReview(Review).subscribe( data =>{
     this.NewReview=false ;
     this.reloadReviews();
   }else{
-    window.alert("Error in Posting Comment" );
+    window.alert(data.message );
   }
   console.log(data);
 });}

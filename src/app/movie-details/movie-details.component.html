@@ -194,9 +194,9 @@
                                                 </div>
 
                                                 <button *ngIf="username ==Comment.createdBy" [routerLink]="['/Comment/edit/',Comment._id]" type="button"><i class="icon ion-ios-share-alt"></i>Edit</button>
-                                                <button   *ngIf="username ==Comment.createdBy" data-toggle="modal" data-target="#exampleModal" type="button"><i class="icon ion-ios-quote"></i>Delete</button>
+                                                <button   *ngIf="username ==Comment.createdBy" data-toggle="modal" data-target="#exampleModal" type="button" (click)="setCurrentComment(Comment)"  ><i class="icon ion-ios-quote"></i>Delete</button>
 
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -208,9 +208,9 @@
                                         <div class="modal-body">
 
                                          
-                                            <strong>Posted by: </strong> {{ Comment.createdBy }}
+                                            <strong>Posted by: </strong> {{ this.Comment.createdBy }}
                                             <br />
-                                            <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
+                                            <strong>Date: </strong> {{ this.Comment.createdAt | date:'MMM dd, yyyy' }}
                                             <p class="card-text">Are you sure you would like to delete this Comment?</p>
 
                                         </div>
@@ -533,5 +533,6 @@
         </div>
     </div>
 </section>
+
 <!-- end content -->
 <app-footer></app-footer>
