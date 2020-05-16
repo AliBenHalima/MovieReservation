@@ -8,8 +8,8 @@ const review = require('../Model/review');
 
 router.post('/newreview',async (req, res) => {
   var isposted = false ; 
-  await review.find({ createdBy: req.body.createdBy,PostedFor: req.body.PostedFor },((err,docs)=>{
-    if(err){
+  await review.find({ "createdBy": req.body.createdBy,"PostedFor": ObjectId(req.body.PostedFor) },(err,docs)=>{
+    if(!err){
       res.json({ success: false, message: 'already commented' });
     }
     else{
@@ -66,7 +66,7 @@ router.post('/newreview',async (req, res) => {
     }}
     
     }
-  }));
+  });
   });
   
   module.exports=router;
