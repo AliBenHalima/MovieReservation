@@ -16,3 +16,6 @@ form button{
   .nav-item a:hover {
     color: #ff55a5 !important;
   }
+  .pushContact{
+      margin-top: 150px;
+  }

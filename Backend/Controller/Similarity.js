@@ -19,14 +19,30 @@ const router = express.Router();
 
 
  async function getMovieNameby_id(id){
-    var res ; 
+    var result1 ; 
    await FilmModel.find({"_id":ObjectId(id)},(err,docs)=>{
-      // console.log(docs[0].name);
-      res=  docs[0].name;
+    console.log("thissss");
+      console.log(docs);
+    //   result1=  docs[0].name;
  });
- return res ;
+ return result1 ;
   
 }
+
+
+router.get("/:id",async (req,res)=>{
+    await FilmModel.find({"_id":ObjectId(req.params.id)},(err,docs)=>{
+        console.log("thissss");
+          console.log(docs);
+          res.send({ data: docs })
+        //   result1=  docs[0].name;
+     });
+});
+
+
+
+
+
 
 
 router.get("/listMovies", (req,res)=>{

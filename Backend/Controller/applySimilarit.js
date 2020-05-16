@@ -38,10 +38,13 @@ function fan(name1){
     
     var response = await fetch('http://localhost:3000/similarity/listComments');
     var listComments = await response.json();
+    console.log("this is list comments");
     console.log(listComments);
 
     var response2 = await fetch('http://localhost:3000/similarity/listRatings');
      listRatings = await response2.json();
+     console.log("this is list ratings");
+
     console.log(listRatings);
 
     async function please(){
