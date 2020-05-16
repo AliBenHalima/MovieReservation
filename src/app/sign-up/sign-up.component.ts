@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { AuthService } from './auth.service';
+import { MessageService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
+  providers: [MessageService]
 })
 export class SignUpComponent implements OnInit {
 
   email='dsd';
 
-  constructor(public AuthService : AuthService) {  }
+  constructor(public AuthService : AuthService,private messageService: MessageService) {  }
 
   ngOnInit(): void {
   }
+
+  addSingle(error:string) {
+    this.messageService.add({severity:'error', summary:error, detail:'Please verify your informations'});
+}
 
   SignUp(form:NgForm)
   {

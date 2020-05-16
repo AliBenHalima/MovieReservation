@@ -8,7 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<link rel="stylesheet" href="messages.component.css">
+		<link rel="stylesheet" href="analytics.component.css">
 
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
@@ -71,13 +71,13 @@
 							<span>Users</span>
 						</a>
 					</li>
-					<li class="active">
+					<li >
 						<a [routerLink]="['/AdminDashboard/messages']">
 							<span><i class="fa fa-envelope"></i></span>
 							<span>Messages</span>
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a [routerLink]="['/AdminDashboard/analytics']">
 							<span><i class="fa fa-bar-chart"></i></span>
 							<span>Analytics</span>
@@ -100,7 +100,7 @@
 		</div>
 		<div class="main-content">
 			<div class="title">
-				MESSAGES
+				Analytics
 			</div>
 			<!--<div class='ad'>
 				<div class="close">
@@ -118,111 +118,30 @@
 			</div>-->
 			<div class="main">
 				<div class="widget">
-					<div class="title">List of messages</div>
+					<div class="title">Payments</div>
 					<div class="chart">
-						<form #UserForm="ngForm" (ngSubmit)="onSubmit(UserForm)">
-							<input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="UserService.selectedUser._id">
-							<div class="row">
-							  <div class="input-field col s12">
-								<!-- <label for="email"> Email</label> -->
-								<input class="form-control w-50" id="email" type="text" name="email" #name="ngModel" [(ngModel)]="UserService.selectedUser.email" placeholder="Enter Email" required>
 
-								  <label class="red-text"></label>
+            <div>
+              <div>
+                <div style="display: block">
+                  <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType">
+                  </canvas>
+                </div>
+                <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+              </div>
+            </div>
 
-							  </div>
-							</div>
-							<div class="row">
-							  <div class="input-field col s12">
-								<input type="hidden" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
-							  <!--  <label>PWD :</label>-->
-							  </div>
-							</div>
-							<div class="row">
-							  <div class="input-field col s12">
-								  <div class="form-group">
-								<!-- <label for="name"> name</label> -->
-								<input  class="form-control w-50" id="name" type="text" name="username" #name="ngModel" [(ngModel)]="UserService.selectedUser.username" placeholder="Enter Username">
-							  </div>
-							</div>
-							</div>
-							<div class="input-group">
-							<div class="input-group-prepend">
-							  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-							</div>
-							<div class="custom-file">
-							  <input type="file" name="image" class="form-control" id="inputGroupFile01" (change)="onImgSelected($event);"
-								aria-describedby="inputGroupFileAddon01" >
-							  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-							</div>
-						  </div>
-
-							<div class="row">
-							  <div class="input-field col s12">
-								<!-- <button class="btn btn-success" type="button" (click)="resetForm(UserForm)">Reset</button> -->
-								<button class="btn btn-info" type="submit" [disabled]="!UserForm.valid" >Submit</button>
-							  </div>
-							</div>
-						  </form>
-					</div>
+          </div>
 				</div>
 				<div class="widget">
 					<div class="title">Details of message</div>
-					<div class="chart">
-
-
-
-									<!-- <table class="responsive-table highlight">
-										<thead>
-										  <tr>
-											<th>Username</th>
-											<th>email</th>
-											<th></th>
-										  </tr>
-										</thead>
-										<tr *ngFor="let emp of UserService.Users">
-										  <td>{{emp.username }}</td>
-
-										  <td>{{emp.email}}</td>
-										  <td>
-											  <a class="action-btn" (click)="onEdit(emp)">
-												<i class="material-icons">edit</i>
-											  </a>
-											  <a class="action-btn" (click)="onDelete(emp._id,UserForm)">
-												<i class="material-icons">delete</i>
-											  </a>
-											</td>
-										</tr>
-									  </table> -->
-									  <table class="table table-striped">
-										<thead>
-										  <tr>
-											<th scope="col">Index</th>
-											<th scope="col">Username</th>
-											<th scope="col">email</th>
-
-										  </tr>
-										</thead>
-										<tbody>
-
-										  <tr *ngFor="let emp of UserService.Users">
-											<th scope="row">{{UserService.Users.indexOf(emp) +1}}</th>
-											<td>{{emp.username }}</td>
-
-										  <td>{{emp.email}}</td>
-										  <td>
-											<a class="action-btn" (click)="onEdit(emp)">
-											  <i class="material-icons">edit</i>
-											</a>
-											<a class="action-btn" (click)="onDelete(emp._id,UserForm)">
-											  <i class="material-icons">delete</i>
-											</a>
-										  </td>
-										  </tr>
-
-										</tbody>
-									  </table>
-
-
+					<div class="chart"></div>
 				</div>
 			</div>
 		</div>

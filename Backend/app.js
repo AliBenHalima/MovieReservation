@@ -1,8 +1,3 @@
-var userController = require("./Controller/userController.js");
-var mailController = require("./Controller/mailController.js");
-var filmController = require("./Controller/films.js");
-var CommentController = require("./Controller/Comment.js");
-var reviewController = require("./Controller/review.js");
 const cors = require("cors");
 const path = require("path");
 const express = require("express");
@@ -10,6 +5,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const upload = require("./routes/upload");
 const movie = require("./routes/movie");
+var userController = require('./Controller/userController.js');
+var mailController = require('./Controller/mailController.js');
+var filmController = require('./Controller/films.js');
+var CommentController = require('./Controller/Comment.js');
+var reviewController = require('./Controller/review.js');
+var bookingController = require('./Controller/bookings.js');
+var reservationController = require('./Controller/reservationController.js');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -54,6 +56,8 @@ app.use("/mail", mailController);
 app.use("/films", filmController);
 app.use("/Comments", CommentController);
 app.use("/reviews", reviewController);
+app.use("/bookings", bookingController);
+app.use("/reservation", reservationController);
 
 //----------------AMASUOend---------------
 

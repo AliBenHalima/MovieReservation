@@ -3,7 +3,8 @@ import { EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
 import {BookingService} from './booking.service';
 import { reservationEvent } from './event.model';
 import { UploadService } from '../movies/upload.service';
-
+import {hall} from './hall.model';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-reservation',
@@ -11,12 +12,18 @@ import { UploadService } from '../movies/upload.service';
   // template: "<ejs-schedule ></ejs-schedule>",
   styleUrls: ['./reservation.component.css']
 })
+
+
+
 export class ReservationComponent implements OnInit {
 
+  halls: SelectItem[];
 
-  tab= ['achref','moh'];
+  selectedhall: hall;
 
-  constructor(private bookingService: BookingService, private moviesService:UploadService) { }
+  tab:boolean[] = [true,false];
+
+  change_hall:boolean=false;
 
   public events:Array<reservationEvent> ;
 
@@ -28,32 +35,54 @@ export class ReservationComponent implements OnInit {
 
   reload:boolean = false;
 
+  constructor(private bookingService: BookingService, private moviesService:UploadService) { }
+
+
+
 public eventSettings: EventSettingsModel ={
-  dataSource:this.events
+  dataSource:null
 };
 
+  load()
+  {
+
+    let hall:any = '1';
+
+    if(this.selectedhall)
+    hall = this.selectedhall;
+
+
+    this.bookingService.getEvents(hall).subscribe((resFromBE:{reservations:Array<reservationEvent>}) => {
+      this.tab= [true,false];
+      this.actionn=true;
+
+      this.eventSettings.dataSource = resFromBE.reservations;
+
+      this.change_hall = false;
+      console.log(this.eventSettings.dataSource);
+    });
+
+
+    this.moviesService.getMovies().subscribe((movies:Array<any>)=>{
+      console.log(movies);
+      movies.forEach(item=>{
+        this.StatusData.push({StatusText:item.name});
+      });
+
+      // this.StatusData=[{StatusText:'nono'}];
+
+    });
+
+    this.halls = [
+      {label:'Hall 1', value: '1'},
+      {label:'Hall 2', value:'2'},
+      {label:'Hall 3', value:'3'},
+      {label:'Hall 4', value:'4'},
+      {label:'Hall 5', value:'5'}];
+  }
+
   ngOnInit(): void {
-
-      this.bookingService.getEvents().subscribe((resFromBE:{reservations:Array<reservationEvent>}) => {
-        this.actionn=true;
-
-        this.eventSettings.dataSource = resFromBE.reservations;
-
-        console.log(this.eventSettings.dataSource);
-      });
-
-
-      this.moviesService.getMovies().subscribe((movies:Array<any>)=>{
-        console.log(movies);
-        movies.forEach(item=>{
-          this.StatusData.push({StatusText:item.name});
-        });
-
-        // this.StatusData=[{StatusText:'nono'}];
-
-      });
-
-
+    this.load();
   }
 
   public dateParser(data:string)
@@ -66,31 +95,13 @@ public eventSettings: EventSettingsModel ={
   public StatusData:object[]=[];
 
 
-  public datz: object[] = [
-  {
-  Subject: 'Paris',
-  StartTime: new Date(2020, 3, 2, 14, 30),
-  EndTime: new Date(2020, 3, 2, 16, 0),
-  IsReadonly: true
-  },
-  {
-    Subject: 'Paris2',
-    StartTime: new Date(2020, 3, 2, 9, 30),
-    EndTime: new Date(2020, 3, 2, 10, 0),
-    IsReadonly: true
-  }
-
-
-];
-
-
 
 cliquer()
 {
-
-  let  arr:object[];
-  arr = this.eventSettings.dataSource as object[];
-  console.log("zzz",arr);
+  console.log(this.selectedhall);
+  // let  arr:object[];
+  // arr = this.eventSettings.dataSource as object[];
+  // console.log("zzz",arr);
 
 
   if (this.btn)
@@ -101,7 +112,7 @@ cliquer()
 
 
 
-    this.bookingService.Add_changes(this.eventSettings.dataSource).subscribe((resFromBE)=>{
+    this.bookingService.Add_changes(this.eventSettings.dataSource,this.selectedhall).subscribe((resFromBE)=>{
         this.btn = 1;
         setTimeout (() => {
           this.refresh =false;
@@ -109,14 +120,15 @@ cliquer()
 
      });
   }
-
-  //console.log(this.eventSettings.dataSource);
-
   }
 
-  select_salle(event:any)
+  select_salle()
 {
-  console.log(event.target.value);
+  this.change_hall = true;
+  console.log(this.selectedhall);
+  this.eventSettings.dataSource = [];
+  this.tab = [false,true];
+  this.load();
 }
 
 

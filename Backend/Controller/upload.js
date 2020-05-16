@@ -1,5 +1,5 @@
-const Movie = require("../Model/movie");
-const fs = require("fs");
+const Movie = require('../Model/movie');
+const fs = require('fs');
 
 module.exports.getMovies = (req, res, next) => {
   Movie.find().then((movies) => {

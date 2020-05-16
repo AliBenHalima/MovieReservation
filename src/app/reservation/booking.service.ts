@@ -21,14 +21,22 @@ export class BookingService {
     return this.eventsListener.asObservable();
   }
 
-  getEvents()
+  getEvents(hall:any)
   {
-    return this.HttpClient.get<{reservations:Array<reservationEvent>}>('http://localhost:3000/api/getBookings');
+    return this.HttpClient.get<{reservations:Array<reservationEvent>}>('http://localhost:3000/api/getBookings/'+hall);
   }
 
-  Add_changes(data:object)
+  Add_changes(data:object,hall:any)
   {
-    return this.HttpClient.post('http://localhost:3000/api/saveChanges',data)
+    if(!hall)
+      hall = '1';
+
+    return this.HttpClient.post('http://localhost:3000/api/saveChanges',{reservations:data,salle:hall});
+  }
+
+
+  getEventsByHall()
+  {
 
   }
 
@@ -38,20 +46,8 @@ export class BookingService {
 
     this.HttpClient.get('http://localhost:3000/api/getBookings')
     .subscribe((resFromBE:{reservations:Array<reservationEvent>})=>{
-      //console.log(resFromBE.reservations);
-
-     // console.log(resFromBE.reservations[0].IsReadonly);
-     //this.books = resFromBE.reservations;
 
      this.events = resFromBE.reservations;
-
-     this.eventsListener.next([  {
-      Subject: 'Paris2',
-      StartTime: new Date(2020, 3, 2, 9, 30),
-      EndTime: new Date(2020, 3, 2, 10, 0),
-      IsReadonly: true,
-      salle:"ssqd"
-    }]);
 
      });
 

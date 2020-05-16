@@ -2,6 +2,8 @@ const booking = require('../Model/booking');
 
 module.exports.saveChanges = (req,res,next)=>
 {
+  console.log('--------------');
+
 console.log(req.body);
 
   if (req.userData.userId)
@@ -11,7 +13,7 @@ console.log(req.body);
     .then(resu=>{
 
 
-      req.body.forEach(item => {
+      req.body.reservations.forEach(item => {
         if(!item.creator)
         {
           console.log("--->",item.creator);
@@ -22,7 +24,7 @@ console.log(req.body);
             EndTime: item.EndTime,
             Status: item.Status,
             Id:item.Id,
-            salle:"dffd"
+            salle:req.body.salle
           });
           Newbooking.save();
         }
@@ -43,10 +45,12 @@ console.log(req.body);
 
 
 
-const get_reservs = (req,res,next)=>
+const get_reservs = (req,res,next,hall)=>
 {
+  console.log('********');
+  console.log(req.params.hall);
 
-  booking.find({creator:{$ne: req.userData.userId}})
+  booking.find({creator:{$ne: req.userData.userId},salle:req.params.hall })
   .then(otherResers=>{
 
    console.log('notMine');
@@ -76,7 +80,7 @@ const get_reservs = (req,res,next)=>
 
    });
 
-   booking.find({creator:req.userData.userId})
+   booking.find({creator:req.userData.userId,salle:req.params.hall})
    .then(mine=>{
         res.json({reservations:reservs.concat(mine)});
    });
@@ -92,7 +96,10 @@ const get_reservs = (req,res,next)=>
 
 module.exports.getBookings = (req,res,next)=>
 {
-  get_reservs(req,res,next);
+  get_reservs(req,res,next,null);
 }
 
+module.exports.getBookingsBySalle = (req,res,next)=>
+{
 
+}

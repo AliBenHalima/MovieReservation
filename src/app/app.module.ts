@@ -23,39 +23,39 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MessagesComponent } from "./admin-dashboard/messages/messages.component";
 import { AuthInterceptor } from "./sign-up/auth.interceptor";
 // import { CrudUsersComponent } from './admin-dashboard/crud-users/crud-users.component';
-import { UserlistComponent } from "./admin-dashboard/userlist/userlist.component";
-import { UserComponent } from "./crudUser/crudUser.component";
-import { MovieDetailsComponent } from "./movie-details/movie-details.component";
-import { PricingComponent } from "./pricing/pricing.component";
-import { HelpComponent } from "./help/help.component";
-import { ReservationComponent } from "./reservation/reservation.component";
-import {
-  ScheduleModule,
-  RecurrenceEditorModule,
-  DayService,
-  WeekService,
-  WorkWeekService,
-  MonthService,
-  AgendaService,
-  MonthAgendaService,
-} from "@syncfusion/ej2-angular-schedule";
-import { DropDownListModule } from "@syncfusion/ej2-angular-dropdowns";
-import { DateTimePickerModule } from "@syncfusion/ej2-angular-calendars";
-import { MailComponent } from "./mail/mail.component";
-import { MoviesComponent } from "./movies/movies.component";
-import { AfficheMovieHeadComponent } from "./AfficheMovies/affiche-movie-head/affiche-movie-head.component";
-import { AfficheMovieFootComponent } from "./AfficheMovies/affiche-movie-foot/affiche-movie-foot.component";
-import { AffichMoviecarouselComponent } from "./AfficheMovies/affich-moviecarousel/affich-moviecarousel.component";
-import { AfficheMovieHomeMainComponent } from "./AfficheMovies/affiche-movie-home-main/affiche-movie-home-main.component";
-import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { AutocompleteLibModule } from "angular-ng-autocomplete";
-import { MovieReviewComponent } from "./movie-review/movie-review.component";
-import { EditReviewsComponent } from "./edit-reviews/edit-reviews.component";
-import { DeleteReviewComponent } from "./delete-review/delete-review.component";
-import { MatDividerModule } from "@angular/material/divider";
-import { MatListModule } from "@angular/material/list";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { UserlistComponent } from './admin-dashboard/userlist/userlist.component';
+import { UserComponent } from './crudUser/crudUser.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { HelpComponent } from './help/help.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ScheduleModule, RecurrenceEditorModule,DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import {DropDownListModule} from '@syncfusion/ej2-angular-dropdowns';
+import {DateTimePickerModule} from '@syncfusion/ej2-angular-calendars';
+import { MailComponent } from './mail/mail.component';
+import { MoviesComponent } from './movies/movies.component';
+import { AfficheMovieHeadComponent } from './AfficheMovies/affiche-movie-head/affiche-movie-head.component';
+import { AfficheMovieFootComponent } from './AfficheMovies/affiche-movie-foot/affiche-movie-foot.component';
+import { AffichMoviecarouselComponent } from './AfficheMovies/affich-moviecarousel/affich-moviecarousel.component';
+import { AfficheMovieHomeMainComponent } from './AfficheMovies/affiche-movie-home-main/affiche-movie-home-main.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { MovieReviewComponent } from './movie-review/movie-review.component';
+import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
+import { DeleteReviewComponent } from './delete-review/delete-review.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ChartsModule } from 'ng2-charts';
+import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
+import { ToastModule } from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {RatingModule} from 'primeng/rating';
+import { ReserveComponent } from './reserve/reserve.component';
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
+
 
 @NgModule({
   declarations: [
@@ -85,9 +85,14 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
     AfficheMovieHomeMainComponent,
+    AnalyticsComponent,
     MovieReviewComponent,
     EditReviewsComponent,
     DeleteReviewComponent,
+
+    ReserveComponent,
+    MyReservationsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -105,6 +110,13 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     MatDividerModule,
     MatListModule,
     MatSlideToggleModule,
+    ChartsModule,
+    ToastModule,
+    ButtonModule,
+    DropdownModule,
+    RatingModule
+
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

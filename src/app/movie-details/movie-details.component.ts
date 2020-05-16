@@ -1,4 +1,3 @@
-import { UserService } from './../admin-dashboard/shared/crudUser.service';
 import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -11,51 +10,58 @@ import { BlogService } from '../services/blog.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
+  val: number;
 
   movie;
   loadingComment=false;
-  NewPost;
+  NewPost:boolean;
   username ;
   CommentsList;
   movieId;
   NewReview;
   loadingReviews=false;
   ReviewsList;
-  rating ; 
-  
-  
-  
+  rating ;
+
+  addComment:boolean = true;
+
+
+
+
   constructor(private apiService: UserApiService ,
     private _route: ActivatedRoute,public UserApiService: UserApiService,public blogservice:BlogService) { }
 
   ngOnInit(): void {
-
- 
-    // this.UserApiService.getUsersBlog().subscribe(profile => {
-    //   console.log("xatr");
-    //   if(profile){
-
-    
-    //   console.log(profile);
-    //   this.username = "aaaa";
-    //   console.log(this.username); 
-    //     }
-    //     // Used when creating new blog posts and comments
-    // });
+  this.NewPost = false;
 
     this._route.paramMap.subscribe((params: ParamMap) => {
-  this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
+    this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
     console.log(res);
     this.movie = res.data;
     this.movieId=res.data._id;
 
+    this.blogservice.getComments(this.movieId).subscribe(data=>{
+      if(!data){
+        console.log("Error");
+      }else{
+
+    console.log("showing data ");
+
+      console.log(data.data);
+      this.CommentsList = data.data ;
+    }
+    });
+
     console.log(this.movie);
 });});
+
+
+
 
 this.username = localStorage.getItem('username');
 this.getAllComments();
 this.getAllReviews();
-this.AddComment();
+
 this.AddReview();
   }
 
@@ -65,10 +71,10 @@ this.AddReview();
       if(!data){
         console.log("Error Rating" );
       }else{
-  
+
     console.log("showing data Rating &&");
       console.log(data);
-      
+
       this.CommentsList = data.data ;
     }
     });
@@ -100,6 +106,7 @@ draftComment(){
 
 }
 AddComment(){
+  this.addComment = false;
   this.NewPost= true ;
 }
 CancelForm(){
@@ -126,6 +133,7 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
 
 });
 
+this.addComment = true;
 }
 
  // Function to like a blog post
@@ -182,10 +190,10 @@ Calculate_Rating(obj : any){
   });
 
   this.rating ={
-    rating : i/obj.length 
-  } 
+    rating : i/obj.length
+  }
   this.UpdateMovieRating(this.rating);
-  this.movie.rating= this.rating.rating ; 
+  this.movie.rating= this.rating.rating ;
   console.log(i/obj.length);
    console.log(obj.length);
 
