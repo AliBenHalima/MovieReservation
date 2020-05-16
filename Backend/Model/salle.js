@@ -1,9 +1,9 @@
 const mongoose=require('mongoose');
 
 const salleSchema=new mongoose.Schema({
-    date :{type:Date,required:true},
     num :{type:Number,required:true},
-    nbre :{type:Number,required:true,default:200}
+    nbre :{type:Number,required:true,default:200},
+    placesdispo:{type:Number,required:true}
     });
 
 module.exports = mongoose.model('salle',salleSchema);

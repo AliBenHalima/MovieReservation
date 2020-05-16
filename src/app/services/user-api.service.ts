@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Movie } from '../movies/movie.model';
+import { Booking } from './../movies/booking.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserApiService {
@@ -15,7 +16,7 @@ export class UserApiService {
     getUserById(id){
       return this.http.get<User[]>('http://localhost:3000/users/' + id);
     }
-  
+
 
     getMovies() {
       return this.http.get<Movie[]>('http://localhost:3000/films/list');
@@ -28,7 +29,7 @@ export class UserApiService {
     // }
     getLatestMovies(){
       return this.http.get<Movie[]>('http://localhost:3000/films/Latest');
-    }  
+    }
 
     UpdateMovieRating(movie_id,rating ){
       return this.http.put<any>("http://localhost:3000/films/UpdateMovieRating/" + movie_id, rating);
@@ -51,7 +52,7 @@ export class UserApiService {
     getUsersBlog() {
       this.createAuthenticationHeaders(); // Create headers before sending to API
       return this.http.get<User[]>('http://localhost:3000/Comments/profile'+ this.options);
-      
+
     }
 
     PostComment(blog:any){
@@ -60,6 +61,18 @@ export class UserApiService {
     PostReview(review:any){
       return this.http.post<any>('http://localhost:3000/reviews/newreview', review).map(res => res);
     }
+    getMovieByID(id){
+      return this.http.get<Movie[]>('http://localhost:3000/bookings/' + id);
+    }
+    getDatesByMovieName(name) {
+      return this.http.get<Booking[]>('http://localhost:3000/bookings/dates/' + name);
+    } 
+    
+    getObjectForRoom(film,date){
+      console.log(film+' '+date);
+      return this.http.post<any>('http://localhost:3000/bookings/getObjectForRoom',{film:film,date:date});
+  }
+  
   }
 
-    
+

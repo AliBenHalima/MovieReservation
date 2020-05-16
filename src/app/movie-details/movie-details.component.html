@@ -21,7 +21,7 @@
                         <!-- card cover -->
                         <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
                             <div class="card__cover">
-                                <img src="assets/img/covers/{{movie.file}}" alt="">
+                                <img width="200px" height="300px" src="assets/img/covers/{{movie.file}}" alt="" >
                             </div>
                         </div>
                         <!-- end card cover -->
@@ -30,11 +30,12 @@
                         <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-7">
                             <div class="card__content">
                                 <div class="card__wrap">
-                                    <span class="card__rate"><i class="icon ion-ios-star">{{movie.rating  | number:'1.0-1'}}</i></span>
+                                    <!-- <span class="card__rate"><i class="icon ion-ios-star">{{movie.rating  | number:'1.0-1'}}</i></span> -->
+
+                                    <p-rating [(ngModel)]="val" [cancel]="false"></p-rating>
 
                                     <ul class="card__list">
                                         <li>HD</li>
-                                        <li>16+</li>
                                     </ul>
                                 </div>
 
@@ -47,11 +48,15 @@
                                 </ul>
 
                                 <div class="card__description card__description--details">
-                                    Description : 
+                                    Description :
                                     {{movie.desc}}
                                 </div>
                             </div>
                         </div>
+                        <button [routerLink]="['/reserve/',movie.name]" class="header__sign-in" >
+                            <i class="icon ion-ios-log-in"></i>
+                            <span>Reserve</span>
+                        </button>
                         <!-- end card content -->
                     </div>
                 </div>
@@ -189,39 +194,36 @@
                                                 </div>
 
                                                 <button *ngIf="username ==Comment.createdBy" [routerLink]="['/Comment/edit/',Comment._id]" type="button"><i class="icon ion-ios-share-alt"></i>Edit</button>
-                                                <button   *ngIf="username ==Comment.createdBy" data-toggle="modal" data-target="#exampleModal" type="button" (click)="onClik(Comment)" ><i class="icon ion-ios-quote"></i>Delete</button>
-                                    
-                                             
+                                                <button   *ngIf="username ==Comment.createdBy" data-toggle="modal" data-target="#exampleModal" type="button"><i class="icon ion-ios-quote"></i>Delete</button>
+
                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Would you Like to Delete this  comment ? </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                
-                                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ CurrentComment.title }}</h1>
-                                                            <strong>Posted by: </strong> {{ CurrentComment.createdBy }}
-                                                            <br />
-                                                            <strong>Date: </strong> {{ CurrentComment.createdAt | date:'MMM dd, yyyy' }}
-                                                            <p class="card-text">Are you sure you would like to delete this Comment?</p>
-                
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                                        <button (click)="deleteComment(CurrentComment._id)" type="button" class="btn btn-primary" data-dismiss="modal"> Yes</button>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                </div> 
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Would you Like to Delete this  comment ? </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
 
+                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ Comment.title }}</h1>
+                                            <strong>Posted by: </strong> {{ Comment.createdBy }}
+                                            <br />
+                                            <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
+                                            <p class="card-text">Are you sure you would like to delete this Comment?</p>
 
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                        <button (click)="deleteComment(Comment._id)" type="button" class="btn btn-primary" data-dismiss="modal"> Yes</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                                             </div>
                                         </li>
-   
+
                                             <!--
                                         <li class="comments__item comments__item--answer">
                                             <div class="comments__autor">
@@ -241,7 +243,7 @@
                                                 <button type="button"><i class="icon ion-ios-quote"></i>Quote</button>
                                             </div>
                                         </li>
-                                        
+
                                         <li class="comments__item comments__item--quote">
                                             <div class="comments__autor">
                                                 <img class="comments__avatar" src="assets/img/user.png" alt="">
@@ -262,31 +264,23 @@
                                         </li> -->
 
 
-                                   
+
                                     </ul>
 
                                     <form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)"  class="form" *ngIf="NewPost">
                                         <input type="text" name ="title" class="form-input" placeholder="Add title" ngModel>
-                                        
-                                        <textarea id="text" name="body" class="form__textarea" placeholder="Add comment" ngModel> </textarea>
+                                        <textarea id="text" name="body" class="form__textarea" placeholder="Your Comment . . ." ngModel> </textarea>
                                         <div class="buttons">
-                                        <button type="submit" class="form__btn">Send</button>
-                                        <button (click)="CancelForm()" type="button" class="form__btn">Cancel</button>
+                                        <button></button>
+                                        <button type="submit" class="form__btn send">Send</button>
+                                        <!-- <button (click)="CancelForm()" type="button" class="form__btn">Cancel</button> -->
+
                                     </div>
                                     </form>
-                                   <!-- Draft Comment -->
-                                   <!--  
-                                    <form action="#" class="form">
-                                        <textarea id="text" name="text" class="form__textarea" placeholder="Comment to that"></textarea>
-                                        <button type="button"  class="form__btn">Send</button>
-                                        <button type="button" class="form__btn">Cancel</button>
-                                     
-                                    </form>
-                                       -->
-                                    <!-- END Draft Comment -->
-                                    <button  type="button" class="form__btn" (click)="AddComment()">Add Comment</button>
 
-                                    <button [disabled]="loadingComment" type="button" class="form__btn" (click)="reloadComments()">Reload Comments</button>
+                                    <button *ngIf="addComment"  type="button" class="form__btn btn" (click)="AddComment()">Add Comment</button>
+
+
                                 </div>
                             </div>
                             <!-- end comments -->
@@ -308,8 +302,8 @@
                                                 <span class="reviews__rating"><i class="icon ion-ios-star"></i>{{Review.ReviewRating}}</span>
                                             </div>
                                             <p class="reviews__text">{{Review.body}}</p>
-                                            
-                                           
+
+
                                         </li>
 <!-- herrrree -->
                                     </ul>

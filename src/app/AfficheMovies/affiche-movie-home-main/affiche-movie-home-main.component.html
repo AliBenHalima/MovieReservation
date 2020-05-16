@@ -16,7 +16,7 @@
                     <h3 class="card__title"><a  [routerLink]="['/MovieDetails/',movie.name]">{{movie.name}}</a></h3>
                     <span class="card__category">
                         <a href="#">{{movie.type}}</a>
-                        <a href="#">Triler</a>
+                        <a href="#">{{movie.duration}}</a>
                     </span>
 
                     <div class="card__wrap">
@@ -42,5 +42,8 @@
 
     <div class="del" *ngIf=del>
         <img src="assets/img/delete.png" alt="" (click)="fun_del(movie._id)">
+    </div>
+    <div class="up" *ngIf=del>
+        <img src="assets/img/update.png" alt="" (click)="show(movie)">
     </div>
 

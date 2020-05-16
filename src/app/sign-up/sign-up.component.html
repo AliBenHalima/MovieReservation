@@ -1,5 +1,14 @@
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<body class="bk">
+
+
 <app-header></app-header>
-	<div class="sign section--bg" data-bg="../../assets/img/section/section.jpg">
+
+  <div class="sign section--bg" data-bg="../../assets/img/section/section.jpg">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -7,10 +16,20 @@
 						<!-- registration form -->
 						<form (submit)="SignUp(formi)" #formi="ngForm" action="/" class="sign__form">
 							<a href="index.html" class="sign__logo">
-								<img src="../../assets/img/logo.svg" alt="">
-							</a>
+                <img src="../../assets/img/logo.svg" alt="">
+              </a>
 
-							<div class="sign__group">
+
+
+              <div class="alert alert-danger" role="alert">
+                <svg class="bi bi-exclamation-circle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+                  <path d="M7.002 11a1 1 0 112 0 1 1 0 01-2 0zM7.1 4.995a.905.905 0 111.8 0l-.35 3.507a.552.552 0 01-1.1 0L7.1 4.995z"/>
+                </svg> Wrong Password
+                </div>
+
+
+              <div class="sign__group">
 								<input ngModel type="text" name="username" class="sign__input" placeholder="Name">
 							</div>
 
@@ -21,19 +40,23 @@
 							<div class="sign__group">
 								<input ngModel type="password" name="pwd" class="sign__input" placeholder="Password">
 							</div>
-
+<!--
 							<div class="sign__group sign__group--checkbox">
 								<input id="remember" name="remember" type="checkbox" checked="checked">
 								<label for="remember">I agree to the <a href="#">Privacy Policy</a></label>
-							</div>
+							</div> -->
 
 							<button class="sign__btn" type="submit">Sign up</button>
 
 							<span class="sign__text">Already have an account? <a [routerLink]="['/SignIn']">Sign in!</a></span>
-						</form>
+            </form>
+
 						<!-- registration form -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+</body>

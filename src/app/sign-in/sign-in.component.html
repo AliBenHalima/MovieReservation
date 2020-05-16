@@ -1,10 +1,14 @@
 <app-header></app-header>
-	<div class="sign section--bg" data-bg="../../assets/img/section/section.jpg">
+
+
+  <div  class="sign section--bg bk" data-bg="../../assets/img/section/section.jpg" >
+    <mat-progress-bar mode="indeterminate" *ngIf="refresh"></mat-progress-bar >
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<div class="sign__content">
-						<!-- authorization form -->
+            <!-- authorization form -->
+
 						<form action="#" (submit)="SignIn(formi)" #formi="ngForm" class="sign__form">
 							<a href="index.html" class="sign__logo">
 								<img src="../../assets/img/logo.svg" alt="">
@@ -30,22 +34,14 @@
 							<span class="sign__text"><a href="#">Forgot password?</a></span>
 						</form>
 						<!-- end authorization form -->
-					</div>
+          </div>
+          <div style="margin-top: 1000px;">
+            <p-toast position="top-right" [style]="{marginTop: '100px'}"></p-toast>
+          </div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- JS -->
-	<script src="../assets/js/jquery-3.3.1.min.js"></script>
-	<script src="../assets/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/js/owl.carousel.min.js"></script>
-	<script src="../assets/js/jquery.mousewheel.min.js"></script>
-	<script src="../assets/js/jquery.mCustomScrollbar.min.js"></script>
-	<script src="../assets/js/wNumb.js"></script>
-	<script src="../assets/js/nouislider.min.js"></script>
-	<script src="../assets/js/plyr.min.js"></script>
-	<script src="../assets/js/jquery.morelines.min.js"></script>
-	<script src="../assets/js/photoswipe.min.js"></script>
-	<script src="../assets/js/photoswipe-ui-default.min.js"></script>
-	<script src="../assets/js/main.js"></script>
+

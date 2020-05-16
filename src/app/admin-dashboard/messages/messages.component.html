@@ -78,7 +78,7 @@
 						</a>
 					</li>
 					<li>
-						<a [routerLink]="['/AdminDashboard']">
+						<a [routerLink]="['/AdminDashboard/analytics']">
 							<span><i class="fa fa-bar-chart"></i></span>
 							<span>Analytics</span>
 						</a>
@@ -107,7 +107,7 @@
 					<i class="ion-ios-close-empty"></i>
 				</div>
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				
+
 				<ins class="adsbygoogle"
 				     style="display:inline-block;width:300px;height:250px"
 				     data-ad-client="ca-pub-8408356133845039"
@@ -126,15 +126,15 @@
 							  <div class="input-field col s12">
 								<!-- <label for="email"> Email</label> -->
 								<input class="form-control w-50" id="email" type="text" name="email" #name="ngModel" [(ngModel)]="UserService.selectedUser.email" placeholder="Enter Email" required>
-							   
-								  <label class="red-text">*</label>
-							   
+
+								  <label class="red-text"></label>
+
 							  </div>
 							</div>
 							<div class="row">
 							  <div class="input-field col s12">
 								<input type="hidden" name="pwd" #name="ngModel" [(ngModel)]="UserService.selectedUser.pwd" placeholder="Enter Password">
-							  <!--  <label>PWD :</label>--> 
+							  <!--  <label>PWD :</label>-->
 							  </div>
 							</div>
 							<div class="row">
@@ -155,7 +155,7 @@
 							  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
 							</div>
 						  </div>
-			  
+
 							<div class="row">
 							  <div class="input-field col s12">
 								<!-- <button class="btn btn-success" type="button" (click)="resetForm(UserForm)">Reset</button> -->
@@ -168,9 +168,9 @@
 				<div class="widget">
 					<div class="title">Details of message</div>
 					<div class="chart">
-						
-							
-							
+
+
+
 									<!-- <table class="responsive-table highlight">
 										<thead>
 										  <tr>
@@ -181,7 +181,7 @@
 										</thead>
 										<tr *ngFor="let emp of UserService.Users">
 										  <td>{{emp.username }}</td>
-										  
+
 										  <td>{{emp.email}}</td>
 										  <td>
 											  <a class="action-btn" (click)="onEdit(emp)">
@@ -199,15 +199,15 @@
 											<th scope="col">Index</th>
 											<th scope="col">Username</th>
 											<th scope="col">email</th>
-											
+
 										  </tr>
 										</thead>
 										<tbody>
-											
+
 										  <tr *ngFor="let emp of UserService.Users">
 											<th scope="row">{{UserService.Users.indexOf(emp) +1}}</th>
 											<td>{{emp.username }}</td>
-										  
+
 										  <td>{{emp.email}}</td>
 										  <td>
 											<a class="action-btn" (click)="onEdit(emp)">
@@ -218,20 +218,20 @@
 											</a>
 										  </td>
 										  </tr>
-										 
+
 										</tbody>
 									  </table>
-								
-									
-				</div>	
+
+
+				</div>
 			</div>
 		</div>
-	
+
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/data.js"></script>
 
-		
+
 		<script type="text/javascript">
 			$(function() {
 				$('.close').click(function() {

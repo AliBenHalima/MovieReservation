@@ -4,6 +4,7 @@ import {User} from './user.model'
 import {Subject} from 'rxjs'
 import { Router } from '@angular/router';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +15,29 @@ export class AuthService {
   private authStatusListener = new Subject<boolean>();
   private username : string;
 
+  private errorListener = new Subject<string>();
+  public connected = false;
+
+  get_userName()
+  {
+    return this.username;
+  }
+
   constructor(private HttpClient:HttpClient,private router:Router){}
+
+
+
+  get_ErrorListener()
+  {
+    return this.errorListener.asObservable();
+  }
+
 
   get_authStatusListener()
   {
     return this.authStatusListener.asObservable();
   }
+
   getToken()
   {
     return this.token;
@@ -39,16 +57,19 @@ export class AuthService {
   login(email:string,pwd:string)
   {
     const user:User = {email:email,pwd:pwd,username:null};
-    this.HttpClient.post<{token:string,expiresIn:number ,user: any}>('http://localhost:3000/api/signIn',user)
+    this.HttpClient.post<any>('http://localhost:3000/api/signIn',user)
     .subscribe((resFromBE)=>{
+
       console.log(resFromBE);
+
       if(resFromBE.token)
       {
+        this.connected = true;
         // this.Tokentimer = setTimeout(() => {this.logout();}, resFromBE.expiresIn * 1000);
         this.Tokentimer = this.Timer(resFromBE.expiresIn);
         this.auth=true;
         this.token =  resFromBE.token;
-        this.username = resFromBE.user.username
+        this.username = resFromBE.user.username;
         this.authStatusListener.next(true);
 
         const now = new Date();
@@ -57,8 +78,10 @@ export class AuthService {
         this.saveAuthData(this.token,expirationDate);
         this.saveUsername(this.username);
         this.router.navigate(['/']);
-        
+
       }
+      else
+      this.errorListener.next(resFromBE.error);
 
 
      });
@@ -76,6 +99,7 @@ export class AuthService {
     clearTimeout(this.Tokentimer);
     this.clearAuthData();
     this.router.navigate(["/"]);
+
    }
 
   AdminAddUser(email:string,pwd:string,username:string)

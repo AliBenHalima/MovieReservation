@@ -11,6 +11,7 @@ module.exports.signUp = (req,res,next)=>{
             if(user)
             {
                 console.log('user_exist');
+                res.json('this user is already exit');
             }
             else{
                     console.log("enter");
@@ -30,6 +31,14 @@ module.exports.signUp = (req,res,next)=>{
             });
 
     }
+    else if (!req.body.email&&!req.body.pwd&&!req.body.username)
+    res.json({error:'Email & Password & Username are required'});
+    else if (!req.body.username)
+    res.json({error:'Please enter the username'});
+    else if(!req.body.email)
+    res.json({error:'Please enter your Email'});
+    else
+    res.json({error:'Please enter Your Password'});
   }
 
 module.exports.signIn = (req,res,next)=>
@@ -52,7 +61,7 @@ module.exports.signIn = (req,res,next)=>
                 else
                 {
                     console.log('no match');
-                    res.json({token:null});
+                    res.json({error:'wrong password'});
                 }
                })
                .catch(err=>
@@ -60,8 +69,16 @@ module.exports.signIn = (req,res,next)=>
                     console.log(err);
                 });
             }
+            else
+              res.json({error:'The email and password you entred did not match our records'});
         });
     }
+    else if (!req.body.email&&!req.body.pwd)
+      res.json({error:'Email & Password are required'});
+    else if(!req.body.email)
+      res.json({error:'Please enter your Email'});
+    else
+      res.json({error:'Please enter Your Password'});
 }
 
 module.exports.NewUser = (req,res,next)=>{

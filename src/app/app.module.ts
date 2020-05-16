@@ -1,27 +1,27 @@
-import { UserService } from './admin-dashboard/shared/crudUser.service';
-import { CurrentUserComponent } from './admin-dashboard/users/current-user/current-user.component';
+import { UserService } from "./admin-dashboard/shared/crudUser.service";
+import { CurrentUserComponent } from "./admin-dashboard/users/current-user/current-user.component";
 // import { TestHeaderComponent } from './test-header/test-header.component';
-import { Catalog1Component } from './catalog1/catalog1.component';
-import { FooterComponent } from './Main/footer/footer.component';
-import { HeaderComponent } from './Main/header/header.component';
-import { PaymentsComponent } from './admin-dashboard/payments/payments.component';
-import { UsersComponent } from './admin-dashboard/users/users.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Catalog1Component } from "./catalog1/catalog1.component";
+import { FooterComponent } from "./Main/footer/footer.component";
+import { HeaderComponent } from "./Main/header/header.component";
+import { PaymentsComponent } from "./admin-dashboard/payments/payments.component";
+import { UsersComponent } from "./admin-dashboard/users/users.component";
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MainComponent } from './Main/main/main.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AboutComponent } from './about/about.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MessagesComponent } from './admin-dashboard/messages/messages.component';
-import { AuthInterceptor } from './sign-up/auth.interceptor';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { MainComponent } from "./Main/main/main.component";
+import { SignInComponent } from "./sign-in/sign-in.component";
+import { SignUpComponent } from "./sign-up/sign-up.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { AboutComponent } from "./about/about.component";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MessagesComponent } from "./admin-dashboard/messages/messages.component";
+import { AuthInterceptor } from "./sign-up/auth.interceptor";
 // import { CrudUsersComponent } from './admin-dashboard/crud-users/crud-users.component';
 import { UserlistComponent } from './admin-dashboard/userlist/userlist.component';
 import { UserComponent } from './crudUser/crudUser.component';
@@ -47,6 +47,14 @@ import { DeleteReviewComponent } from './delete-review/delete-review.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ChartsModule } from 'ng2-charts';
+import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
+import { ToastModule } from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {RatingModule} from 'primeng/rating';
+import { ReserveComponent } from './reserve/reserve.component';
+import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 
 
 @NgModule({
@@ -77,9 +85,13 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     AfficheMovieFootComponent,
     AffichMoviecarouselComponent,
     AfficheMovieHomeMainComponent,
+    AnalyticsComponent,
     MovieReviewComponent,
     EditReviewsComponent,
-    DeleteReviewComponent
+    DeleteReviewComponent,
+
+    ReserveComponent,
+    MyReservationsComponent
 
   ],
   imports: [
@@ -88,17 +100,34 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ScheduleModule, RecurrenceEditorModule,
-    DropDownListModule,DateTimePickerModule,
+    ScheduleModule,
+    RecurrenceEditorModule,
+    DropDownListModule,
+    DateTimePickerModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     AutocompleteLibModule,
     MatDividerModule,
     MatListModule,
     MatSlideToggleModule,
+    ChartsModule,
+    ToastModule,
+    ButtonModule,
+    DropdownModule,
+    RatingModule
+
 
   ],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true},DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService,UserService],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    AgendaService,
+    MonthAgendaService,
+    UserService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

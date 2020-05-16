@@ -9,7 +9,6 @@ const reviewSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now() },
     PostedFor :{type: mongoose.Schema.Types.ObjectId,ref:'movies', required: true } // poster for which movie
   });
-  
+
   // Export Module/Schema
   module.exports = mongoose.model('Review', reviewSchema);
-  

@@ -10,7 +10,7 @@ const review = require('../Model/review');
 
 
 router.get("/list",async (req,res)=>{
- 
+
   blog.find((err,docs)=>{
       if(!err){
           res.send({ data: docs })
@@ -126,7 +126,7 @@ router.post('/newComment', (req, res) => {
       }
     }
   });
-  
+
   router.get('/publicProfile', (req, res) => {
     // Check if username was passed in the parameters
     if (!req.params.username) {
@@ -159,7 +159,7 @@ router.post('/newComment', (req, res) => {
     }else {
       if(!req.body.createdBy){
         res.json({ success: false, message: 'User not Logged in' }); // Return error message
-      } 
+      }
     else {
       // Search the database with id
       blog.findOne({ _id: req.body.id }, (err, blog) => {
@@ -173,11 +173,11 @@ router.post('/newComment', (req, res) => {
           } else {
                     // Check if the user who liked the post has already liked the blog post before
                     if (blog.likedBy.includes(req.body.username)) {
-                      blog.likes--; 
+                      blog.likes--;
                       const arrayIndex = blog.likedBy.indexOf(req.body.username); // Get the index of the username in the array for removal
                       blog.likedBy.splice(arrayIndex, 1); // Remove user from array
                      // Increment likes
-                     
+
                       res.json({ success: false, message: 'You already liked this post.' });
                        // Return error message
                     } else {
@@ -212,11 +212,11 @@ router.post('/newComment', (req, res) => {
                     }
                   }
                 }
-              
+
             });
           }
         }});
-    
+
 
 
   router.put('/dislikeComment', (req, res) => {
@@ -227,7 +227,7 @@ router.post('/newComment', (req, res) => {
     }else {
       if(!req.body.createdBy){
         res.json({ success: false, message: 'User not Logged in !' }); // Return error message
-      }  
+      }
     else {
       // Search database for blog post using the id
       blog.findOne({ _id: req.body.id }, (err, blog) => {
@@ -240,7 +240,7 @@ router.post('/newComment', (req, res) => {
             res.json({ success: false, message: 'That blog was not found.' }); // Return error message
           } else {
             // Get data of user who is logged in
-            
+
                     // Check if user who disliked post has already disliked it before
                     if (blog.dislikedBy.includes(req.body.username)) {
                       res.json({ success: false, message: 'You already disliked this post.' }); // Return error message
@@ -281,7 +281,7 @@ router.post('/newComment', (req, res) => {
           }
     }
       });
- 
+
 
 
 
@@ -337,7 +337,7 @@ router.post('/newComment', (req, res) => {
           //         // Check if the user who requested single blog is the one who created it
           //         if (user.username !== blog.createdBy) {
           //           res.json({ success: false, message: 'You are not authorized to eidt this blog.' }); // Return authentication reror
-          //         } 
+          //         }
           else {
                     res.json({ success: true, blog: blog }); // Return success
                   }
@@ -368,9 +368,9 @@ router.post('/newComment', (req, res) => {
             res.json({ success: false, messasge: 'Blog was not found' }); // Return error message
           } else {
             // Get info on user who is attempting to delete post
-            
+
               // Check if error was found
-                
+
                     // Remove the blog from database
                     blog.remove((err) => {
                       if (err) {
@@ -380,12 +380,12 @@ router.post('/newComment', (req, res) => {
                       }
                     });
                   }
-               
-  
-  
-           
+
+
+
+
           }
-        
+
       });
     }
   });

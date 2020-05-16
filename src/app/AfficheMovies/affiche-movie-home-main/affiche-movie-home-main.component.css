@@ -1,9 +1,7 @@
 .card {
-   
-    background-color: transparent !important ;
-
+	background-color: transparent !important;
 }
-  
+
 .card__title {
 	text-transform: capitalize;
 }
@@ -12,19 +10,49 @@
 	position: absolute;
 	display: flex;
 	flex-direction: column;
+	top: 45px;
+	right: 5px;
+}
+
+.up {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
 	top: 10px;
 	right: 5px;
 }
 
-.del img {
+.del img,
+.up img {
 	height: 30px;
 	width: 30px;
 	opacity: 0.5;
 	cursor: pointer;
 	transition: 1s;
 }
-.del img:hover {
+.del img:hover,
+.up img:hover {
 	opacity: 0.8;
+}
+
+/deep/ .col-6 {
+	margin: 5px;
+	padding: 10px 10px;
+	box-shadow: 0 5px 25px 0 #00000070;
+	max-width: 48%;
+}
+
+/deep/.card__cover,
+/deep/.card__cover img,
+/deep/ .row {
+	height: 100% !important;
+}
+
+/deep/ .card,
+/deep/ .card--list {
+	border: none;
+	height: 100%;
+	margin-bottom: 0;
 }
 
 @media screen and (max-width: 575px) {

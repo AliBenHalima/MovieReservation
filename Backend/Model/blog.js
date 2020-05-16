@@ -16,7 +16,6 @@ const blogSchema = new mongoose.Schema({
     }],
     PostedFor :{type: mongoose.Schema.Types.ObjectId,ref:'movies', required: true } // poster for which movie
   });
-  
+
   // Export Module/Schema
   module.exports = mongoose.model('Blog', blogSchema);
-  

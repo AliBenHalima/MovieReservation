@@ -12,6 +12,8 @@ import * as $ from 'jquery';
 export class MoviesComponent implements OnInit {
 	movies: any;
 	image = null;
+	id: string;
+
 	constructor(public UploadService: UploadService) {}
 
 	ngOnInit(): void {
@@ -24,11 +26,16 @@ export class MoviesComponent implements OnInit {
 	show() {
 		$('button.upload').hide('slow');
 		$('div.upload').show('slow');
+		$('div.update').hide('slow');
 	}
 
 	hide() {
 		$('button.upload').show('slow');
 		$('div.upload').hide('slow');
+	}
+
+	hide_update() {
+		$('div.update').hide('slow');
 	}
 
 	onImgSelected(event: Event) {
@@ -39,9 +46,8 @@ export class MoviesComponent implements OnInit {
 
 	upload(form: NgForm) {
 		this.hide();
-		console.log(form.value);
-    this.movies.push(form.value);
-    const data = new FormData();
+		this.movies.push(form.value);
+		const data = new FormData();
 		data.append('name', form.value.name);
 		data.append('cat', form.value.cat);
 		data.append('desc', form.value.desc);
@@ -51,5 +57,24 @@ export class MoviesComponent implements OnInit {
 		data.append('type', form.value.type);
 		this.UploadService.upload(data);
 		console.log('ok');
+	}
+
+	update(form: NgForm) {
+		this.hide_update();
+		const data = new FormData();
+		console.log(form.value);
+		data.append('id', this.id);
+		data.append('name', form.value.name);
+		data.append('cat', form.value.cat);
+		data.append('desc', form.value.desc);
+		data.append('duration', form.value.duration);
+		data.append('prodName', form.value.prodName);
+		data.append('type', form.value.type);
+		if (this.image) {
+			data.append('file', this.image, this.image.name);
+		}
+		console.log(this.image.name);
+
+		this.UploadService.updateMovie(data);
 	}
 }
