@@ -61,7 +61,7 @@ export class MovieDetailsComponent implements OnInit {
     console.log(this.movie);
 });});
 
-
+ 
 
 
 this.username = localStorage.getItem('username');
