@@ -10,11 +10,8 @@ const review = require('../Model/review');
 router.post('/newreview',async (req, res) => {
   // var isposted = false ; 
 
-   review.find({ "createdBy": req.body.createdBy,"PostedFor": ObjectId(req.body.PostedFor) },(err,docs)=>{
-    //  if(!err){
-    //   res.json({ docs});
-    //  }
-    // if(!(docs[0].createdBy==req.body.createdBy)||docs[0].createdBy==="undefined"){
+   review.find({ "createdBy": req.body.createdBy,"PostedFor": ObjectId(req.body.PostedFor) },(err,docs)=>{ // check if user already poster a review or not
+ 
       if(Object.keys(docs).length === 0){ // check if object returns avalues or not (if a user has posted a review before or not)
       // Check if blog title was provided
     if (!req.body.title) {
