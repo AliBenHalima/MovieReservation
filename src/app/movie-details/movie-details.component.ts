@@ -24,6 +24,7 @@ export class MovieDetailsComponent implements OnInit {
   rating ; 
   CurrentComment;
   commentToDelete;
+  EmptyReviewList=false;
   
   
   
@@ -99,6 +100,7 @@ getAllComments(){
   console.log("showing data ");
 
     console.log(data.data);
+   
     this.CommentsList = data.data ;
   }
   });
@@ -137,6 +139,7 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
   if(data.success){
     this.NewPost=false ;
     this.reloadComments();
+   
   }else{
     window.alert(data.message);
   }
@@ -188,6 +191,9 @@ getAllReviews(){
 
   console.log("showing data of Reviews ");
     console.log(data.data);
+    if(data.data.length == 0){
+      this.EmptyReviewList= true;
+    }
   this.Calculate_Rating(data.data);
     this.ReviewsList = data.data ;
   }
@@ -237,6 +243,7 @@ console.log(Review);
 this.UserApiService.PostReview(Review).subscribe( data =>{
   if(data.success){
     this.NewReview=false ;
+    this.EmptyReviewList= false;
     this.reloadReviews();
   }else{
     window.alert(data.message );
