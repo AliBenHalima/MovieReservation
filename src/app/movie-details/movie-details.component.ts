@@ -126,7 +126,7 @@ CancelForm(){
 onSubmit(form: NgForm){
   // this.UserApiService.getUserByName(form["username"]);
   const blog = {
-    title: form.value.title, // Title field
+     // Title field
     body: form.value.body, // Body field
     createdBy: this.username,
     PostedFor : this.movieId // CreatedBy field

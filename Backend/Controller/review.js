@@ -6,7 +6,14 @@ const router = express.Router();
 // const FilmModel = mongoose.model("movies");
 const review = require('../Model/review');
 
-router.post('/newreview', (req, res) => {
+router.post('/newreview',async (req, res) => {
+  var isposted = false ; 
+  await review.find({ createdBy: req.body.createdBy,PostedFor: req.body.PostedFor },((err,docs)=>{
+    if(err){
+      res.json({ success: false, message: 'already commented' });
+    }
+    else{
+
     // Check if blog title was provided
     if (!req.body.title) {
       res.json({ success: false, message: 'review title is required.' }); // Return error message
@@ -57,6 +64,9 @@ router.post('/newreview', (req, res) => {
         }
       }
     }}
+    
+    }
+  }));
   });
   
   module.exports=router;

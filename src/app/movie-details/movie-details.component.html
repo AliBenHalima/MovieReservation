@@ -207,7 +207,7 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ Comment.title }}</h1>
+                                         
                                             <strong>Posted by: </strong> {{ Comment.createdBy }}
                                             <br />
                                             <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
@@ -268,7 +268,7 @@
                                     </ul>
 
                                     <form #blogForm="ngForm" (ngSubmit)="onSubmit(blogForm)"  class="form" *ngIf="NewPost">
-                                        <input type="text" name ="title" class="form-input" placeholder="Add title" ngModel>
+                                      
                                         <textarea id="text" name="body" class="form__textarea" placeholder="Your Comment . . ." ngModel> </textarea>
                                         <div class="buttons">
                                         <button></button>
@@ -309,9 +309,9 @@
                                     </ul>
 
                                     <form #ReviewForm="ngForm" (ngSubmit)="onSubmitReview(ReviewForm)"  class="form" *ngIf="NewReview">
-                                        <input type="text" class="form__input" placeholder="Title" name="title" ngModel>
+                                     <input type="text" class="form__input" placeholder="Title" name="title" ngModel> 
                                         <textarea class="form__textarea" placeholder="Review" name="body" ngModel></textarea>
-                                        <input type="Number" class="form__input_rating" placeholder="Rating" name="ReviewRating" ngModel>
+                                       <input type="Number" class="form__input_rating" placeholder="Rating" name="ReviewRating" ngModel>  
                                         <!-- <div class="form__slider">
                                             <div class="form__slider-rating" id="slider__rating"></div>
                                             <div class="form__slider-value" id="form__slider-value"></div>

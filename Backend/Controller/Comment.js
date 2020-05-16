@@ -80,9 +80,7 @@ router.get("/Reviews/Rating/:id",async (req,res)=>{
 
 router.post('/newComment', (req, res) => {
     // Check if blog title was provided
-    if (!req.body.title) {
-      res.json({ success: false, message: 'blog title is required.' }); // Return error message
-    } else {
+
       // Check if blog body was provided
       if (!req.body.body) {
         res.json({ success: false, message: 'blog body is required.' }); // Return error message
@@ -124,7 +122,7 @@ router.post('/newComment', (req, res) => {
           });
         }
       }
-    }
+    
   });
 
   router.get('/publicProfile', (req, res) => {
