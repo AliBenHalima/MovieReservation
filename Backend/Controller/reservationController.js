@@ -58,10 +58,10 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
       return   b[1] - a[1];
   });
  
-  // console.log("this sortable");
-  // console.log(sortable);
-  // sortable.splice(0,1);
-  // console.log(sortable[0][0]);
+  console.log("this sortable");
+  console.log(sortable);
+  sortable.splice(0,1);
+  console.log(sortable[0][0]);
 
     // res.send({ data: sortable })
     if(sortable==undefined){
@@ -80,7 +80,7 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
      }))
 }
 );
-
+//Object.keys(x)[6]
 
 
 
