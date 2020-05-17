@@ -164,7 +164,7 @@ return similarity;
 }
     
 module.exports = {
-    fan  
+    fan , similarity 
 }
 
 // module.exports.no =  new Promise(function(resolve){

@@ -46,6 +46,7 @@ router.post('/newReservation',async (req,res)=>{
 
 router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
   var x=   similar.fan(req.params.username);
+  // x= similar.similarity;
   // res.send({data : x})
   // console.log("this xXXXX");
   // console.log(x);
@@ -65,19 +66,24 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
 
     // res.send({ data: sortable })
     if(sortable==undefined){
-      res.send({"no":"no"})
+      res.send({"error":"no Data Available"})
     }
+    
+    // res.send({data : sortable})
+      ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
+        if(!err){
+          // var x= await similar.Calculation();
+          
+         res.send({data : docs})
+        }
+        else{
+            res.send("Error")
+        }
+    }))
+ 
     // res.send({data: sortable})
 
-     ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
-         if(!err){
-           // var x= await similar.Calculation();
-          res.send({data : docs})
-         }
-         else{
-             res.send("Error")
-         }
-     }))
+   
 }
 );
 //Object.keys(x)[6]
