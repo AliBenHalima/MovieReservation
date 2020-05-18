@@ -28,7 +28,7 @@ var finalList;
    
 // }
 // last();
-var similarity={}; 
+var similarity={};
 function fan(name1){
     
 
@@ -38,14 +38,14 @@ function fan(name1){
     
     var response = await fetch('http://localhost:3000/similarity/listComments');
     var listComments = await response.json();
-    console.log("this is list comments");
-    console.log(listComments);
+    // console.log("this is list comments");
+    // console.log(listComments);
 
     var response2 = await fetch('http://localhost:3000/similarity/listRatings');
      listRatings = await response2.json();
-     console.log("this is list ratings");
+    //  console.log("this is list ratings");
 
-    console.log(listRatings);
+    // console.log(listRatings);
 
     async function please(){
        
@@ -84,8 +84,9 @@ function fan(name1){
    return finalList;
     }
     please().then((res)=>{
-        console.log("FINAL LIST");
-        console.log(finalList);
+
+        // console.log("FINAL LIST");
+        // console.log(finalList);
          
         for (var i = 0; i < finalList.length; i++) {
                 
@@ -95,7 +96,7 @@ function fan(name1){
             
         }
         // console.log( users["SRO"]);
-        euclideanSimilarity();
+      var sem= euclideanSimilarity();
         
         // module.exports.similarity=similarity; 
         // return  new  Promise(resolve => {
@@ -160,11 +161,12 @@ function euclideanSimilarity() {
     // var name2 = "jihed";
   
 }
+
 return similarity;
 }
     
 module.exports = {
-    fan , similarity 
+    fan 
 }
 
 // module.exports.no =  new Promise(function(resolve){

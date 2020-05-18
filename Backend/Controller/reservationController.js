@@ -44,9 +44,14 @@ router.post('/newReservation',async (req,res)=>{
         }
       });})
 
+// get the 
+
 router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
+  if (!req.params.username) {
+    res.json({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
+  }
   var x=   similar.fan(req.params.username);
-  // x= similar.similarity;
+  // var x= similar.similarity;
   // res.send({data : x})
   // console.log("this xXXXX");
   // console.log(x);
@@ -58,30 +63,36 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
   sortable.sort(function(a, b) {
       return   b[1] - a[1];
   });
- 
-  console.log("this sortable");
-  console.log(sortable);
   sortable.splice(0,1);
-  console.log(sortable[0][0]);
+  if( sortable.length == 0){
+    x=[];
+    res.send({success: false, message: "no reservation Available for recommandation",data : []});
+  
+  }
+  else{
+    ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
+      if(!err){
+        // var x= await similar.Calculation();
+        x=[];
+       res.send({success: true ,data : docs , message : "all good"})
+      }
+      else{
+          res.send("Error")
+      }
+  }))
+  }
+  // console.log("this sortable");
+  // console.log(sortable);
+  
+  // console.log(sortable[0][0]);
 
     // res.send({ data: sortable })
-    if(sortable==undefined){
-      res.send({"error":"no Data Available"})
-    }
+   
     
     // res.send({data : sortable})
-      ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
-        if(!err){
-          // var x= await similar.Calculation();
-          
-         res.send({data : docs})
-        }
-        else{
-            res.send("Error")
-        }
-    }))
+     
  
-    // res.send({data: sortable})
+  
 
    
 }

@@ -46,7 +46,7 @@ export class MovieDetailsComponent implements OnInit {
     //     }
     //     // Used when creating new blog posts and comments
     // });
-
+    this.RecommandedMovies=[];
     this._route.paramMap.subscribe((params: ParamMap) => {
   this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
     console.log(res);
@@ -64,6 +64,7 @@ this.AddReview();
 
 //get movies reserved by that username
 this._route.paramMap.subscribe((params: ParamMap) => {
+  
   this.reservationService.getMoviesReservedByUser(this.username).subscribe((res: any) => {
     console.log("Similarity");
     console.log(res);

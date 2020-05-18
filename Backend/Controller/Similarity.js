@@ -17,12 +17,12 @@ const router = express.Router();
  var movies_names=[];
  var reviews2=[];
 
-
- async function getMovieNameby_id(id){
+// *********** this File is for Creating our DataSet ******************** //
+ async function getMovieNameby_id(id){ // returns a movie by Name
     var result1 ; 
    await FilmModel.find({"_id":ObjectId(id)},(err,docs)=>{
-    console.log("thissssErr");
-      console.log(docs);
+    // console.log("thissssErr");
+    //   console.log(docs);
       result1=  docs[0].name;
  });
  return result1 ;
@@ -45,13 +45,13 @@ const router = express.Router();
 
 
 
-router.get("/listMovies", (req,res)=>{
+router.get("/listMovies", (req,res)=>{ // returns list of movies
     // console.log(reviews2);
     FilmModel.find((err,docs)=>{
         if(!err){
             movies= docs;
             res.send({ data: docs })
-           console.log({movies:docs});
+        //    console.log({movies:docs});
         }
         else{
             res.send("Error")
@@ -59,12 +59,12 @@ router.get("/listMovies", (req,res)=>{
     });
 });
 
-(async (req,res)=>{
+(async (req,res)=>{    // execute this function each time to set the dataset
     await review.find((err,docs)=>{
         if(!err){
           reviews = docs;
-          console.log(reviews);
-          reviews.forEach(element=>{
+        //   console.log(reviews);
+          reviews.forEach(element=>{ // loop through element of reviews
 
           })
 
@@ -72,53 +72,57 @@ router.get("/listMovies", (req,res)=>{
         }
         });
 
-    await UserModel.find((err,docs)=>{
+    await UserModel.find((err,docs)=>{ // get users list
         
         users_= docs;
         users_.forEach(
-            // element =>{   console.log(element.username)});
-            element =>{ users_names.push({"name":element.username})});
+            
+            element =>{ users_names.push({"name":element.username})}); // push users names to our new array
 
         // console.log(users_names);
             // users_= docs;
             // console.log(users_={data:docs});
             // res.send({ data: docs })
     }); 
-    FilmModel.find((err,docs)=>{
+    FilmModel.find((err,docs)=>{ //find all movies to insert into our userns_name new object
         if(!err){
             movies= docs;
             movies.forEach(
                 // element =>{   console.log(element.username)});
-                element =>{ movies_names.push(element.name)});
+                element =>{ movies_names.push(element.name)}); // Our new object Movies_names
                 // console.log(movies_names);
         }
-        console.log(users_names);
-        console.log(movies_names);
-        console.log("2nd users");
-        for(let i =0;i<users_names.length ;i++){
+        // console.log(users_names);
+        // console.log(movies_names);
+        // console.log("2nd users");
+
+        for(let i =0;i<users_names.length ;i++){ // ADD all movies names into users_name
             for(let j =0;j<movies_names.length ;j++)
             users_names[i][movies_names[j]]=0;
         }
 
         
 
-        console.log(users_names);
+        // console.log(users_names);
+    
     });
     //reieeeews
 
-    await  review.find({}, {_id:0,createdAt:0,title:0,body:0,__v:0},async(err,docs)=>{
+    await  review.find({}, {_id:0,createdAt:0,title:0,body:0,__v:0},async(err,docs)=>{ //find review based on these conditions
         
-        reviews2 = docs;
-        console.log("with hi");
-        console.log(reviews2);
+        reviews2 = docs; 
+
+        // console.log("with hi");
+        // console.log(reviews2);
+
         // for(let j =0;j<reviews2.length ;j++)
         // reviews2[j]["MovieName"]="hello";
     
-        reviews2.forEach( element=>{
+        reviews2.forEach( element=>{ //add movie name to our review2 object
             (async()=>{
                var x= await getMovieNameby_id(element.PostedFor);
                element["movieName"]=x;
-               console.log(element);
+            //    console.log(element);
 
     //            for(let i =0;i<users_names.length ;i++){
     //             if(element["createdBy"]==users_names[i]["name"]){
@@ -141,11 +145,11 @@ router.get("/listMovies", (req,res)=>{
             //    console.log(x);
             })(); 
         });
-        console.log("rgrz");
-        console.log(users_names);
-    });
+        
+        // console.log("rgrz");
+        // console.log(users_names);
     
-
+    });
 
 
     await blog.find((err,docs)=>{
@@ -160,14 +164,14 @@ router.get("/listMovies", (req,res)=>{
     })();
 
 
-router.get("/listComments", (req,res)=>{
+router.get("/listComments", (req,res)=>{ // return a list of users_names
   
             res.send(users_names );
         
    
 });
 
-router.get("/listRatings", (req,res)=>{
+router.get("/listRatings", (req,res)=>{// return a list of reviews2
    
             res.send( reviews2 );
      
@@ -176,7 +180,7 @@ router.get("/listRatings", (req,res)=>{
 
 
 
-router.get("/listReviews",async (req,res)=>{
+router.get("/listReviews",async (req,res)=>{ // Ignore this pls
     review.find((err,docs)=>{
       if(!err){
         reviews = docs;
