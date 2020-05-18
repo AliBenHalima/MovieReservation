@@ -53,8 +53,8 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
   var x=   similar.fan(req.params.username);
   // var x= similar.similarity;
   // res.send({data : x})
-  // console.log("this xXXXX");
-  // console.log(x);
+  console.log("this xXXXX");
+  console.log(x);
   var sortable = [];
   for (var user in x) {
       sortable.push([user, x[user]]);
