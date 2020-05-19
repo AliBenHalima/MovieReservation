@@ -21,7 +21,13 @@ export class MovieDetailsComponent implements OnInit {
   NewReview;
   loadingReviews=false;
   ReviewsList;
-  rating ;
+  rating ; 
+  CurrentComment;
+  commentToDelete;
+  EmptyReviewList=false;
+  
+  
+  
 
   addComment:boolean = true;
 
@@ -55,7 +61,7 @@ export class MovieDetailsComponent implements OnInit {
     console.log(this.movie);
 });});
 
-
+ 
 
 
 this.username = localStorage.getItem('username');
@@ -64,6 +70,12 @@ this.getAllReviews();
 
 this.AddReview();
   }
+  onClik(comment){
+
+    this.CurrentComment = comment;
+  }
+
+
 
 
   func(){
@@ -88,6 +100,7 @@ getAllComments(){
   console.log("showing data ");
 
     console.log(data.data);
+   
     this.CommentsList = data.data ;
   }
   });
@@ -115,7 +128,7 @@ CancelForm(){
 onSubmit(form: NgForm){
   // this.UserApiService.getUserByName(form["username"]);
   const blog = {
-    title: form.value.title, // Title field
+     // Title field
     body: form.value.body, // Body field
     createdBy: this.username,
     PostedFor : this.movieId // CreatedBy field
@@ -126,8 +139,9 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
   if(data.success){
     this.NewPost=false ;
     this.reloadComments();
+   
   }else{
-    window.alert("Error in Posting Comment" );
+    window.alert(data.message);
   }
   console.log(data);
 
@@ -135,7 +149,9 @@ this.UserApiService.PostComment(blog).subscribe( data =>{
 
 this.addComment = true;
 }
-
+setCurrentComment(comment){
+  this.commentToDelete =comment;
+}
  // Function to like a blog post
  likeComment(id) {
   // Service to like a blog post
@@ -175,6 +191,9 @@ getAllReviews(){
 
   console.log("showing data of Reviews ");
     console.log(data.data);
+    if(data.data.length == 0){
+      this.EmptyReviewList= true;
+    }
   this.Calculate_Rating(data.data);
     this.ReviewsList = data.data ;
   }
@@ -224,9 +243,10 @@ console.log(Review);
 this.UserApiService.PostReview(Review).subscribe( data =>{
   if(data.success){
     this.NewReview=false ;
+    this.EmptyReviewList= false;
     this.reloadReviews();
   }else{
-    window.alert("Error in Posting Comment" );
+    window.alert(data.message );
   }
   console.log(data);
 });}

@@ -31,6 +31,7 @@ app.use(function (req, res, next) {
 });
 const UserController = require("./Controller/users");
 
+// app.set('views', path.join(__dirname, '/views/'));
 app.set("views", path.join(__dirname, "/views/"));
 
 app.engine(
@@ -58,6 +59,7 @@ app.use("/Comments", CommentController);
 app.use("/reviews", reviewController);
 app.use("/bookings", bookingController);
 app.use("/reservation", reservationController);
+
 
 //----------------AMASUOend---------------
 
