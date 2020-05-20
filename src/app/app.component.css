@@ -1,0 +1,7 @@
+/deep/::-webkit-scrollbar {
+	width: 10px;
+}
+
+/deep/::-webkit-scrollbar-thumb {
+	background: #00000098;
+}

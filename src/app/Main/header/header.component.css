@@ -24,7 +24,3 @@
 /deep/ .autocomplete-container .suggestions-container ul li a {
 	color: whitesmoke !important;
 }
-
-/deep/ .autocomplete-container .suggestions-container ul {
-	overflow: hidden !important;
-}

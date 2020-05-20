@@ -55,7 +55,8 @@ export class MoviesComponent implements OnInit {
 		data.append('type', form.value.type);
 		data.append('file', this.image, this.image.name);
 		this.UploadService.upload(data).subscribe((res) => {
-			form.value._id = res;
+			form.value._id = (<any>res).id;
+			form.value.file = (<any>res).image;
 			this.movies.push(form.value);
 		});
 	}

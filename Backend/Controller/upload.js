@@ -77,7 +77,7 @@ module.exports.upload = (req, res, next) => {
 			movie.save((err, movie) => {
 				if (movie) {
 					//  console.log("ok");
-					res.send(movie._id);
+					res.send({ id: movie._id, image: movie.file });
 				} else console.log(err);
 			});
 		}
