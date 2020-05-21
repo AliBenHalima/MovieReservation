@@ -16,6 +16,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'dist/Project')));
 
 //----------------AMASUO : show users in dashboard---------------
 require('./Model/users');
@@ -46,7 +47,6 @@ app.get('/', (req, res) => {
 	res.render('index', {});
 });
 
-app.use('../src/assets/img/covers', express.static(path.join('../src/assets/img/covers')));
 const auth = require('./routes/auth');
 app.use(cors(), auth);
 app.use('/users', UserController);
@@ -73,7 +73,7 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, '../src/assets/img/covers');
+		cb(null, './images');
 	},
 	filename: (req, file, cb) => {
 		cb(null, new Date().getTime().toString() + '_' + file.originalname);
