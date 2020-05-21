@@ -203,10 +203,10 @@
                                                         </div>
                                                         <div class="modal-body">
                 
-                                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ CurrentComment.title }}</h1>
-                                                            <strong>Posted by: </strong> {{ CurrentComment.createdBy }}
+                                                            <h1 class="card-subtitle mb-2 text-muted"><strong>Title: </strong>{{ Comment.title }}</h1>
+                                                            <strong>Posted by: </strong> {{ Comment.createdBy }}
                                                             <br />
-                                                            <strong>Date: </strong> {{ CurrentComment.createdAt | date:'MMM dd, yyyy' }}
+                                                            <strong>Date: </strong> {{ Comment.createdAt | date:'MMM dd, yyyy' }}
                                                             <p class="card-text">Are you sure you would like to delete this Comment?</p>
                 
                                                         </div>
