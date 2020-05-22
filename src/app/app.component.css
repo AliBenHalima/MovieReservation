@@ -1,0 +1,7 @@
+/deep/::-webkit-scrollbar {
+	width: 3px;
+}
+
+/deep/::-webkit-scrollbar-thumb {
+	background-image: linear-gradient(180deg, #ff55a5 0%, #ff5860 100%);
+}

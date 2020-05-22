@@ -8,9 +8,7 @@ export class UploadService {
 	constructor(private HttpClient: HttpClient) {}
 
 	upload(movie: FormData) {
-		this.HttpClient.post('http://localhost:3000/api/Movies', movie).subscribe((resFromBE) => {
-			console.log(resFromBE);
-		});
+		return this.HttpClient.post('http://localhost:3000/api/Movies', movie);
 	}
 
 	getMovies() {

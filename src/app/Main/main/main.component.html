@@ -3,14 +3,6 @@
   <p-toast position="top-right" [style]="{marginTop: '100px'}"></p-toast>
 
 	<section class="home">
-    <!-- home bg -->
-    <div class="owl-carousel home__bg">
-        <div class="item home__cover" data-bg="assets/img/home/home__bg.jpg"></div>
-        <div class="item home__cover" data-bg="assets/img/home/home__bg2.jpg"></div>
-        <div class="item home__cover" data-bg="assets/img/home/home__bg3.jpg"></div>
-        <div class="item home__cover" data-bg="assets/img/home/home__bg4.jpg"></div>
-    </div>
-    <!-- end home bg -->
 
     <div class="container">
         <div class="row">
@@ -30,14 +22,10 @@
                     <div class="item" >
                         <div class="card card--big" >
                         <!-- card -->
-                       <app-affich-moviecarousel [movie]=movie></app-affich-moviecarousel>
+                                <app-affich-moviecarousel [movie]=movie></app-affich-moviecarousel>
                         <!-- end card -->
+                        </div>
                     </div>
-                </div>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -106,10 +94,10 @@
             <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab" >
                 <div class="row" >
                     <div class="col-6 col-sm-12 col-lg-6"  *ngFor="let movie of movies">
-                    <!-- card -->
-                    <app-affiche-movie-home-main [movie]=movie > </app-affiche-movie-home-main>
-                    <!-- end card -->
-                </div>
+                          <!-- card -->
+                             <app-affiche-movie-home-main [movie]=movie > </app-affiche-movie-home-main>
+                                     <!-- end card -->
+                         </div>
                     <!-- card -->
 
                     <!-- end card -->

@@ -3,6 +3,24 @@
 }
 
 /deep/.autocomplete-container .input-container input {
-background-color: black !important ;
-color: white;
+	background-color: #28282d !important;
+	border: 1px solid #6495ed6e !important;
+	color: whitesmoke !important;
+	border-radius: 10px;
+	padding-bottom: 3px !important;
+	height: 41px !important;
+}
+
+/deep/ .autocomplete-container .suggestions-container.is-visible {
+	top: 33px;
+	background-color: #28282d !important;
+	border: 1px solid #6495ed6e !important;
+	border-bottom: none !important;
+	border-top: none !important;
+	color: whitesmoke !important;
+	position: absolute;
+}
+
+/deep/ .autocomplete-container .suggestions-container ul li a {
+	color: whitesmoke !important;
 }
