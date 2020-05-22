@@ -73,7 +73,7 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, './images');
+		cb(null, '..//src//assets//img//covers');
 	},
 	filename: (req, file, cb) => {
 		cb(null, new Date().getTime().toString() + '_' + file.originalname);
