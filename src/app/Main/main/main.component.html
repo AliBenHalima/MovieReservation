@@ -23,8 +23,8 @@
             </div>
 
             <div class="col-12">
-                <div class="owl-carousel home__carousel " *ngFor="let movie of movies">
-                    <div class="item" >
+                <div class="owl-carousel home__carousel " >
+                    <div class="item" *ngFor="let movie of movies">
                         <div class="card card--big" >
                         <!-- card -->
                        <app-affich-moviecarousel [movie]=movie></app-affich-moviecarousel>
