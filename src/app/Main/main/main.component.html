@@ -18,18 +18,9 @@
             </div>
 
             <div class="col-12">
-                <div class="owl-carousel home__carousel " >
-                    <div class="item" *ngFor="let movie of movies">
-                        <div class="card card--big" >
-                        <!-- card -->
+                <div class="owl-carousel home__carousel" *ngFor="let movie of movies" >
                        <app-affich-moviecarousel [movie]=movie></app-affich-moviecarousel>
                         <!-- end card -->
-                    </div>
-                </div>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -99,9 +90,9 @@
                 <div class="row" >
                     <div class="col-6 col-sm-12 col-lg-6"  *ngFor="let movie of movies">
                           <!-- card -->
-                             <app-affiche-movie-home-main [movie]=movie > </app-affiche-movie-home-main>
-                                     <!-- end card -->
-                         </div>
+                         <app-affiche-movie-home-main [movie]=movie > </app-affiche-movie-home-main>
+                            <!-- end card -->
+                     </div>
                     <!-- card -->
 
                     <!-- end card -->
