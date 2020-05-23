@@ -410,7 +410,8 @@
                     <!-- end section title -->
 
                     <!-- card -->
-                    <div class="col-6 col-sm-4 col-lg-6" *ngFor="let recomMovie of RecommandedMovies">
+                <!-- <div *ngIf="Connected" > -->
+                    <div  class="col-6 col-sm-4 col-lg-6" *ngFor="let recomMovie of RecommandedMovies" >
                     
                         <div class="card">
                             <div class="card__cover">
@@ -430,6 +431,7 @@
                         </div>
                           
                     </div>
+                <!-- </div> -->
                     <!-- end card -->
                 </div>
             </div>

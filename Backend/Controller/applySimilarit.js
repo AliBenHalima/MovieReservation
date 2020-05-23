@@ -30,6 +30,10 @@ var finalList;
 // last();
 var similarity={};
 function fan(name1){
+    if(name1==""){
+        similarity=[];
+        return  similarity;
+    }
     
 
    
@@ -121,7 +125,9 @@ var users = {};
 
 
 function euclideanSimilarity() {
-    // var name1 = "SRO";
+    
+   
+    
     
     finalList.forEach(element=>{
         var name2=element.name;
@@ -164,6 +170,7 @@ function euclideanSimilarity() {
 
 return similarity;
 }
+
     
 module.exports = {
     fan 

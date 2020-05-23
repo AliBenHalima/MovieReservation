@@ -25,6 +25,8 @@ export class MovieDetailsComponent implements OnInit {
   rating ; 
   CurrentComment;
   RecommandedMovies=[];
+  ObjectReturned=[];
+  Connected=false;
   
   
   
@@ -33,7 +35,10 @@ export class MovieDetailsComponent implements OnInit {
     public reservationService:ReservationService) { }
 
   ngOnInit(): void {
-
+    this.username = localStorage.getItem('username');
+    if(this.username ===""){
+      this.Connected=true ;
+    }
  
     // this.UserApiService.getUsersBlog().subscribe(profile => {
     //   console.log("xatr");
@@ -48,6 +53,8 @@ export class MovieDetailsComponent implements OnInit {
     // });
     this.RecommandedMovies=[];
     this._route.paramMap.subscribe((params: ParamMap) => {
+      this.apiService.getMovieByName(this._route.snapshot.params['name']);
+      this.apiService.getMovieByName(this._route.snapshot.params['name']);
   this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
     console.log(res);
     this.movie = res.data;
@@ -56,7 +63,7 @@ export class MovieDetailsComponent implements OnInit {
     console.log(this.movie);
 });});
 
-this.username = localStorage.getItem('username');
+
 this.getAllComments();
 this.getAllReviews();
 this.AddComment();
@@ -67,8 +74,14 @@ this._route.paramMap.subscribe((params: ParamMap) => {
   
   this.reservationService.getMoviesReservedByUser(this.username).subscribe((res: any) => {
     console.log("Similarity");
+    console.log(this.username);
+    if(this.username !=""){
+    this.ObjectReturned= res.data;
+    }
+
+    
     console.log(res);
-    res.data.forEach(element => {
+   this.ObjectReturned.forEach(element => {
       this.apiService.getMovieByName(element.film).subscribe((res: any) => {
         this.RecommandedMovies.push(res.data);
         console.log("SimilaRecommanded array ");
@@ -78,12 +91,14 @@ this._route.paramMap.subscribe((params: ParamMap) => {
     
      });
 
-
+    
 
     // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
     // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
   
-});});
+});
+
+});
 
 
 
