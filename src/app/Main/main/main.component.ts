@@ -10,7 +10,8 @@ import { AuthService } from '../../sign-up/auth.service';
 	providers: [ MessageService ]
 })
 export class MainComponent implements OnInit {
-	movies;
+	movies: any;
+	len = [ ...Array(13).keys() ];
 	constructor(
 		private apiService: UserApiService,
 		private authService: AuthService,
@@ -28,17 +29,13 @@ export class MainComponent implements OnInit {
 	ngOnInit(): void {
 		console.log(this.authService.connected);
 		if (this.authService.connected) {
-			console.log('enter');
-
 			setTimeout(() => {
 				this.addSingle();
 			}, 700);
 		}
 
 		this.apiService.getMovies().subscribe((res: any) => {
-			console.log(res);
 			this.movies = res.data;
-			console.log(this.movies);
 		});
 	}
 }

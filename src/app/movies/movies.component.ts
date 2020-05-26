@@ -13,14 +13,15 @@ export class MoviesComponent implements OnInit {
 	movies: any;
 	image = null;
 	id: string;
+	x: any;
 
 	constructor(public UploadService: UploadService) {}
 
 	ngOnInit(): void {
-		this.UploadService.getMoviesByUser().subscribe((movies) => {
+		this.x = this.UploadService.getMoviesByUser().subscribe((movies) => {
 			this.movies = movies;
-			console.log(movies);
 		});
+		console.log(this.x);
 	}
 
 	show() {
