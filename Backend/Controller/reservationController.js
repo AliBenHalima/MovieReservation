@@ -46,9 +46,9 @@ router.post('/newReservation',async (req,res)=>{
 
 // get the 
 
-router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
-  if (req.params.username==='') {
-    res.json({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
+router.get('/getMoviesReservedByUser/:username', (req,res)=>{
+  if (req.params.username=== "") {
+    res.send({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
   }
   var x=   similar.fan(req.params.username);
   // var x= similar.similarity;
@@ -66,14 +66,16 @@ router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
   sortable.splice(0,1);
   if( sortable.length == 0){
     x=[];
+
     res.send({success: false, message: "no reservation Available for recommandation",data : []});
-  
+ 
   }
   else{
     ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
       if(!err){
         // var x= await similar.Calculation();
         x=[];
+       
        res.send({success: true ,data : docs , message : "all good"})
       }
       else{

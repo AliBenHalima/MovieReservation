@@ -30,10 +30,10 @@ var finalList;
 // last();
 var similarity={};
 function fan(name1){
-    if(name1==""){
-        similarity=[];
-        return  similarity;
-    }
+    // if(name1==""){
+    //     similarity=[];
+    //     return  similarity;
+    // }
     
 
    
