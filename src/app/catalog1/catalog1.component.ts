@@ -24,16 +24,15 @@ export class Catalog1Component implements OnInit {
 
 	filter() {
 		var type = $('#type').val();
-		var start = $('#filter__imbd-start').text();
-		var end = $('#filter__imbd-end').text();
+		var start = parseInt($('#filter__imbd-start').text());
+		var end = parseInt($('#filter__imbd-end').text());
 		if (type == 'All Types') {
-			this.filtered_movies = this.movies;
 			this.filtered_movies = this.movies.filter((movie) => {
-				return start <= movie.rating && movie.rating <= end;
+				return start <= parseInt(movie.rating) && parseInt(movie.rating) <= end;
 			});
 		} else {
 			this.filtered_movies = this.movies.filter((movie) => {
-				return movie.type == type && (start <= movie.rating && movie.rating <= end);
+				return movie.type == type && parseInt(movie.rating) && parseInt(movie.rating) <= end;
 			});
 		}
 		console.log(this.filtered_movies);
