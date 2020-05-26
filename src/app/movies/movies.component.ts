@@ -13,14 +13,15 @@ export class MoviesComponent implements OnInit {
 	movies: any;
 	image = null;
 	id: string;
+	x: any;
 
 	constructor(public UploadService: UploadService) {}
 
 	ngOnInit(): void {
-		this.UploadService.getMoviesByUser().subscribe((movies) => {
+		this.x = this.UploadService.getMoviesByUser().subscribe((movies) => {
 			this.movies = movies;
-			console.log(movies);
 		});
+		console.log(this.x);
 	}
 
 	show() {
@@ -57,6 +58,7 @@ export class MoviesComponent implements OnInit {
 		this.UploadService.upload(data).subscribe((res) => {
 			form.value._id = (<any>res).id;
 			form.value.file = (<any>res).image;
+			alert(form.value.file);
 			this.movies.push(form.value);
 		});
 	}

@@ -21,50 +21,45 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HelpComponent } from './help/help.component';
 import { ReservationComponent } from './reservation/reservation.component';
-import { MoviesComponent } from "./movies/movies.component";
-import {AuthGuard} from './sign-up/auth.guard';
+import { MoviesComponent } from './movies/movies.component';
+import { AuthGuard } from './sign-up/auth.guard';
 import { EditReviewsComponent } from './edit-reviews/edit-reviews.component';
 import { DeleteReviewComponent } from './delete-review/delete-review.component';
 
-import {RoleGuard} from './sign-up/auth.guard';
+import { RoleGuard } from './sign-up/auth.guard';
 import { AnalyticsComponent } from './admin-dashboard/analytics/analytics.component';
 
-
- const routes: Routes = [
-  {path: "", component: MainComponent , pathMatch: "full"},
-  {path: "SignIn", component: SignInComponent},
-  {path: "SignUp", component: SignUpComponent},
-  {path: "NotFound", component: NotFoundComponent},
-  {path: "About", component: AboutComponent},
-  {path: "Catalog1", component: Catalog1Component },
-  {path: "MovieDetails/:name", component: MovieDetailsComponent}, // when we click on a movie we get Details about that movie
-  {path: "Pricing", component: PricingComponent},
-  {path: "Help", component: HelpComponent},
-  {path: "Contact", component: MailComponent},
-  {path: "AdminDashboard/CrudUsers", component: UserComponent,canActivate:[AuthGuard]},
-  {path: "AdminDashboard", component: AdminDashboardComponent,canActivate:[AuthGuard]},
-  {path: "AdminDashboard/messages", component: MessagesComponent,canActivate:[AuthGuard]},
-  {path: "AdminDashboard/users", component: UsersComponent,canActivate:[AuthGuard]},
-  {path: "AdminDashboard/users/:id", component: CurrentUserComponent,canActivate:[AuthGuard]},
-  {path: "AdminDashboard/payments", component: PaymentsComponent,canActivate:[AuthGuard]},
-  {path: "reservation", component: ReservationComponent,canActivate:[RoleGuard]},
-  {path: "reservation", component: ReservationComponent},
-  {path: "reserve/:name", component: ReserveComponent},
-  { path: "Movies", component: MoviesComponent, pathMatch: "prefix",canActivate:[AuthGuard] },
-  {path:"AdminDashboard/analytics",component:AnalyticsComponent},
-  {path: "Comment/edit/:id", component: EditReviewsComponent},
-  {path: "Comment/delete-review/:id", component: DeleteReviewComponent},
-  {path: "myreservations", component: MyReservationsComponent},
-  {path: "**", component: NotFoundComponent}
-
-
-
- ];
-
+const routes: Routes = [
+	{ path: '', component: MainComponent, pathMatch: 'full' },
+	{ path: 'SignIn', component: SignInComponent },
+	{ path: 'SignUp', component: SignUpComponent },
+	{ path: 'NotFound', component: NotFoundComponent },
+	{ path: 'About', component: AboutComponent },
+	{ path: 'Catalog1', component: Catalog1Component },
+	{ path: 'MovieDetails/:name', component: MovieDetailsComponent }, // when we click on a movie we get Details about that movie
+	{ path: 'Pricing', component: PricingComponent },
+	{ path: 'Help', component: HelpComponent },
+	{ path: 'Contact', component: MailComponent },
+	{ path: 'AdminDashboard/CrudUsers', component: UserComponent, canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard', component: AdminDashboardComponent, canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard/messages', component: MessagesComponent, canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard/users', component: UsersComponent, canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard/users/:id', component: CurrentUserComponent, canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard/payments', component: PaymentsComponent, canActivate: [ AuthGuard ] },
+	{ path: 'reservation', component: ReservationComponent, canActivate: [ RoleGuard ] },
+	{ path: 'reservation', component: ReservationComponent },
+	{ path: 'reserve/:name', component: ReserveComponent },
+	{ path: 'Movies', component: MoviesComponent, pathMatch: 'prefix', canActivate: [ AuthGuard ] },
+	{ path: 'AdminDashboard/analytics', component: AnalyticsComponent },
+	{ path: 'Comment/edit/:id', component: EditReviewsComponent },
+	{ path: 'Comment/delete-review/:id', component: DeleteReviewComponent },
+	{ path: 'myreservations', component: MyReservationsComponent },
+	{ path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [AuthGuard,RoleGuard]
+	imports: [ RouterModule.forRoot(routes) ],
+	exports: [ RouterModule ],
+	providers: [ AuthGuard, RoleGuard ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

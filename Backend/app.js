@@ -14,9 +14,9 @@ var bookingController = require('./Controller/bookings.js');
 var reservationController = require('./Controller/reservationController.js');
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'dist/Project/assets/img/covers')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'dist/Project')));
 
 //----------------AMASUO : show users in dashboard---------------
 require('./Model/users');

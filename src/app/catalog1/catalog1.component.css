@@ -1,6 +1,11 @@
-.breadcrumb{
-    background-color: transparent !important;
+.breadcrumb {
+  background-color: transparent !important;
 }
-.card{
-    background-color: transparent !important;
+
+.card {
+  background-color: transparent !important;
+}
+
+/deep/.filter__item-menu {
+  overflow: auto;
 }
