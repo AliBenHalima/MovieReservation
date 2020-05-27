@@ -40,5 +40,7 @@ export class AfficheMovieHomeMainComponent implements OnInit {
 		$('#desc').val(this.movie.desc);
 		$('#category').val(this.movie.category);
 		$('#type').val(this.movie.type);
+		$('#prix').val(this.movie.prix);
+		$('#trailer').val(this.movie.trailer);
 	}
 }

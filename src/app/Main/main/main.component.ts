@@ -11,7 +11,6 @@ import { AuthService } from '../../sign-up/auth.service';
 })
 export class MainComponent implements OnInit {
 	movies: any;
-	len = [ ...Array(13).keys() ];
 	constructor(
 		private apiService: UserApiService,
 		private authService: AuthService,

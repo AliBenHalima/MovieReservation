@@ -8,4 +8,6 @@ export interface Movie {
 	duration: string;
 	prodName: string;
 	type: string;
+	prix: number;
+	trailer: string;
 }

@@ -24,6 +24,6 @@ export class UploadService {
 	}
 
 	updateMovie(movie: FormData) {
-		return this.HttpClient.put('http://localhost:3000/api/updateMovie/', movie).subscribe();
+		return this.HttpClient.put('http://localhost:3000/api/updateMovie/', movie);
 	}
 }

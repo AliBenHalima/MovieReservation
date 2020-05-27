@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UploadService } from './upload.service';
-
+import { Movie } from 'src/app/movies/movie.model';
 import * as $ from 'jquery';
 
 @Component({
@@ -55,10 +55,11 @@ export class MoviesComponent implements OnInit {
 		data.append('prodName', form.value.prodName);
 		data.append('type', form.value.type);
 		data.append('file', this.image, this.image.name);
+		data.append('prix', form.value.prix);
+		data.append('trailer', form.value.trailer);
 		this.UploadService.upload(data).subscribe((res) => {
 			form.value._id = (<any>res).id;
 			form.value.file = (<any>res).image;
-			alert(form.value.file);
 			this.movies.push(form.value);
 		});
 	}
@@ -74,7 +75,24 @@ export class MoviesComponent implements OnInit {
 		data.append('duration', form.value.duration);
 		data.append('prodName', form.value.prodName);
 		data.append('type', form.value.type);
+		data.append('prix', form.value.prix);
+		data.append('trailer', form.value.trailer);
 		if (this.image) data.append('file', this.image, this.image.name);
-		this.UploadService.updateMovie(data);
+		this.UploadService.updateMovie(data).subscribe((movie) => {
+			let i = this.movies.findIndex((m) => {
+				return m._id == (<any>movie)._id;
+			});
+			this.movies[i] = movie;
+			console.log(this.movies[i]);
+			// $('#name').val((<Movie>movie).name);
+			// $('#duration').val((<Movie>movie).duration);
+			// $('#prodName').val((<Movie>movie).prodName);
+			// $('#desc').val((<Movie>movie).desc);
+			// $('#category').val((<Movie>movie).category);
+			// $('#type').val((<Movie>movie).type);
+			// $('#prix').val((<Movie>movie).prix);
+			// $('#trailer').val((<Movie>movie).trailer);
+			// console.log(movie);
+		});
 	}
 }

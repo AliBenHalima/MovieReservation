@@ -1,201 +1,228 @@
 <app-header></app-header>
 
 <section class="content" style="position: relative; top: 150px;">
-	<div class="content__head">
-		<div class="container">
-			<div class="row">
-				<div
-					class="col-12">
-					<!-- content title -->
-					<div class="nav_upload">
-						<h2 class="content__title">Your Movies</h2>
+  <div class="content__head">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- content title -->
+          <div class="nav_upload">
+            <h2 class="content__title">Your Movies</h2>
 
-						<button class="upload" (click)="show()">
-							<span class="upload">Upload</span>
-						</button>
+            <button class="upload" (click)="show()">
+              <span class="upload">Upload</span>
+            </button>
 
-					</div>
+          </div>
 
 
-					<!-- end content tabs nav -->
+          <!-- end content tabs nav -->
 
-					<!-- content mobile tabs nav -->
-					<div class="content__mobile-tabs" id="content__mobile-tabs">
-						<div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+          <!-- content mobile tabs nav -->
+          <div class="content__mobile-tabs" id="content__mobile-tabs">
+            <div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
 
-						<div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-							<ul class="nav nav-tabs" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">NEW RELEASES</a>
-								</li>
+            <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1"
+                    aria-selected="true">NEW RELEASES</a>
+                </li>
 
-								<li class="nav-item">
-									<a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">MOVIES</a>
-								</li>
+                <li class="nav-item">
+                  <a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2"
+                    aria-selected="false">MOVIES</a>
+                </li>
 
-							</ul>
-						</div>
-					</div>
-					<!-- end content mobile tabs nav -->
+              </ul>
+            </div>
+          </div>
+          <!-- end content mobile tabs nav -->
 
-				</div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 
 
 </section>
 <div class="upload">
-	<div class="close" (click)="hide()">
-		<span class="c c1"></span>
-		<span class="c c2"></span>
-	</div>
-	<form (submit)="upload(form)" #form="ngForm" action="/" enctype="multipart/form-data">
-		
-		<div class="d">
-			<div class="input_d">
-				<label for="">Name</label>
-				<input ngModel name="name" class="inp" type="text" placeholder="Name" >
-			</div>
 
-			<div class="input_d">
-				<label for="">Duration</label>
-				<input ngModel name="duration" class="inp" type="text" placeholder="Duration"  required>
-			</div>
-		</div>
+  <div class="close" (click)="hide()">
+    <span class="c c1"></span>
+    <span class="c c2"></span>
 
-		<div class="d">
-			<div class="input_d">
-				<label for="">Category</label>
-				<input ngModel name="cat" class="inp" type="text" placeholder="Type"  required>
-			</div>
-			<div class="input_d">
-				<label for="">Producer Name</label>
-				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name"  required>
+  </div>
 
-			</div>
-		</div>
+  <form (submit)="upload(form)" #form="ngForm" action="/" enctype="multipart/form-data">
 
-		<div class="d">
-			<div class="input_d">
-				<label for="">Description</label>
-				<input ngModel name="desc" class="inp" type="text" placeholder="Description"  required>
-			</div>
+    <div class="d">
+      <div class="input_d">
+        <label for="">Name</label>
+        <input ngModel name="name" class="inp" type="text" placeholder="Name">
+      </div>
+
+      <div class="input_d">
+        <label for="">Duration</label>
+        <input ngModel name="duration" class="inp" type="text" placeholder="Duration" required>
+      </div>
+    </div>
+
+    <div class="d">
+      <div class="input_d">
+        <label for="">Category</label>
+        <input ngModel name="cat" class="inp" type="text" placeholder="Type" required>
+      </div>
+      <div class="input_d">
+        <label for="">Producer Name</label>
+        <input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name" required>
+
+      </div>
+    </div>
+
+    <div class="d">
+      <div class="input_d">
+        <label for="">Description</label>
+        <input ngModel name="desc" class="inp" type="text" placeholder="Description" required>
+      </div>
 
 
-			<div class="input_d">
-				<label for="">Type</label>
-				<select ngModel class="inp" name="type"  required>
-					<option value="" disabled selected>Type</option>
-					<option value="action">action</option>
-					<option value="comedy">comedy</option>
-					<option value="romantic">romantic</option>
-					<option value="rom-coms">rom-coms</option>
-					<option value="adventure">adventure</option>
-					<option value="musicals">musicals</option>
-					<option value="dramas">dramas</option>
-					<option value="historical">historical</option>
-					<option value="real life">real life</option>
-					<option value="war">war</option>
-					<option value="horror">horror</option>
-					<option value="science fiction">science fiction</option>
-				</select>
-			</div>
-		</div>
+      <div class="input_d">
+        <label for="">Type</label>
+        <select ngModel class="inp" name="type" required>
+          <option value="" disabled selected>Type</option>
+          <option value="action">action</option>
+          <option value="comedy">comedy</option>
+          <option value="romantic">romantic</option>
+          <option value="rom-coms">rom-coms</option>
+          <option value="adventure">adventure</option>
+          <option value="musicals">musicals</option>
+          <option value="dramas">dramas</option>
+          <option value="historical">historical</option>
+          <option value="real life">real life</option>
+          <option value="war">war</option>
+          <option value="horror">horror</option>
+          <option value="science fiction">science fiction</option>
+        </select>
+      </div>
+    </div>
 
-		<div class="d">
+    <div class="d">
+      <div class="input_d">
+        <label for="">Prix</label>
+        <input ngModel name="prix" class="inp" type="text" placeholder="Prix" required>
+      </div>
+      <div class="input_d">
+        <label for="">Trailer URL</label>
+        <input ngModel name="trailer" class="inp" type="text" placeholder="trailer URL" required>
+      </div>
+    </div>
 
-				<div class="input_d">
-					<label for="">Image</label>
-					<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
-				</div>
+    <div class="d">
 
-				<div class="sub">
-					<button class="upload1" type="submit">
-						<span class="upload">Upload</span>
-					</button>
-				</div>	
-	
-		</div>
+      <div class="input_d">
+        <label for="">Image</label>
+        <input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
+      </div>
 
-	</form>
+      <div class="sub">
+        <button class="upload1" type="submit">
+          <span class="upload">Upload</span>
+        </button>
+      </div>
+
+    </div>
+
+  </form>
 </div>
 
 <!-- **************************update******************* -->
-<div class="update" >
-	<div class="close" (click)="hide_update()">
-		<span class="c c1"></span>
-		<span class="c c2"></span>
-	</div>
-	<form (submit)="update(f)" #f="ngForm" action="/" enctype="multipart/form-data">
-		
-		<div class="d">
-			<div class="input_d">
-				<label for="">Name</label>
-				<input ngModel name="name" class="inp" type="text" placeholder="Name" id="name" required>
-			</div>
+<div class="update">
+  <div class="close" (click)="hide_update()">
+    <span class="c c1"></span>
+    <span class="c c2"></span>
+  </div>
+  <form (submit)="update(f)" #f="ngForm" action="/" enctype="multipart/form-data">
 
-			<div class="input_d">
-				<label for="">Duration</label>
-				<input ngModel name="duration" class="inp" type="text" placeholder="Duration" id="duration"  required>
-			</div>
-		</div>
+    <div class="d">
+      <div class="input_d">
+        <label for="">Name</label>
+        <input ngModel name="name" class="inp" type="text" placeholder="Name" id="name" required>
+      </div>
 
-		<div class="d">
-			<div class="input_d">
-				<label for="">Category</label>
-				<input ngModel name="cat" class="inp" type="text" placeholder="Type"  id="category" required>
-			</div>
-			<div class="input_d">
-				<label for="">Producer Name</label>
-				<input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name"  id="prodName"  required>
+      <div class="input_d">
+        <label for="">Duration</label>
+        <input ngModel name="duration" class="inp" type="text" placeholder="Duration" id="duration" required>
+      </div>
+    </div>
 
-			</div>
-		</div>
+    <div class="d">
+      <div class="input_d">
+        <label for="">Category</label>
+        <input ngModel name="cat" class="inp" type="text" placeholder="Type" id="category" required>
+      </div>
+      <div class="input_d">
+        <label for="">Producer Name</label>
+        <input ngModel name="prodName" class="inp" type="text" placeholder="Producer Name" id="prodName" required>
 
-		<div class="d">
-			<div class="input_d">
-				<label for="">Description</label>
-				<input ngModel name="desc" class="inp" type="text" placeholder="Description" id="desc" required>
-			</div>
+      </div>
+    </div>
+
+    <div class="d">
+      <div class="input_d">
+        <label for="">Description</label>
+        <input ngModel name="desc" class="inp" type="text" placeholder="Description" id="desc" required>
+      </div>
 
 
-			<div class="input_d">
-				<label for="">Type</label>
-				<select ngModel class="inp" name="type" id="type" required>
-					<option value="" disabled selected>Type</option>
-					<option value="action">action</option>
-					<option value="comedy">comedy</option>
-					<option value="romantic">romantic</option>
-					<option value="rom-coms">rom-coms</option>
-					<option value="adventure">adventure</option>
-					<option value="musicals">musicals</option>
-					<option value="dramas">dramas</option>
-					<option value="historical">historical</option>
-					<option value="real life">real life</option>
-					<option value="war">war</option>
-					<option value="horror">horror</option>
-					<option value="science fiction">science fiction</option>
-				</select>
-			</div>
-		</div>
+      <div class="input_d">
+        <label for="">Type</label>
+        <select ngModel class="inp" name="type" id="type" required>
+          <option value="" disabled selected>Type</option>
+          <option value="action">action</option>
+          <option value="comedy">comedy</option>
+          <option value="romantic">romantic</option>
+          <option value="rom-coms">rom-coms</option>
+          <option value="adventure">adventure</option>
+          <option value="musicals">musicals</option>
+          <option value="dramas">dramas</option>
+          <option value="historical">historical</option>
+          <option value="real life">real life</option>
+          <option value="war">war</option>
+          <option value="horror">horror</option>
+          <option value="science fiction">science fiction</option>
+        </select>
+      </div>
+    </div>
 
-		<div class="d">
+    <div class="d">
+      <div class="input_d">
+        <label for="">Prix</label>
+        <input ngModel name="prix" class="inp" type="text" placeholder="Prix" id="prix" required>
+      </div>
+      <div class="input_d">
+        <label for="">Trailer URL</label>
+        <input ngModel name="trailer" class="inp" type="text" placeholder="trailer URL" id="trailer" required>
+      </div>
+    </div>
 
-				<div class="input_d">
-					<label for="">Image</label>
-					<input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
-				</div>
+    <div class="d">
 
-				<div class="sub">
-					<button class="upload1" type="submit">
-						<span class="upload">update</span>
-					</button>
-				</div>	
-	
-		</div>
-	</form>
+      <div class="input_d">
+        <label for="">Image</label>
+        <input ngModel name="file" class="inp" type="file" (change)="onImgSelected($event);">
+      </div>
+
+      <div class="sub">
+        <button class="upload1" type="submit">
+          <span class="upload">update</span>
+        </button>
+      </div>
+
+    </div>
+  </form>
 </div>
 
 
@@ -203,8 +230,8 @@
 
 
 <div class="your_movies">
-	<div class="col-6 col-sm-12 col-lg-6"  *ngFor="let movie of movies" id="{{movie._id}}">
-		<app-affiche-movie-home-main (event)="id=$event" [movie]=movie [del]=true> </app-affiche-movie-home-main>
-	</div>
-	
+  <div class="col-6 col-sm-12 col-lg-6" *ngFor="let movie of movies" id="{{movie._id}}">
+    <app-affiche-movie-home-main (event)="id=$event" [movie]=movie [del]=true> </app-affiche-movie-home-main>
+  </div>
+
 </div>

@@ -1,7 +1,6 @@
 import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
 
-import * as $ from 'jquery';
 @Component({
 	selector: 'app-catalog1',
 	templateUrl: './catalog1.component.html',
@@ -35,6 +34,5 @@ export class Catalog1Component implements OnInit {
 				return movie.type == type && parseInt(movie.rating) && parseInt(movie.rating) <= end;
 			});
 		}
-		console.log(this.filtered_movies);
 	}
 }

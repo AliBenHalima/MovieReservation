@@ -49,7 +49,7 @@ const routes: Routes = [
 	{ path: 'reservation', component: ReservationComponent, canActivate: [ RoleGuard ] },
 	{ path: 'reservation', component: ReservationComponent },
 	{ path: 'reserve/:name', component: ReserveComponent },
-	{ path: 'Movies', component: MoviesComponent, pathMatch: 'prefix', canActivate: [ AuthGuard ] },
+	{ path: 'Movies', component: MoviesComponent, canActivate: [ AuthGuard ] },
 	{ path: 'AdminDashboard/analytics', component: AnalyticsComponent },
 	{ path: 'Comment/edit/:id', component: EditReviewsComponent },
 	{ path: 'Comment/delete-review/:id', component: DeleteReviewComponent },
