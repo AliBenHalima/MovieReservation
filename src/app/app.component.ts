@@ -88,29 +88,29 @@ export class AppComponent implements OnInit {
                 node7.charset = 'utf-8';
 				document.getElementsByTagName('head')[0].appendChild(node7);
 
-				// const node8 = document.createElement('script');
-                // node8.src = 'assets/js/jquery.mousewheel.min.js';
-                // node8.type = 'text/javascript';
-                // node8.async = false;
-                // node8.id = 'custom8_js';
-                // node8.charset = 'utf-8';
-				// document.getElementsByTagName('head')[0].appendChild(node8);
+				const node8 = document.createElement('script');
+                node8.src = 'assets/js/jquery.mousewheel.min.js';
+                node8.type = 'text/javascript';
+                node8.async = false;
+                node8.id = 'custom8_js';
+                node8.charset = 'utf-8';
+				document.getElementsByTagName('head')[0].appendChild(node8);
 
-				// const node9 = document.createElement('script');
-                // node9.src = 'assets/js/owl.carousel.min.js';
-                // node9.type = 'text/javascript';
-                // node9.async = false;
-                // node9.id = 'custom9_js';
-                // node9.charset = 'utf-8';
-				// document.getElementsByTagName('head')[0].appendChild(node9);
+				const node9 = document.createElement('script');
+                node9.src = 'assets/js/owl.carousel.min.js';
+                node9.type = 'text/javascript';
+                node9.async = false;
+                node9.id = 'custom9_js';
+                node9.charset = 'utf-8';
+				document.getElementsByTagName('head')[0].appendChild(node9);
 
-				// const node10 = document.createElement('script');
-                // node10.src = 'assets/js/bootstrap.bundle.min.js';
-                // node10.type = 'text/javascript';
-                // node10.async = false;
-                // node10.id = 'custom10_js';
-                // node10.charset = 'utf-8';
-				// document.getElementsByTagName('head')[0].appendChild(node10);
+				const node10 = document.createElement('script');
+                node10.src = 'assets/js/bootstrap.bundle.min.js';
+                node10.type = 'text/javascript';
+                node10.async = false;
+                node10.id = 'custom10_js';
+                node10.charset = 'utf-8';
+				document.getElementsByTagName('head')[0].appendChild(node10);
 
 				// const node11 = document.createElement('script');
                 // node11.src = 'assets/js/jquery-3.3.1.min.js';
