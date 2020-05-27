@@ -1,6 +1,7 @@
 import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
 
+import * as $ from 'jquery';
 @Component({
 	selector: 'app-catalog1',
 	templateUrl: './catalog1.component.html',
