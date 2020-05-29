@@ -131,7 +131,9 @@ function euclideanSimilarity() {
     
     finalList.forEach(element=>{
         var name2=element.name;
-        
+        console.log("this is final list")
+        console.log(finalList)
+        if(users.hasOwnProperty(name1)){
     var ratings1 = users[name1];
     // console.log("hi");
     // console.log( users["SRO"]);
@@ -162,7 +164,10 @@ function euclideanSimilarity() {
    console.log("Similarity is");
    console.log(similarity);
 //    return similarity ;
-
+        }
+        else{
+            similarity=[];
+        }
     });
     // var name2 = "jihed";
   

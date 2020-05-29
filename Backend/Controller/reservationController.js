@@ -47,7 +47,7 @@ router.post('/newReservation',async (req,res)=>{
 // get the 
 
 router.get('/getMoviesReservedByUser/:username', (req,res)=>{
-  if (req.params.username=== "") {
+  if (req.params.username== "") {
     res.send({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
   }
   var x=   similar.fan(req.params.username);
