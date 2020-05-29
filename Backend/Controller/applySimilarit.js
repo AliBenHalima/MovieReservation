@@ -87,7 +87,7 @@ function fan(name1){
     
    return finalList;
     }
-    please().then((res)=>{
+   await please();
 
         // console.log("FINAL LIST");
         // console.log(finalList);
@@ -100,7 +100,7 @@ function fan(name1){
             
         }
         // console.log( users["SRO"]);
-      var sem= euclideanSimilarity();
+      var sem=   euclideanSimilarity();
         
         // module.exports.similarity=similarity; 
         // return  new  Promise(resolve => {
@@ -117,23 +117,23 @@ function fan(name1){
         // console.log("here is final list ");
         
         //     console.log({data:users});
-    });
+   
    
 }
 last();
 var users = {};
 
 
-function euclideanSimilarity() {
+  function euclideanSimilarity() {
     
-   
+    if(users.hasOwnProperty(name1)){
     
     
     finalList.forEach(element=>{
         var name2=element.name;
         console.log("this is final list")
         console.log(finalList)
-        if(users.hasOwnProperty(name1)){
+      
     var ratings1 = users[name1];
     // console.log("hi");
     // console.log( users["SRO"]);
@@ -163,12 +163,14 @@ function euclideanSimilarity() {
      similarity[name2]=1 / (1 + d);
    console.log("Similarity is");
    console.log(similarity);
+  
 //    return similarity ;
-        }
-        else{
-            similarity=[];
-        }
+     
     });
+}
+else{
+    similarity=[];
+}
     // var name2 = "jihed";
   
 }

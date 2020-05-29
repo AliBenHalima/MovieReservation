@@ -46,11 +46,11 @@ router.post('/newReservation',async (req,res)=>{
 
 // get the 
 
-router.get('/getMoviesReservedByUser/:username', (req,res)=>{
-  if (req.params.username== "") {
-    res.send({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
-  }
-  var x=   similar.fan(req.params.username);
+router.get('/getMoviesReservedByUser/:username', async (req,res)=>{
+  // if (req.params.username== "") {
+  //   res.send({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
+  // }
+  let x=   similar.fan(req.params.username);
   // var x= similar.similarity;
   // res.send({data : x})
   console.log("this xXXXX");
@@ -65,13 +65,13 @@ router.get('/getMoviesReservedByUser/:username', (req,res)=>{
   });
   sortable.splice(0,1);
   if( sortable.length == 0){
-    x=[];
+    // x=[];
 
-    res.send({success: false, message: "no reservation Available for recommandation",data : []});
- 
+    res.send({success: false, message: "no reservation Available for recommandation",data : [x]});
+   
   }
   else{
-    ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
+   await ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
       if(!err){
         // var x= await similar.Calculation();
         x=[];
