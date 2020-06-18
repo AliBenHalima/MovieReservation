@@ -14,8 +14,11 @@ var bookingController = require('./Controller/bookings.js');
 var reservationController = require('./Controller/reservationController.js');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'dist/Project/assets/img/covers')));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+	bodyParser.urlencoded({
+		extended: false
+	})
+);
 app.use(bodyParser.json());
 
 //----------------AMASUO : show users in dashboard---------------
@@ -71,9 +74,10 @@ const bcrypt = require('bcrypt');
 
 //-----------Routes------------------------
 const multer = require('multer');
+app.use('/images', express.static(__dirname + '/images'));
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, '..//src//assets//img//covers');
+		cb(null, './images');
 	},
 	filename: (req, file, cb) => {
 		cb(null, new Date().getTime().toString() + '_' + file.originalname);
@@ -90,7 +94,14 @@ app.get('/ac', Security.isAuth4Booking, (req, res, next) => {
 
 app.use(cors(), movie);
 
-app.use(cors(), Security.checkAuth, multer({ storage: storage }).single('file'), upload);
+app.use(
+	cors(),
+	Security.checkAuth,
+	multer({
+		storage: storage
+	}).single('file'),
+	upload
+);
 app.use('/Users', userController);
 app.use(express.static(__dirname + '/images'));
 app.use(cors(), Security.isAuth4Booking, bookings);

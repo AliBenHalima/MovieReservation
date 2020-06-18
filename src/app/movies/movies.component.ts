@@ -55,7 +55,7 @@ export class MoviesComponent implements OnInit {
 		data.append('prodName', form.value.prodName);
 		data.append('type', form.value.type);
 		data.append('file', this.image, this.image.name);
-		data.append('prix', form.value.prix);
+		data.append('price', form.value.price);
 		data.append('trailer', form.value.trailer);
 		this.UploadService.upload(data).subscribe((res) => {
 			form.value._id = (<any>res).id;
@@ -75,7 +75,7 @@ export class MoviesComponent implements OnInit {
 		data.append('duration', form.value.duration);
 		data.append('prodName', form.value.prodName);
 		data.append('type', form.value.type);
-		data.append('prix', form.value.prix);
+		data.append('price', form.value.price);
 		data.append('trailer', form.value.trailer);
 		if (this.image) data.append('file', this.image, this.image.name);
 		this.UploadService.updateMovie(data).subscribe((movie) => {
@@ -90,7 +90,7 @@ export class MoviesComponent implements OnInit {
 			// $('#desc').val((<Movie>movie).desc);
 			// $('#category').val((<Movie>movie).category);
 			// $('#type').val((<Movie>movie).type);
-			// $('#prix').val((<Movie>movie).prix);
+			// $('#price').val((<Movie>movie).price);
 			// $('#trailer').val((<Movie>movie).trailer);
 			// console.log(movie);
 		});
