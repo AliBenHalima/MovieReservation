@@ -53,5 +53,10 @@ export class BlogService {
   deleteComment(Comment_id){
     return this.http.delete<any>("http://localhost:3000/Comments/deleteComment/"+ Comment_id);
   }
+
   
+
+
+
+
 }

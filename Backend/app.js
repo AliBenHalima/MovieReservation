@@ -12,6 +12,7 @@ var CommentController = require('./Controller/Comment.js');
 var reviewController = require('./Controller/review.js');
 var bookingController = require('./Controller/bookings.js');
 var reservationController = require('./Controller/reservationController.js');
+const similarity = require('./Controller/Similarity.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'dist/Project/assets/img/covers')));
@@ -56,6 +57,12 @@ app.use('/Comments', CommentController);
 app.use('/reviews', reviewController);
 app.use('/bookings', bookingController);
 app.use('/reservation', reservationController);
+app.use("/similarity",similarity);
+app.use(cors(),auth);
+
+
+
+
 
 //----------------AMASUOend---------------
 

@@ -1,11 +1,13 @@
+
+
 const express = require("express");
 const mongoose = require("mongoose");
+const similar= require("./applySimilarit.js");
 
 const router = express.Router();
 
 const ReservationModel = require('../Model/reservation');
-const Reservation = require('../Model/reservation');
-const SalleModel = require('../Model/salle');
+const  Reservation = require('../Model/reservation');
 
 router.post('/newReservation',async (req,res)=>{
     var rsv = new Reservation({
@@ -42,44 +44,64 @@ router.post('/newReservation',async (req,res)=>{
         }
       });})
 
-router.get('/getMoviesReservedByUser/:username',async (req,res)=>{
-    ReservationModel.find({ userName: req.params.username },((err,docs)=>{
-        if(!err){
-            res.send({ data: docs })
-        }
-        else{
-            res.send("Error")
-        }
-    }))
-}
-)
+// get the 
 
-router.get('/getSalle/:num',async (req,res)=>{
-  SalleModel.findOne({num: req.params.num},((err,docs)=>{
-    if(!err){
-      res.send({ data: docs })
+router.get('/getMoviesReservedByUser/:username', async (req,res)=>{
+  // if (req.params.username== "") {
+  //   res.send({ success: false, message: 'You must Log in to get to get Recommanded movies' ,data : []}); 
+  // }
+  let x=   similar.fan(req.params.username);
+  // var x= similar.similarity;
+  // res.send({data : x})
+  console.log("this xXXXX");
+  console.log(x);
+  var sortable = [];
+  for (var user in x) {
+      sortable.push([user, x[user]]);
+  }
+
+  sortable.sort(function(a, b) {
+      return   b[1] - a[1];
+  });
+  sortable.splice(0,1);
+  if( sortable.length == 0){
+    // x=[];
+
+    res.send({success: false, message: "no reservation Available for recommandation",data : [x]});
+   
   }
   else{
-      res.send("Error")
-  }
+   await ReservationModel.find({ userName: sortable[0][0] },(async (err,docs)=>{
+      if(!err){
+        // var x= await similar.Calculation();
+        x=[];
+       
+       res.send({success: true ,data : docs , message : "all good"})
+      }
+      else{
+          res.send("Error")
+      }
   }))
-}  
-)
+  }
+  // console.log("this sortable");
+  // console.log(sortable);
+  
+  // console.log(sortable[0][0]);
 
-router.post('/reduceNbPlaces',async (req,res)=>{
-  console.log(req.body.num,req.body.nb);
-  var myquery= { num: req.body.num };
-  var newvalues= {$inc: {placesdispo:-req.body.nb} }
-  SalleModel.updateOne(myquery,newvalues, function(err, res) {
-    if(!err){
-      console.log("salle updated");
-    }
-    else{
-      res.send("Error")
-    }
-  })
+    // res.send({ data: sortable })
+   
+    
+    // res.send({data : sortable})
+     
+ 
+  
+
+   
 }
-)
+);
+//Object.keys(x)[6]
+
 
 
 module.exports=router;
+

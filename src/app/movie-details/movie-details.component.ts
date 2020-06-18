@@ -1,3 +1,5 @@
+import { ReservationService } from './../services/reservation.service';
+import { UserService } from './../admin-dashboard/shared/crudUser.service';
 import { UserApiService } from './../services/user-api.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -25,7 +27,9 @@ export class MovieDetailsComponent implements OnInit {
 	rating;
 	CurrentComment;
 	commentToDelete;
-	EmptyReviewList = false;
+  EmptyReviewList = false;
+  RecommandedMovies;
+  ObjectReturned;
 
 	addComment: boolean = true;
 
@@ -34,40 +38,75 @@ export class MovieDetailsComponent implements OnInit {
 		private _route: ActivatedRoute,
 		public UserApiService: UserApiService,
 		public blogservice: BlogService,
-		private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public reservationService:ReservationService
 	) {}
 
-	ngOnInit(): void {
-		this.NewPost = false;
 
-		this._route.paramMap.subscribe((params: ParamMap) => {
-			this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
-				console.log(res);
-				this.movie = res.data;
-				this.movieId = res.data._id;
+  ngOnInit(): void {
+    this.username = localStorage.getItem('username');
+   
+ 
+    // this.UserApiService.getUsersBlog().subscribe(profile => {
+    //   console.log("xatr");
+    //   if(profile){
 
-				this.blogservice.getComments(this.movieId).subscribe((data) => {
-					if (!data) {
-						console.log('Error');
-					} else {
-						console.log('showing data ');
+    
+    //   console.log(profile);
+    //   this.username = "aaaa";
+    //   console.log(this.username); 
+    //     }
+    //     // Used when creating new blog posts and comments
+    // });
+    this.RecommandedMovies=[];
+    this._route.paramMap.subscribe((params: ParamMap) => {
+  this.apiService.getMovieByName(this._route.snapshot.params['name']).subscribe((res: any) => {
+    console.log(res);
+    this.movie = res.data;
+    this.movieId=res.data._id;
 
-						console.log(data.data);
-						this.CommentsList = data.data;
-					}
-				});
+    console.log(this.movie);
+});});
 
-				console.log(this.movie);
-			});
-		});
 
-		this.username = localStorage.getItem('username');
-		this.getAllComments();
-		this.getAllReviews();
+this.getAllComments();
+this.getAllReviews();
+this.AddComment();
+this.AddReview();
 
-		this.AddReview();
-	}
+//get movies reserved by that username
+this._route.paramMap.subscribe((params: ParamMap) => {
+  
+  this.reservationService.getMoviesReservedByUser(this.username).subscribe((res: any) => {
+    console.log("Similarity");
+    console.log(this.username);
+    if(this.username !=""){
+    this.ObjectReturned= res.data;
+    }
 
+    
+    console.log(res);
+   this.ObjectReturned.forEach(element => {
+      this.apiService.getMovieByName(element.film).subscribe((res: any) => {
+        this.RecommandedMovies.push(res.data);
+        console.log("SimilaRecommanded array ");
+        console.log(this.RecommandedMovies);
+        console.log(this.RecommandedMovies[0].name);
+    });
+    
+     });
+
+    
+
+    // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
+    // window.alert(`most similar one is ${[Object.keys(res.data)[0]]}`);
+  
+});
+
+});
+
+
+  }
 	onClik(comment) {
 		this.CurrentComment = comment;
 	}
