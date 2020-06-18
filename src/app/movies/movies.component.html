@@ -1,11 +1,13 @@
 <app-header></app-header>
 
-<section class="content" style="position: relative; top: 150px;">
+
+<section class="content">
   <div class="content__head">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <!-- content title -->
+
           <div class="nav_upload">
             <h2 class="content__title">Your Movies</h2>
 
@@ -16,38 +18,16 @@
           </div>
 
 
-          <!-- end content tabs nav -->
-
-          <!-- content mobile tabs nav -->
-          <div class="content__mobile-tabs" id="content__mobile-tabs">
-            <div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
-
-            <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-              <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1"
-                    aria-selected="true">NEW RELEASES</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2"
-                    aria-selected="false">MOVIES</a>
-                </li>
-
-              </ul>
-            </div>
-          </div>
-          <!-- end content mobile tabs nav -->
-
         </div>
 
       </div>
     </div>
   </div>
 
-
 </section>
+
+
+
 <div class="upload">
 
   <div class="close" (click)="hide()">
@@ -66,7 +46,7 @@
 
       <div class="input_d">
         <label for="">Duration</label>
-        <input ngModel name="duration" class="inp" type="text" placeholder="Duration" required>
+        <input ngModel name="duration" class="inp" type="time" placeholder="Duration" required>
       </div>
     </div>
 
@@ -111,8 +91,8 @@
 
     <div class="d">
       <div class="input_d">
-        <label for="">Prix</label>
-        <input ngModel name="prix" class="inp" type="text" placeholder="Prix" required>
+        <label for="">Price</label>
+        <input ngModel name="price" class="inp" type="text" placeholder="price" required>
       </div>
       <div class="input_d">
         <label for="">Trailer URL</label>
@@ -154,7 +134,7 @@
 
       <div class="input_d">
         <label for="">Duration</label>
-        <input ngModel name="duration" class="inp" type="text" placeholder="Duration" id="duration" required>
+        <input ngModel name="duration" class="inp" type="time" placeholder="Duration" id="duration" required>
       </div>
     </div>
 
@@ -199,8 +179,8 @@
 
     <div class="d">
       <div class="input_d">
-        <label for="">Prix</label>
-        <input ngModel name="prix" class="inp" type="text" placeholder="Prix" id="prix" required>
+        <label for="">Price</label>
+        <input ngModel name="price" class="inp" type="text" placeholder="price" id="price" required>
       </div>
       <div class="input_d">
         <label for="">Trailer URL</label>

@@ -15,20 +15,26 @@
   text-transform: capitalize;
 }
 
-/deep/.del {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 45px;
-  right: 5px;
+/deep/.card__title a {
+  white-space: normal;
 }
 
+/deep/.del,
 /deep/.up {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 10px;
   right: 5px;
+}
+
+
+/deep/.del {
+  top: 45px;
+}
+
+
+/deep/.up {
+  top: 10px;
 }
 
 /deep/.del img,
@@ -50,6 +56,7 @@
   padding: 10px 10px;
   box-shadow: 0 5px 25px 0 #00000070;
   max-width: 48%;
+  padding-right: 35px;
 }
 
 /deep/.col-lg-3 {
@@ -72,7 +79,20 @@
 }
 
 @media screen and (max-width: 575px) {
+
   /deep/.del {
-    bottom: 10px;
+    bottom: 15px;
+    top: unset;
   }
+
+  /deep/.up {
+    bottom: 75px;
+    top: unset;
+  }
+
+  /deep/ .col-6 {
+    padding-right: 0px;
+  }
+
+
 }

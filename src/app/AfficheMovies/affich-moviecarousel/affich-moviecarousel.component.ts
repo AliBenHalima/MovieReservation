@@ -7,7 +7,7 @@ import { Movie } from 'src/app/movies/movie.model';
 	styleUrls: [ './affich-moviecarousel.component.css' ]
 })
 export class AffichMoviecarouselComponent implements OnInit {
-	@Input() movie: Movie;
+	@Input() movie: any;
 	constructor() {}
 
 	ngOnInit(): void {}

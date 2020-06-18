@@ -1,5 +1,6 @@
 const Movie = require('../Model/movie');
 const fs = require('fs');
+let url = "";
 
 module.exports.getMovies = (req, res, next) => {
   Movie.find().then((movies) => {
@@ -23,15 +24,18 @@ module.exports.deleteMovie = (req, res, next) => {
       }
     });
   });
+
   Movie.deleteOne({
-    _id: req.params.id
-  }, function (err, movie) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(movie);
+      _id: req.params.id
+    },
+    function (err, movie) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(movie);
+      }
     }
-  });
+  );
 };
 
 module.exports.updateMovie = (req, res, next) => {
@@ -46,7 +50,7 @@ module.exports.updateMovie = (req, res, next) => {
       if (req.body.duration) movie.duration = req.body.duration;
       if (req.body.prodName) movie.prodName = req.body.prodName;
       if (req.body.type) movie.type = req.body.type;
-      if (req.body.prix) movie.prix = req.body.prix;
+      if (req.body.price) movie.price = req.body.price;
       if (req.body.trailer) movie.trailer = req.body.trailer;
       if (req.file && req.file.filename) {
         fs.unlink('../src/assets/img/covers/' + movie.file, (err) => {
@@ -63,25 +67,26 @@ module.exports.updateMovie = (req, res, next) => {
 };
 
 module.exports.upload = (req, res, next) => {
+  url = req.protocol + "://" + req.get("host");
+  console.log(url);
   Movie.findOne({
     name: req.body.name
   }).then((movie) => {
     if (movie) {
       console.log('movie_exist');
     } else {
-
       const movie = new Movie({
         name: req.body.name,
         type: req.body.type,
         desc: req.body.desc,
-        file: req.file.filename,
+        file: url + "/images/" + req.file.filename,
         duration: req.body.duration,
-        prix: req.body.prix,
+        price: req.body.price,
         trailer: req.body.trailer,
         rating: 0,
         prodName: req.body.prodName,
         category: req.body.cat,
-        creator: req.userData.userId,
+        creator: req.userData.userId
       });
 
       movie.save((err, movie) => {

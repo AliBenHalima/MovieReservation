@@ -14,7 +14,7 @@ export class AfficheMovieHomeMainComponent implements OnInit {
 	@Input() movie: Movie;
 	@Input() del: Movie;
 	@Output() public event = new EventEmitter();
-
+	file: String;
 	constructor(public uploadService: UploadService) {}
 
 	ngOnInit(): void {}
@@ -40,7 +40,7 @@ export class AfficheMovieHomeMainComponent implements OnInit {
 		$('#desc').val(this.movie.desc);
 		$('#category').val(this.movie.category);
 		$('#type').val(this.movie.type);
-		$('#prix').val(this.movie.prix);
+		$('#price').val(this.movie.price);
 		$('#trailer').val(this.movie.trailer);
 	}
 }

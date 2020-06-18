@@ -1,47 +1,45 @@
 <app-header></app-header>
 
 
-  <div  class="sign section--bg bk" data-bg="../../assets/img/section/section.jpg" >
-    <mat-progress-bar mode="indeterminate" *ngIf="refresh"></mat-progress-bar >
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="sign__content">
-            <!-- authorization form -->
+<div class="sign section--bg bk" data-bg="../../assets/img/section/section.jpg">
+  <mat-progress-bar mode="indeterminate" *ngIf="refresh"></mat-progress-bar>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sign__content">
+          <!-- authorization form -->
 
-						<form action="#" (submit)="SignIn(formi)" #formi="ngForm" class="sign__form">
-							<a href="index.html" class="sign__logo">
-								<img src="../../assets/img/logo.svg" alt="">
-							</a>
+          <form action="#" (submit)="SignIn(formi)" #formi="ngForm" class="sign__form">
+            <a href="index.html" class="sign__logo">
+              <img src="../../assets/img/logo.svg" alt="">
+            </a>
 
-							<div class="sign__group">
-								<input ngModel name="email" type="text" class="sign__input" placeholder="Email">
-							</div>
+            <div class="sign__group">
+              <input ngModel name="email" type="text" class="sign__input" placeholder="Email">
+            </div>
 
-							<div class="sign__group">
-								<input ngModel type="password" name="pwd" class="sign__input" placeholder="Password">
-							</div>
+            <div class="sign__group">
+              <input ngModel type="password" name="pwd" class="sign__input" placeholder="Password">
+            </div>
 
-							<div class="sign__group sign__group--checkbox">
-								<input id="remember" name="remember" type="checkbox" checked="checked">
-								<label for="remember">Remember Me</label>
-							</div>
+            <div class="sign__group sign__group--checkbox">
+              <input id="remember" name="remember" type="checkbox" checked="checked">
+              <label for="remember">Remember Me</label>
+            </div>
 
-							<button class="sign__btn" type="submit">Sign in</button>
+            <button class="sign__btn" type="submit">Sign in</button>
 
-							<span class="sign__text">Don't have an account? <a [routerLink]="['/SignUp']">Sign up!</a></span>
+            <span class="sign__text">Don't have an account? <a [routerLink]="['/SignUp']">Sign up!</a></span>
 
-							<span class="sign__text"><a href="#">Forgot password?</a></span>
-						</form>
-						<!-- end authorization form -->
-          </div>
-          <div style="margin-top: 1000px;">
-            <p-toast position="top-right" [style]="{marginTop: '100px'}"></p-toast>
-          </div>
+            <span class="sign__text"><a href="#">Forgot password?</a></span>
+          </form>
+          <!-- end authorization form -->
+        </div>
+        <div>
+          <p-toast position="top-right" [style]="{marginTop: '100px'}"></p-toast>
+        </div>
 
-				</div>
-			</div>
-		</div>
-	</div>
-
-
+      </div>
+    </div>
+  </div>
+</div>
