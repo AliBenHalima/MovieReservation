@@ -24,3 +24,7 @@
 /deep/ .autocomplete-container .suggestions-container ul li a {
 	color: whitesmoke !important;
 }
+ .header__logo {
+	background-color: #2B2B31 !important;
+	
+}

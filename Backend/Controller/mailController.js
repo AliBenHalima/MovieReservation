@@ -18,7 +18,7 @@ router.post("/sendmail", (req, res) => {
   let users = req.body;
   console.log(users);
   res.send(sendMail(users, info => {
-    console.log(`The mail has beed send 😃`);
+    console.log(`The mail has beed send `);
     return res.send(info);
   }));
   

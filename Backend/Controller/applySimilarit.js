@@ -106,7 +106,7 @@ function fan(name1){
         // return  new  Promise(resolve => {
         //     resolve(similarity);  
     //   });
-    console.log("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM")
+    console.log("New Values of Similarity")
     console.log(similarity)
     
 

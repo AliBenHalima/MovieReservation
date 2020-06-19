@@ -72,3 +72,12 @@ button.send {
 .reserve {
 	margin: 15px 50px;
 }
+.bgColor{
+	background-color: #2B2B31;
+}
+.Bshadow{
+	box-shadow:none !important ; 
+}
+.displayNone{
+display: none !important;
+}

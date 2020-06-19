@@ -83,11 +83,11 @@ router.post('/newComment', (req, res) => {
 
       // Check if blog body was provided
       if (!req.body.body) {
-        res.json({ success: false, message: 'blog body is required.' }); // Return error message
+        res.json({ success: false, message: 'Comment is empty!' }); // Return error message
       } else {
         // Check if blog's creator was provided
         if (!req.body.createdBy) {
-          res.json({ success: false, message: 'blog creator is required.' }); // Return error
+          res.json({ success: false, message: 'You must Log in first!' }); // Return error
         } else {
           // Create the blog object for insertion into database
           const blog_ = new blog({
@@ -117,7 +117,7 @@ router.post('/newComment', (req, res) => {
                 res.json({ success: false, message: err }); // Return general error message
               }
             } else {
-              res.json({ success: true, message: 'blog saved!' }); // Return success message
+              res.json({ success: true, message: 'comment saved!' }); // Return success message
             }
           });
         }

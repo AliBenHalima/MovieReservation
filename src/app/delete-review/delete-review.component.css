@@ -9,3 +9,6 @@ input, textarea, input:focus, textarea:focus{
     background-color: #2b2b31;
     color : wheat;
 }
+.card-body{
+    background-color: aliceblue !important;
+}

@@ -20,3 +20,6 @@ form button{
       margin-top: 150px;
       margin-bottom: 150px;
   }
+  .card{
+      background-color: aliceblue !important;
+  }
