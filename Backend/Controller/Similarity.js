@@ -23,8 +23,8 @@ const router = express.Router();
    await FilmModel.find({"_id":ObjectId(id)},(err,docs)=>{
     // console.log("thissssErr");
     //   console.log(docs);
-    //   result1=  docs[0].name;
-    result1=  docs;
+      result1=  docs[0].name;
+    // result1=  docs;
     console.log("this is moviz");
       console.log(docs);
  });

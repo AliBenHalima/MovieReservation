@@ -107,6 +107,7 @@ function fan(name1){
         //     resolve(similarity);  
     //   });
     console.log("New Values of Similarity")
+    console.log("//////////////////");
     console.log(similarity)
     
 
